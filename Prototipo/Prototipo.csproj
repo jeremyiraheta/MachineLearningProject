@@ -67,9 +67,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <Content Include="AMapa.aspx" />
+    <Content Include="APlatos.aspx" />
+    <Content Include="ARestaurantes.aspx" />
     <Content Include="FastFood.aspx" />
     <Content Include="Fotos.aspx" />
     <Content Include="images\webPageConstruction.jpg" />
+    <Content Include="js\p5.dom.js" />
+    <Content Include="js\p5.js" />
+    <Content Include="js\p5.sound.js" />
+    <Content Include="js\sketch.js" />
     <Content Include="Locales.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Mapa.aspx" />
@@ -95,6 +102,27 @@
     </Compile>
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AMapa.aspx.cs">
+      <DependentUpon>AMapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AMapa.aspx.designer.cs">
+      <DependentUpon>AMapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="APlatos.aspx.cs">
+      <DependentUpon>APlatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="APlatos.aspx.designer.cs">
+      <DependentUpon>APlatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ARestaurantes.aspx.cs">
+      <DependentUpon>ARestaurantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ARestaurantes.aspx.designer.cs">
+      <DependentUpon>ARestaurantes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -163,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />
-    <Folder Include="js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

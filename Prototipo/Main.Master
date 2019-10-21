@@ -90,10 +90,10 @@
                         <li id="menu-item-100" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-100"><a href="SignIn.aspx">Registrarme</a></li>
                         <li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-42"><a href="LogIn.aspx" class="sf-with-ul">Loguear</a>
                             <ul class="sub-menu" style="display: none; visibility: hidden;">                                
-                                <li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47"><a href="#">Prueba</a></li>
-                                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="#">Prueba</a></li>
-                                <li id="menu-item-142" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-142"><a href="#">Prueba</a></li>
-                                <li id="menu-item-143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-143"><a href="#">Prueba</a></li>
+                                <li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47"><a href="ARestaurantes.aspx">Agregar Restaurante</a></li>
+                                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="APlatos.aspx">Agregar Platillo</a></li>
+                                <li id="menu-item-142" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-142"><a href="AMapa.aspx">Modificar mapa</a></li>
+                                <li id="menu-item-143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-143"><a href="#">Cerrar sesion</a></li>
                             </ul>
                         </li>
                     </ul>
