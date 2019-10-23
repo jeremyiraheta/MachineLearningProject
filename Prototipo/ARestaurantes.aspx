@@ -18,10 +18,12 @@
             </td></tr>        
         <tr><td style="padding:10px 20px 0px 20px"><asp:Label ID="Label6" runat="server" Text="Imagen de restaurante:"></asp:Label></td>
         <td>
-            <asp:Literal ID="imgname" runat="server"></asp:Literal>
-            <asp:Button ID="btnSend" runat="server" Text="Subir" />
+            <asp:FileUpload ID="upload" runat="server" />
             </td></tr>
         </table>
-        <div style="text-align: center; padding: 10px 10px 50px 10px;"><asp:Button ID="btnAdd" runat="server" Text="Agregar" /></div>
+        <div style="text-align: center; padding: 10px 10px 50px 10px;"><asp:Button ID="btnAdd" runat="server" Text="Agregar" OnClick="btnAdd_Click" />
+            <br />
+            <asp:Literal ID="output" runat="server"></asp:Literal>
+        </div>
     </div>
 </asp:Content>

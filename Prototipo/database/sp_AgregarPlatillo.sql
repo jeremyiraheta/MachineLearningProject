@@ -1,4 +1,4 @@
-create procedure sp_AgregarPlatillo(@nombre nvarchar(200), @precio float, @descripcion nvarchar(200), @tipo int, @restaurante int, @image varchar(200))
+create procedure sp_AgregarPlatillo(@nombre nvarchar(200), @precio float, @descripcion nvarchar(200), @tipo int, @restaurante int, @image varchar(200) = null)
 as
 begin
 	declare @img varchar(200) = null
