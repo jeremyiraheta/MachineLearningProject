@@ -6,12 +6,18 @@
     <br />
     <br />
     Usuario<br />
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
     <br />
     <br />
     Password<br />
-    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>    
+    <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>    
     <br />
     <br />
-    <asp:Button ID="Button1" runat="server" Text="Logear" OnClick="Button1_Click" /></div></center>
+    <asp:Button ID="btnLogin" runat="server" Text="Logear" OnClick="Button1_Click" />
+        <br />
+        <br />
+        <asp:Literal ID="output" runat="server"></asp:Literal>
+        <br />
+        <br />
+        </div></center>
 </asp:Content>

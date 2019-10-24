@@ -175,3 +175,17 @@ create table VALORACIONES (
       references USUARIOS (ID_USUARIO)
 )
 go
+
+/*==============================================================*/
+/* Table: LOGS                                                  */
+/*==============================================================*/
+create table LOGS (
+   ID_ACTION            int                  identity,
+   ID_USUARIO           varchar(50)          null,   
+   [DATE]                 date                 not null,
+   QUERY                varchar(200)         not null,
+   constraint PK_LOGS primary key (ID_ACTION),
+   constraint FK_LOGS_REFERENCE_USUARIOS foreign key (ID_USUARIO)
+      references USUARIOS (ID_USUARIO)
+)
+go

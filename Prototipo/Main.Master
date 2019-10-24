@@ -88,7 +88,7 @@
                         <li id="menu-item-98" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-98"><a href="AboutUs.aspx">Sobre Nosotros</a></li>
                         <li id="menu-item-99" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-99"></li>
                         <li id="menu-item-100" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-100"><a href="SignIn.aspx">Registrarme</a></li>
-                        <li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-42"><a href="LogIn.aspx" class="sf-with-ul">Loguear</a>
+                        <li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-42"><a href="LogIn.aspx" class="sf-with-ul" runat="server" id="user">Loguear</a>
                             <ul class="sub-menu" style="display: none; visibility: hidden;">                                
                                 <li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47"><a href="ARestaurantes.aspx">Agregar Restaurante</a></li>
                                 <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="APlatos.aspx">Agregar Platillo</a></li>

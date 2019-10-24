@@ -11,7 +11,11 @@ namespace Prototipo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["userdata"] != null)
+            {                
+                user.InnerText = ((SQLTrans.LoginData)Session["userdata"]).USER;
+                user.HRef = "~/" + user.InnerText;
+            }
         }
     }
 }

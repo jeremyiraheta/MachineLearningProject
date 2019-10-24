@@ -29,8 +29,8 @@ namespace Prototipo
             }
             SQLTrans.Service1Client client = new SQLTrans.Service1Client();
             try
-            {
-                client.sp_AgregarRestaurante(txtRname.Text, txtReferencia.Text, filename);                
+            {                
+                client.sp_AgregarRestaurante((SQLTrans.LoginData)Session["userdate"], txtRname.Text, txtReferencia.Text, filename);                
                 output.Text = "Transaccion completada!";
             }
             catch (Exception)

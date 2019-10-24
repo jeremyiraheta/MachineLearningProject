@@ -13,5 +13,26 @@ namespace Prototipo
         {
 
         }
+
+        protected void btnReg_Click(object sender, EventArgs e)
+        {
+            string filename = "";
+            if (upload.HasFile)
+            {
+                filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
+                upload.SaveAs(filename);
+            }
+            SQLTrans.Service1Client client = new SQLTrans.Service1Client();
+            try
+            {
+                client.sp_AgregarUsuario(txtUsername.Text, txtNombre.Text, txtApellidos.Text, txtEmail.Text,Calendar1.SelectedDate.ToShortDateString(), txtPassword.Text, filename);
+                output.Text = "Transaccion completada!";
+            }
+            catch (Exception)
+            {
+
+                output.Text = "Ocurrio un error y no se completo la transaccion!";
+            }
+        }
     }
 }
