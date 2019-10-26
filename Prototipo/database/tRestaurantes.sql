@@ -9,6 +9,6 @@ begin
 		select @id=ID_RESTAURANTES from inserted
 	if Exists(select * from deleted)
 		select @id=ID_RESTAURANTES from deleted
-	select @avg=AVG(RATE) from RESTAURANTES where ID_RESTAURANTES = @id
+	select @avg=AVG(RATE) from PLATILLOS where ID_RESTAURANTES = @id
 	update RESTAURANTES set RATE = @avg where ID_RESTAURANTES = @id
 end
