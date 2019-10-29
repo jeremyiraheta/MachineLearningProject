@@ -250,6 +250,12 @@ namespace Prototipo.SQLTrans {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/existUserName", ReplyAction="http://tempuri.org/IService1/existUserNameResponse")]
         System.Threading.Tasks.Task<bool> existUserNameAsync(string user);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/isAdmin", ReplyAction="http://tempuri.org/IService1/isAdminResponse")]
+        bool isAdmin(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/isAdmin", ReplyAction="http://tempuri.org/IService1/isAdminResponse")]
+        System.Threading.Tasks.Task<bool> isAdminAsync(string user);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetRestaurantes", ReplyAction="http://tempuri.org/IService1/GetRestaurantesResponse")]
         Prototipo.SQLTrans.Restaurantes[] GetRestaurantes();
         
@@ -473,6 +479,14 @@ namespace Prototipo.SQLTrans {
         
         public System.Threading.Tasks.Task<bool> existUserNameAsync(string user) {
             return base.Channel.existUserNameAsync(user);
+        }
+        
+        public bool isAdmin(string user) {
+            return base.Channel.isAdmin(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> isAdminAsync(string user) {
+            return base.Channel.isAdminAsync(user);
         }
         
         public Prototipo.SQLTrans.Restaurantes[] GetRestaurantes() {

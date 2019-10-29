@@ -11,21 +11,18 @@ namespace RESTService
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
     public interface IService1
-    {
-
-        [OperationContract]
-        DataSet Select(string table, string where = "");
-        [OperationContract]
-        DataSet View(VIEWS v, string where = "");
-        [OperationContract]
-        void Update(LoginData login, string table, string set, string where = "");
-        [OperationContract]
-        void Delete(LoginData login, string table, string where = "");
-        [OperationContract]
+    {                
         bool existUserName(string user);
         [OperationContract]
-        [WebGet(UriTemplate = "Restaurantes", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
-        List<Restaurantes> GetRestaurantes();
+        bool isAdmin(string user);
+        [OperationContract]
+        List<Restaurantes> GetRestaurantes(int id = -1);
+        [OperationContract]
+        List<Usuarios> GetUsuarios(string id = null);
+        [OperationContract]
+        List<Platillos> GetPlatillos(int id = -1);
+        [OperationContract]
+        List<Comentarios> GetComentarios(int id_platillo);
         [OperationContract]
         void sp_AgregarRestaurante(LoginData login, string name, string reference, string img);
         [OperationContract]
@@ -53,7 +50,8 @@ namespace RESTService
         [DataMember]
         public string USER { get; set;}
         [DataMember]
-        public string PASS { get; set; } 
+        public string PASS { get; set; }
+        [DataMember]
         public bool isAdmin { get; set; }       
     }
     [DataContract]
@@ -73,6 +71,60 @@ namespace RESTService
         public int X { get; set; }
         [DataMember]
         public int Y { get; set; }
+    }
+    [DataContract]
+    public class Usuarios
+    {
+        [DataMember]
+        public string ID_USUARIO;
+        [DataMember]
+        public string NOMBRE;
+        [DataMember]
+        public string APELLIDO;
+        [DataMember]
+        public string CORREO_ELECTRONICO;
+        [DataMember]
+        public string FECHA_CUMPLE;
+        [DataMember]
+        public bool ADMIN;
+        [DataMember]
+        public string URL;
+        [DataMember]
+        public int VISITAS;
+    }
+    [DataContract]
+    public class Platillos
+    {
+        [DataMember]
+        public int ID_PLATILLOS;
+        [DataMember]
+        public int ID_RESTAURANTES;
+        [DataMember]
+        public int ID_TIPO;
+        [DataMember]
+        public string NOMBRE;
+        [DataMember]
+        public decimal RATE;
+        [DataMember]
+        public decimal PRECIO;
+        [DataMember]
+        public string DESCRIPCION;
+        [DataMember]
+        public string URL;
+    }
+    [DataContract]
+    public class Comentarios
+    {
+        [DataMember]
+        public int ID_COMENTARIOS;
+        [DataMember]
+        public int ID_USUARIO;
+        [DataMember]
+        public int ID_PLATILLOS;
+        [DataMember]
+        public string COMENTARIOS;
+        [DataMember]
+        public string URL;        
     }
     [DataContract]
     public enum VIEWS

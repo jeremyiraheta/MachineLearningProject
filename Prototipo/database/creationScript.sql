@@ -179,13 +179,13 @@ go
 /*==============================================================*/
 /* Table: LOGS                                                  */
 /*==============================================================*/
-create table LOGS (
-   ID_ACTION            int                  identity,
-   ID_USUARIO           varchar(50)          null,   
-   [DATE]                 date                 not null,
-   QUERY                varchar(200)         not null,
-   constraint PK_LOGS primary key (ID_ACTION),
-   constraint FK_LOGS_REFERENCE_USUARIOS foreign key (ID_USUARIO)
-      references USUARIOS (ID_USUARIO)
+create table LOGS(
+	ID_ACTION int identity,
+	ID_USUARIO varchar(50) foreign key references Usuarios(ID_USUARIO),
+	ID_OBJECT int,
+	CREACION date,
+  TABLA varchar(10),
+	TIPO varchar(3),
+	check(TIPO = 'C' OR TIPO = 'U' OR TIPO = 'D')	
 )
 go

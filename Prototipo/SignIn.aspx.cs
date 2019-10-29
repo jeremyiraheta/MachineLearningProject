@@ -27,6 +27,7 @@ namespace Prototipo
             {
                 client.sp_AgregarUsuario(txtUsername.Text, txtNombre.Text, txtApellidos.Text, txtEmail.Text,Calendar1.SelectedDate.ToShortDateString(), txtPassword.Text, filename);
                 output.Text = "Transaccion completada!";
+                Response.Redirect("LogIn.aspx");
             }
             catch (Exception)
             {

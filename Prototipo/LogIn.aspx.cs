@@ -22,7 +22,7 @@ namespace Prototipo
             {
                 SQLTrans.LoginData linfo = new SQLTrans.LoginData();
                 linfo.USER = txtUser.Text;
-                linfo.PASS = txtPass.Text;
+                linfo.PASS = txtPass.Text;               
                 Session["userdata"] = linfo;
                 Response.Redirect("Default.aspx");
             }

@@ -100,7 +100,15 @@ namespace RESTService
         }
         public bool existUserName(string user)
         {
-            DataSet ds = Select("USUARIOS", "id_usuario");
+            DataSet ds = Select("USUARIOS", "id_usuario='" + user + "'");
+            if (ds.Tables.Count == 0)
+                return false;
+            else
+                return true;
+        }
+        public bool isAdmin(string user)
+        {
+            DataSet ds = View(VIEWS.vUsuarios, "id_usuario='" + user + "' and admin=1");
             if (ds.Tables.Count == 0)
                 return false;
             else
@@ -139,9 +147,9 @@ namespace RESTService
             adapter.Dispose();
         }
 
-        public List<Restaurantes> GetRestaurantes()
+        public List<Restaurantes> GetRestaurantes(int id=-1)
         {
-            DataSet dsALL = View(VIEWS.vRestaurantes);
+            DataSet dsALL = (id == -1) ? View(VIEWS.vRestaurantes) : View(VIEWS.vRestaurantes, "ID_RESTAURANTES=" + id);
             List<Restaurantes> r = new List<Restaurantes>();
             foreach (DataRow row in dsALL.Tables[0].Rows)
             {
@@ -153,6 +161,57 @@ namespace RESTService
                 nr.URL = Convert.ToString(row[6]);
                 nr.X = Convert.ToInt32(row[7]);
                 nr.Y = Convert.ToInt32(row[8]);
+            }
+            return r;
+        }
+        public List<Usuarios> GetUsuarios(string id=null)
+        {
+            DataSet dsAll = (id == null) ? View(VIEWS.vUsuarios,id) : View(VIEWS.vUsuarios, "ID_USUARIO='" + id + "'");
+            List<Usuarios> r = new List<Usuarios>();
+            foreach(DataRow row in dsAll.Tables[0].Rows)
+            {
+                Usuarios nu = new Usuarios();
+                nu.ID_USUARIO = Convert.ToString(row["ID_USUARIO"]);
+                nu.ADMIN = Convert.ToBoolean(row["ADMIN"]);
+                nu.APELLIDO = Convert.ToString(row["APELLIDO"]);
+                nu.URL = Convert.ToString(row["URL"]);
+                nu.CORREO_ELECTRONICO = Convert.ToString(row["CORREO_ELECTRONICO"]);
+                nu.VISITAS = Convert.ToInt32(row["VISITAS"]);
+                nu.NOMBRE = Convert.ToString(row["NOMBRE"]);
+                nu.FECHA_CUMPLE = Convert.ToString(row["FECHA_CUMPLE"]);
+            }
+            return r;
+        }        
+        public List<Platillos> GetPlatillos(int id=-1)
+        {
+            DataSet dsAll = (id == -1) ? View(VIEWS.vPlatillos) : View(VIEWS.vPlatillos, "ID_PLATILLOS" + id);
+            List<Platillos> r = new List<Platillos>();
+            foreach(DataRow row in dsAll.Tables[0].Rows)
+            {
+                Platillos np = new Platillos();
+                np.DESCRIPCION = Convert.ToString(row["DESCRIPCION"]);
+                np.ID_PLATILLOS = Convert.ToInt32(row["ID_PLATILLOS"]);
+                np.ID_RESTAURANTES = Convert.ToInt32(row["ID_RESTAURANTES"]);
+                np.ID_TIPO = Convert.ToInt32(row["ID_TIPO"]);
+                np.NOMBRE = Convert.ToString(row["NOMBRE"]);
+                np.PRECIO = Convert.ToDecimal(row["PRECIO"]);
+                np.RATE = Convert.ToDecimal(row["RATE"]);
+                np.URL = Convert.ToString(row["URL"]);
+            }
+            return r;
+        }
+        public List<Comentarios> GetComentarios(int id_platillo)
+        {
+            DataSet dsAll = View(VIEWS.vComentario, "ID_PLATILLOS=" + id_platillo);
+            List<Comentarios> r = new List<Comentarios>();
+            foreach(DataRow row in dsAll.Tables[0].Rows)
+            {
+                Comentarios nc = new Comentarios();
+                nc.COMENTARIOS = Convert.ToString(row["COMENTARIOS"]);
+                nc.ID_COMENTARIOS = Convert.ToInt32(row["ID_COMENTARIOS"]);
+                nc.ID_PLATILLOS = Convert.ToInt32(row["ID_PLATILLOS"]);
+                nc.ID_USUARIO = Convert.ToInt32(row["ID_USUARIO"]);
+                nc.URL = Convert.ToString(row["URL"]);
             }
             return r;
         }

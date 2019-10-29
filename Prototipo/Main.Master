@@ -72,30 +72,23 @@
                     <a class="btn_menu" id="toggle" href="#">Open menu</a>
 
                     <ul id="mainmenu" class="dropdown sf-js-enabled mobile-menu">
-                        <li id="menu-item-26" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-26"><a href="Default.aspx" aria-current="page">Home</a></li>
-                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-46"><a href="Platos.aspx" class="sf-with-ul">Platos</a>
+                        <li id="menu-item-26" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home"><a href="Default.aspx" aria-current="page">Home</a></li>
+                        <li id="menu-item-46" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="Platos.aspx">Platos</a>
                             <ul class="sub-menu" style="display: none; visibility: hidden;">
-                                <li id="menu-item-97" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-97"><a href="#">Postres</a></li>
-                                <li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31"><a href="#">Entradas</a></li>
-                                <li id="menu-item-36" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31"><a href="#">Carnes</a></li>
-                                <li id="menu-item-32" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-31"><a href="#">Vegetariano</a></li>
+                                <li id="menu-item-97" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="#">Postres</a></li>
+                                <li id="menu-item-31" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="#">Entradas</a></li>
+                                <li id="menu-item-36" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="#">Carnes</a></li>
+                                <li id="menu-item-32" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="#">Vegetariano</a></li>
                             </ul>
                         </li>
-                        <li id="menu-item-27" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-27"><a href="Locales.aspx">Locales</a></li>
-                        <li id="menu-item-28" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-28"><a href="FastFood.aspx">Fast Food</a></li>
-                        <li id="menu-item-29" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-29"><a href="Fotos.aspx">Fotos</a></li>
-                        <li id="menu-item-30" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-30"><a href="Mapa.aspx">Mapa</a></li>
-                        <li id="menu-item-98" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-98"><a href="AboutUs.aspx">Sobre Nosotros</a></li>
-                        <li id="menu-item-99" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-99"></li>
-                        <li id="menu-item-100" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-100"><a href="SignIn.aspx">Registrarme</a></li>
-                        <li id="menu-item-42" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-42"><a href="LogIn.aspx" class="sf-with-ul" runat="server" id="user">Loguear</a>
-                            <ul class="sub-menu" style="display: none; visibility: hidden;">                                
-                                <li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47"><a href="ARestaurantes.aspx">Agregar Restaurante</a></li>
-                                <li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43"><a href="APlatos.aspx">Agregar Platillo</a></li>
-                                <li id="menu-item-142" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-142"><a href="AMapa.aspx">Modificar mapa</a></li>
-                                <li id="menu-item-143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-143"><a href="#">Cerrar sesion</a></li>
-                            </ul>
-                        </li>
+                        <li id="menu-item-27" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="Locales.aspx">Locales</a></li>
+                        <li id="menu-item-28" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="FastFood.aspx">Fast Food</a></li>
+                        <li id="menu-item-29" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="Fotos.aspx">Fotos</a></li>
+                        <li id="menu-item-30" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="Mapa.aspx">Mapa</a></li>
+                        <li id="menu-item-98" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="AboutUs.aspx">Sobre Nosotros</a></li>
+                        <li id="menu-item-99" class="menu-item menu-item-type-taxonomy menu-item-object-category"></li>
+                        <li id="menu-item-100" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="SignIn.aspx">Registrarme</a></li>
+                        <li id="usermenu" class="menu-item menu-item-type-taxonomy menu-item-object-category" runat="server"><a href="LogIn.aspx" runat="server" id="user">Loguear</a></li>
                     </ul>
                     <div class="clear"></div>
                 </div>

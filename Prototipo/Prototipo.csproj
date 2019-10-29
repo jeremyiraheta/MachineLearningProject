@@ -72,9 +72,27 @@
     <Content Include="AMapa.aspx" />
     <Content Include="APlatos.aspx" />
     <Content Include="ARestaurantes.aspx" />
+    <Content Include="css\academicons.min.css" />
+    <Content Include="css\dashicons.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\font.css" />
+    <Content Include="css\genericons.css" />
+    <Content Include="css\instagram-widget.css" />
+    <Content Include="css\shortcodes.css" />
+    <Content Include="css\socicon.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\style.min.css" />
+    <Content Include="css\theme-utils.css" />
+    <Content Include="css\wzslider.css" />
     <Content Include="FastFood.aspx" />
     <Content Include="Fotos.aspx" />
     <Content Include="images\webPageConstruction.jpg" />
+    <Content Include="js\dropdown.js" />
+    <Content Include="js\flexslider.js" />
+    <Content Include="js\init.js" />
+    <Content Include="js\jquery-migrate.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.lazy.min.js" />
     <Content Include="js\p5.dom.js" />
     <Content Include="js\p5.js" />
     <Content Include="js\p5.sound.js" />
@@ -223,9 +241,7 @@
       <DependentUpon>SignIn.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="css\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
