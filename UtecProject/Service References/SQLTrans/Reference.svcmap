@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5026fc3c-2907-47d4-a873-73dc8d0b905c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50435/CrudService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CrudService.wsdl" MetadataType="Wsdl" ID="a4004cc7-ca5f-409a-9fb0-39edb56c3588" SourceId="1" SourceUrl="http://localhost:50435/CrudService.svc?wsdl" />
+    <MetadataFile FileName="CrudService.xsd" MetadataType="Schema" ID="0d0144d5-e062-44b0-8bc2-0a088f19e07d" SourceId="1" SourceUrl="http://localhost:50435/CrudService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CrudService1.xsd" MetadataType="Schema" ID="761790fd-497b-4593-b65b-6fea302ab8da" SourceId="1" SourceUrl="http://localhost:50435/CrudService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CrudService.disco" MetadataType="Disco" ID="464f50f1-ee5e-4477-a240-ada84447bd5a" SourceId="1" SourceUrl="http://localhost:50435/CrudService.svc?disco" />
+    <MetadataFile FileName="CrudService2.xsd" MetadataType="Schema" ID="718b3ec4-42b0-44ae-bc67-f657a16dcc3b" SourceId="1" SourceUrl="http://localhost:50435/CrudService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CrudService3.xsd" MetadataType="Schema" ID="ddc929d2-4c33-4349-8659-f0821003587d" SourceId="1" SourceUrl="http://localhost:50435/CrudService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CrudService4.xsd" MetadataType="Schema" ID="e4ea66aa-dc6d-4f70-8283-0ec984faf67a" SourceId="1" SourceUrl="http://localhost:50435/CrudService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

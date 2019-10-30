@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CrudService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService" />
+      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd4" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICrudService_isAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:isAdmin" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_isAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetRestaurantes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRestaurantes" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetRestaurantes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRestaurantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetPlatillos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatillos" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetPlatillos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatillosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetComentarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComentarios" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetComentarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComentariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetTiposPlatillo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTiposPlatillo" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetTiposPlatillo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTiposPlatilloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarRestaurante_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarRestaurante" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarRestaurante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarRestauranteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_ValidarUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_ValidarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_ValidarUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_ValidarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarImagen_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarImagen" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarImagen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarImagenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarPlatillo_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarPlatillo" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarPlatillo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarPlatilloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarPunto_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarPunto" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarPunto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarPuntoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarEstadistica_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarEstadistica" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarEstadistica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarEstadisticaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarComentario_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarComentario" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarComentario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarComentarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarValoracion_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarValoracion" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarValoracion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarValoracionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_Delete" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterRestaurant_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterRestaurant" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterRestaurant_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterRestaurantResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterPlatillo_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterPlatillo" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterPlatillo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterPlatilloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterComentario_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterComentario" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterComentario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterComentarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICrudService">
+    <wsdl:operation name="isAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/isAdmin" message="tns:ICrudService_isAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/isAdminResponse" message="tns:ICrudService_isAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRestaurantes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetRestaurantes" message="tns:ICrudService_GetRestaurantes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetRestaurantesResponse" message="tns:ICrudService_GetRestaurantes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetUsuarios" message="tns:ICrudService_GetUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetUsuariosResponse" message="tns:ICrudService_GetUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatillos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetPlatillos" message="tns:ICrudService_GetPlatillos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetPlatillosResponse" message="tns:ICrudService_GetPlatillos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComentarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetComentarios" message="tns:ICrudService_GetComentarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetComentariosResponse" message="tns:ICrudService_GetComentarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTiposPlatillo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetTiposPlatillo" message="tns:ICrudService_GetTiposPlatillo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetTiposPlatilloResponse" message="tns:ICrudService_GetTiposPlatillo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarRestaurante">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarRestaurante" message="tns:ICrudService_sp_AgregarRestaurante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarRestauranteResponse" message="tns:ICrudService_sp_AgregarRestaurante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarUsuario" message="tns:ICrudService_sp_AgregarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarUsuarioResponse" message="tns:ICrudService_sp_AgregarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_ValidarUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_ValidarUsuario" message="tns:ICrudService_sp_ValidarUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_ValidarUsuarioResponse" message="tns:ICrudService_sp_ValidarUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarImagen">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarImagen" message="tns:ICrudService_sp_AgregarImagen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarImagenResponse" message="tns:ICrudService_sp_AgregarImagen_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarPlatillo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarPlatillo" message="tns:ICrudService_sp_AgregarPlatillo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarPlatilloResponse" message="tns:ICrudService_sp_AgregarPlatillo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarPunto">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarPunto" message="tns:ICrudService_sp_AgregarPunto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarPuntoResponse" message="tns:ICrudService_sp_AgregarPunto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarEstadistica">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarEstadistica" message="tns:ICrudService_sp_AgregarEstadistica_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarEstadisticaResponse" message="tns:ICrudService_sp_AgregarEstadistica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarComentario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarComentario" message="tns:ICrudService_sp_AgregarComentario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarComentarioResponse" message="tns:ICrudService_sp_AgregarComentario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarValoracion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarValoracion" message="tns:ICrudService_sp_AgregarValoracion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarValoracionResponse" message="tns:ICrudService_sp_AgregarValoracion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_Delete" message="tns:ICrudService_sp_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_DeleteResponse" message="tns:ICrudService_sp_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterRestaurant">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AlterRestaurant" message="tns:ICrudService_sp_AlterRestaurant_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AlterRestaurantResponse" message="tns:ICrudService_sp_AlterRestaurant_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterPlatillo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AlterPlatillo" message="tns:ICrudService_sp_AlterPlatillo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AlterPlatilloResponse" message="tns:ICrudService_sp_AlterPlatillo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterComentario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AlterComentario" message="tns:ICrudService_sp_AlterComentario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AlterComentarioResponse" message="tns:ICrudService_sp_AlterComentario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AlterUsuario" message="tns:ICrudService_sp_AlterUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AlterUsuarioResponse" message="tns:ICrudService_sp_AlterUsuario_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICrudService" type="tns:ICrudService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="isAdmin">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/isAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRestaurantes">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetRestaurantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatillos">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetPlatillos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComentarios">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetComentarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTiposPlatillo">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetTiposPlatillo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarRestaurante">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarRestaurante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_ValidarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_ValidarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarImagen">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarImagen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarPlatillo">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarPlatillo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarPunto">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarPunto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarEstadistica">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarEstadistica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarComentario">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarComentario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarValoracion">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarValoracion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_Delete">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterRestaurant">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AlterRestaurant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterPlatillo">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AlterPlatillo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterComentario">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AlterComentario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterUsuario">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AlterUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CrudService">
+    <wsdl:port name="BasicHttpBinding_ICrudService" binding="tns:BasicHttpBinding_ICrudService">
+      <soap:address location="http://localhost:50435/CrudService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
