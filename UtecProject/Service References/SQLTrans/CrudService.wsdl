@@ -2,11 +2,11 @@
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CrudService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService" />
-      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:50435/CrudService.svc?xsd=xsd4" />
+      <xsd:import schemaLocation="http://localhost:50075/CrudService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50075/CrudService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50075/CrudService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService" />
+      <xsd:import schemaLocation="http://localhost:50075/CrudService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:50075/CrudService.svc?xsd=xsd4" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ICrudService_isAdmin_InputMessage">
@@ -15,17 +15,35 @@
   <wsdl:message name="ICrudService_isAdmin_OutputMessage">
     <wsdl:part name="parameters" element="tns:isAdminResponse" />
   </wsdl:message>
+  <wsdl:message name="ICrudService_GetRestaurante_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRestaurante" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetRestaurante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRestauranteResponse" />
+  </wsdl:message>
   <wsdl:message name="ICrudService_GetRestaurantes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRestaurantes" />
   </wsdl:message>
   <wsdl:message name="ICrudService_GetRestaurantes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRestaurantesResponse" />
   </wsdl:message>
+  <wsdl:message name="ICrudService_GetUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsuarioResponse" />
+  </wsdl:message>
   <wsdl:message name="ICrudService_GetUsuarios_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsuarios" />
   </wsdl:message>
   <wsdl:message name="ICrudService_GetUsuarios_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetPlatillo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatillo" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetPlatillo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatilloResponse" />
   </wsdl:message>
   <wsdl:message name="ICrudService_GetPlatillos_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPlatillos" />
@@ -134,13 +152,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/isAdmin" message="tns:ICrudService_isAdmin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/isAdminResponse" message="tns:ICrudService_isAdmin_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetRestaurante">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetRestaurante" message="tns:ICrudService_GetRestaurante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetRestauranteResponse" message="tns:ICrudService_GetRestaurante_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetRestaurantes">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetRestaurantes" message="tns:ICrudService_GetRestaurantes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetRestaurantesResponse" message="tns:ICrudService_GetRestaurantes_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetUsuario" message="tns:ICrudService_GetUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetUsuarioResponse" message="tns:ICrudService_GetUsuario_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUsuarios">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetUsuarios" message="tns:ICrudService_GetUsuarios_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetUsuariosResponse" message="tns:ICrudService_GetUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatillo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetPlatillo" message="tns:ICrudService_GetPlatillo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetPlatilloResponse" message="tns:ICrudService_GetPlatillo_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPlatillos">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetPlatillos" message="tns:ICrudService_GetPlatillos_InputMessage" />
@@ -222,6 +252,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetRestaurante">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetRestaurante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetRestaurantes">
       <soap:operation soapAction="http://tempuri.org/ICrudService/GetRestaurantes" style="document" />
       <wsdl:input>
@@ -231,8 +270,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUsuario">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetUsuarios">
       <soap:operation soapAction="http://tempuri.org/ICrudService/GetUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatillo">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetPlatillo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -396,7 +453,7 @@
   </wsdl:binding>
   <wsdl:service name="CrudService">
     <wsdl:port name="BasicHttpBinding_ICrudService" binding="tns:BasicHttpBinding_ICrudService">
-      <soap:address location="http://localhost:50435/CrudService.svc" />
+      <soap:address location="http://localhost:50075/CrudService.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

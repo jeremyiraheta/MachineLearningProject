@@ -14,7 +14,10 @@ namespace PRProject
             string[] stipos = new SQLTrans.CrudServiceClient().GetTiposPlatillo();
             LiteralControl tipos = new LiteralControl();
             foreach (string t in stipos)
-                tipos.Text += $"<li id=class='menu-item menu-item-type-taxonomy menu-item-object-category'><a href='Platos.aspx?tipo={t}'>{t}</a></li>";
+            {
+                string[] sp = t.Split(',');
+                tipos.Text += $"<li id=class='menu-item menu-item-type-taxonomy menu-item-object-category'><a href='Platos.aspx?tipo={sp[0]}'>{sp[1]}</a></li>";
+            }
             tipoplatillo.Controls.Add(tipos);
             if (Request["logout"] != null)
                 Session.Clear();

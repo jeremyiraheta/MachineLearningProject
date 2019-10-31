@@ -10,8 +10,10 @@ namespace PRProject
     public partial class Users : System.Web.UI.Page
     {
         const string MSGNOGRANT = "<center><div color=red><h1>No tienes permisos para ver este contenido</h1></div></center>";
+        const string MSGNOUSER = "<center><div color=red><h1>No se encontro al usuario</h1></div></center>";
         protected void Page_Load(object sender, EventArgs e)
         {
+            SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
             if (Session["userdata"] != null)
             {
                 SQLTrans.LoginData ldata = ((SQLTrans.LoginData)Session["userdata"]);
@@ -20,18 +22,45 @@ namespace PRProject
                     output.Text = MSGNOGRANT;
                 }else if(Request["id"] != null)
                 {
-                    string userdata = "<h1>Datos del usuario: " + ldata.USER  + "</h1>";
-                    SQLTrans.Usuarios user = new SQLTrans.CrudServiceClient().GetUsuarios(ldata.USER)[0];
-                    userdata += "<table style='border: solid 2px; '>";
-                    userdata += $"<tr>< td colspan = 2 ><img src={user.URL}></img></ td ></ tr > ";
-                    userdata += $"< tr >< td style = 'padding: 10px 20px 0px 20px' >Nombre: </td><td>{user.NOMBRE}</td></tr>";
-                    userdata += $"< tr >< td style = 'padding: 10px 20px 0px 20px' >Apellido: </td><td>{user.APELLIDO}</td></tr>";
-                    userdata += $"< tr >< td style = 'padding: 10px 20px 0px 20px' >Correo: </td><td>{user.CORREO_ELECTRONICO}</td></tr>";
-                    userdata += $"< tr >< td style = 'padding: 10px 20px 0px 20px' >Nacimiento: </td><td>{user.FECHA_CUMPLE}</td></tr>";
-                    userdata += $"< tr >< td style = 'padding: 10px 20px 0px 20px' >Visitas: </td><td>{user.VISITAS}</td></tr>";
-                    userdata += $"< tr >< td style = 'padding: 10px 20px 0px 20px' >Admin: </td><td>{user.VISITAS}</td></tr>";
-                    output.Text = $"<div style='padding: 55px 25 % 37px'>{userdata}</table></div>";
+                    portrait.Attributes.Remove("class");
+                    string id = Request["id"];
+                    SQLTrans.Usuarios user;
+                    try
+                    {
+                        user = client.GetUsuario(id)[0];
+                    }
+                    catch
+                    {
+                        output.Text = MSGNOUSER;
+                        return;
+                    }
+                    username.Text = ldata.USER;
+                    if (user.URL == null)
+                        img.ImageUrl = "/images/sin-imagen.gif";
+                    else
+                        img.ImageUrl = "/images/" +  user.URL;
+                    chkAdmin.Checked = client.isAdmin(id);
+                    txtNombre.Text = user.NOMBRE;
+                    txtApellido.Text = user.APELLIDO;
+                    txtBirth.Text = Convert.ToDateTime(user.FECHA_CUMPLE).ToShortDateString();
+                    txtCorreo.Text = user.CORREO_ELECTRONICO;
+                    lcount.Text = user.VISITAS.ToString();
                 }
+                else
+                {
+                    userlist.Attributes.Remove("class");
+                    string users="";
+                    foreach (SQLTrans.Usuarios u in client.GetUsuarios())
+                    {
+                        users += string.Concat("<tr><td>",u.ID_USUARIO,"</td><td>",u.ADMIN ? "Admin" : "Usuario","</td><td>",u.CORREO_ELECTRONICO, "</td><td><a href=Users.aspx?id=", u.ID_USUARIO, ">Ver</a>&emsp;<a href=Users.aspx?id=",
+                            u.ID_USUARIO, "&action=edit>Editar</a>&emsp;<a href=Users.aspx?id=", u.ID_USUARIO,"&action=delete>Eliminar</a></td></tr>\n");
+                    }
+                    tbody.InnerHtml = users;
+                }
+            }
+            else
+            {
+                output.Text = MSGNOGRANT;
             }
         }
     }

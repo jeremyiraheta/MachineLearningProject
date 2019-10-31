@@ -342,6 +342,12 @@ namespace PRProject.SQLTrans {
         private decimal RATEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RESTAURANTEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TIPOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string URLField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -441,6 +447,32 @@ namespace PRProject.SQLTrans {
                 if ((this.RATEField.Equals(value) != true)) {
                     this.RATEField = value;
                     this.RaisePropertyChanged("RATE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RESTAURANTE {
+            get {
+                return this.RESTAURANTEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RESTAURANTEField, value) != true)) {
+                    this.RESTAURANTEField = value;
+                    this.RaisePropertyChanged("RESTAURANTE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TIPO {
+            get {
+                return this.TIPOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TIPOField, value) != true)) {
+                    this.TIPOField = value;
+                    this.RaisePropertyChanged("TIPO");
                 }
             }
         }
@@ -664,23 +696,41 @@ namespace PRProject.SQLTrans {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/isAdmin", ReplyAction="http://tempuri.org/ICrudService/isAdminResponse")]
         System.Threading.Tasks.Task<bool> isAdminAsync(string user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetRestaurantes", ReplyAction="http://tempuri.org/ICrudService/GetRestaurantesResponse")]
-        PRProject.SQLTrans.Restaurantes[] GetRestaurantes(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetRestaurante", ReplyAction="http://tempuri.org/ICrudService/GetRestauranteResponse")]
+        PRProject.SQLTrans.Restaurantes[] GetRestaurante(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetRestaurante", ReplyAction="http://tempuri.org/ICrudService/GetRestauranteResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Restaurantes[]> GetRestauranteAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetRestaurantes", ReplyAction="http://tempuri.org/ICrudService/GetRestaurantesResponse")]
-        System.Threading.Tasks.Task<PRProject.SQLTrans.Restaurantes[]> GetRestaurantesAsync(int id);
+        PRProject.SQLTrans.Restaurantes[] GetRestaurantes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetRestaurantes", ReplyAction="http://tempuri.org/ICrudService/GetRestaurantesResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Restaurantes[]> GetRestaurantesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetUsuario", ReplyAction="http://tempuri.org/ICrudService/GetUsuarioResponse")]
+        PRProject.SQLTrans.Usuarios[] GetUsuario(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetUsuario", ReplyAction="http://tempuri.org/ICrudService/GetUsuarioResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Usuarios[]> GetUsuarioAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetUsuarios", ReplyAction="http://tempuri.org/ICrudService/GetUsuariosResponse")]
-        PRProject.SQLTrans.Usuarios[] GetUsuarios(string id);
+        PRProject.SQLTrans.Usuarios[] GetUsuarios();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetUsuarios", ReplyAction="http://tempuri.org/ICrudService/GetUsuariosResponse")]
-        System.Threading.Tasks.Task<PRProject.SQLTrans.Usuarios[]> GetUsuariosAsync(string id);
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Usuarios[]> GetUsuariosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetPlatillo", ReplyAction="http://tempuri.org/ICrudService/GetPlatilloResponse")]
+        PRProject.SQLTrans.Platillos[] GetPlatillo(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetPlatillo", ReplyAction="http://tempuri.org/ICrudService/GetPlatilloResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> GetPlatilloAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetPlatillos", ReplyAction="http://tempuri.org/ICrudService/GetPlatillosResponse")]
-        PRProject.SQLTrans.Platillos[] GetPlatillos(int id);
+        PRProject.SQLTrans.Platillos[] GetPlatillos();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetPlatillos", ReplyAction="http://tempuri.org/ICrudService/GetPlatillosResponse")]
-        System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> GetPlatillosAsync(int id);
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> GetPlatillosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetComentarios", ReplyAction="http://tempuri.org/ICrudService/GetComentariosResponse")]
         PRProject.SQLTrans.Comentarios[] GetComentarios(int id_platillo);
@@ -884,28 +934,52 @@ namespace PRProject.SQLTrans {
             return base.Channel.isAdminAsync(user);
         }
         
-        public PRProject.SQLTrans.Restaurantes[] GetRestaurantes(int id) {
-            return base.Channel.GetRestaurantes(id);
+        public PRProject.SQLTrans.Restaurantes[] GetRestaurante(int id) {
+            return base.Channel.GetRestaurante(id);
         }
         
-        public System.Threading.Tasks.Task<PRProject.SQLTrans.Restaurantes[]> GetRestaurantesAsync(int id) {
-            return base.Channel.GetRestaurantesAsync(id);
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Restaurantes[]> GetRestauranteAsync(int id) {
+            return base.Channel.GetRestauranteAsync(id);
         }
         
-        public PRProject.SQLTrans.Usuarios[] GetUsuarios(string id) {
-            return base.Channel.GetUsuarios(id);
+        public PRProject.SQLTrans.Restaurantes[] GetRestaurantes() {
+            return base.Channel.GetRestaurantes();
         }
         
-        public System.Threading.Tasks.Task<PRProject.SQLTrans.Usuarios[]> GetUsuariosAsync(string id) {
-            return base.Channel.GetUsuariosAsync(id);
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Restaurantes[]> GetRestaurantesAsync() {
+            return base.Channel.GetRestaurantesAsync();
         }
         
-        public PRProject.SQLTrans.Platillos[] GetPlatillos(int id) {
-            return base.Channel.GetPlatillos(id);
+        public PRProject.SQLTrans.Usuarios[] GetUsuario(string id) {
+            return base.Channel.GetUsuario(id);
         }
         
-        public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> GetPlatillosAsync(int id) {
-            return base.Channel.GetPlatillosAsync(id);
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Usuarios[]> GetUsuarioAsync(string id) {
+            return base.Channel.GetUsuarioAsync(id);
+        }
+        
+        public PRProject.SQLTrans.Usuarios[] GetUsuarios() {
+            return base.Channel.GetUsuarios();
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Usuarios[]> GetUsuariosAsync() {
+            return base.Channel.GetUsuariosAsync();
+        }
+        
+        public PRProject.SQLTrans.Platillos[] GetPlatillo(int id) {
+            return base.Channel.GetPlatillo(id);
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> GetPlatilloAsync(int id) {
+            return base.Channel.GetPlatilloAsync(id);
+        }
+        
+        public PRProject.SQLTrans.Platillos[] GetPlatillos() {
+            return base.Channel.GetPlatillos();
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> GetPlatillosAsync() {
+            return base.Channel.GetPlatillosAsync();
         }
         
         public PRProject.SQLTrans.Comentarios[] GetComentarios(int id_platillo) {

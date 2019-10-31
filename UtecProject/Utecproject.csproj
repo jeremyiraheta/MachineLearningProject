@@ -87,6 +87,7 @@
     <Content Include="FastFood.aspx" />
     <Content Include="Fotos.aspx" />
     <Content Include="History.aspx" />
+    <Content Include="images\sin-imagen.gif" />
     <Content Include="images\webPageConstruction.jpg" />
     <Content Include="js\dropdown.js" />
     <Content Include="js\flexslider.js" />
@@ -270,10 +271,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SQLTrans\" />
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <WCFMetadataStorage Include="Service References\SQLTrans\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

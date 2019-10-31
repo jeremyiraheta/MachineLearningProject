@@ -18,7 +18,7 @@ namespace PRProject
         {
             SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
             DataSet ds = client.sp_ValidarUsuario(txtUser.Text, txtPass.Text);
-            if (ds.Tables.Count > 0)
+            if (ds.Tables[0].Rows.Count > 0)
             {
                 SQLTrans.LoginData linfo = new SQLTrans.LoginData();
                 linfo.USER = txtUser.Text;

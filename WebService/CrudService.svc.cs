@@ -142,7 +142,7 @@ namespace WebService
             adapter.Dispose();
         }
 
-        public List<Restaurantes> GetRestaurantes(int id=-1)
+        public List<Restaurantes> GetRestaurante(int id)
         {
             DataSet dsALL = (id == -1) ? View(VIEWS.vRestaurantes) : View(VIEWS.vRestaurantes, "ID_RESTAURANTES=" + id);
             List<Restaurantes> r = new List<Restaurantes>();
@@ -154,15 +154,23 @@ namespace WebService
                 nr.REFERENCIA = Convert.ToString(row[4]);
                 nr.RATE = Convert.ToString(row[5]);
                 nr.URL = Convert.ToString(row[6]);
-                nr.X = Convert.ToInt32(row[7]);
-                nr.Y = Convert.ToInt32(row[8]);
+                try
+                {
+                    nr.X = Convert.ToInt32(row[7]);
+                    nr.Y = Convert.ToInt32(row[8]);
+                }
+                catch { }
                 r.Add(nr);
             }
             return r;
         }
-        public List<Usuarios> GetUsuarios(string id=null)
+        public List<Restaurantes> GetRestaurantes()
         {
-            DataSet dsAll = (id == null) ? View(VIEWS.vUsuarios,id) : View(VIEWS.vUsuarios, "ID_USUARIO='" + id + "'");
+            return GetRestaurante(-1);
+        }
+        public List<Usuarios> GetUsuario(string id)
+        {
+            DataSet dsAll = (id == null) ? View(VIEWS.vUsuarios,"") : View(VIEWS.vUsuarios, "ID_USUARIO='" + id + "'");
             List<Usuarios> r = new List<Usuarios>();
             foreach(DataRow row in dsAll.Tables[0].Rows)
             {
@@ -178,8 +186,12 @@ namespace WebService
                 r.Add(nu);
             }
             return r;
-        }        
-        public List<Platillos> GetPlatillos(int id=-1)
+        }
+        public List<Usuarios> GetUsuarios()
+        {
+            return GetUsuario(null);
+        }
+        public List<Platillos> GetPlatillo(int id)
         {
             DataSet dsAll = (id == -1) ? View(VIEWS.vPlatillos) : View(VIEWS.vPlatillos, "ID_PLATILLOS" + id);
             List<Platillos> r = new List<Platillos>();
@@ -194,9 +206,15 @@ namespace WebService
                 np.PRECIO = Convert.ToDecimal(row["PRECIO"]);
                 np.RATE = Convert.ToDecimal(row["RATE"]);
                 np.URL = Convert.ToString(row["URL"]);
+                np.TIPO= Convert.ToString(row["TIPO"]);
+                np.RESTAURANTE = Convert.ToString(row["RESTAURANTE"]);
                 r.Add(np);
             }
             return r;
+        }
+        public List<Platillos> GetPlatillos()
+        {
+            return GetPlatillo(-1);
         }
         public List<Comentarios> GetComentarios(int id_platillo)
         {
@@ -220,7 +238,7 @@ namespace WebService
             List<string> r = new List<string>();
             foreach(DataRow row in dsAll.Tables[0].Rows)
             {
-                r.Add(Convert.ToString(row[1]));
+                r.Add(Convert.ToString(row[0]) + "," + Convert.ToString(row[1]));
             }
             return r;
         }

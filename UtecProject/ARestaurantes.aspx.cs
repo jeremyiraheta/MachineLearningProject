@@ -21,15 +21,20 @@ namespace PRProject
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            string filename="";            
+            string filename="";
+            string url="";       
             SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
             try
-            {                
-                client.sp_AgregarRestaurante((SQLTrans.LoginData)Session["userdate"], txtRname.Text, txtReferencia.Text, filename);                
-                output.Text = "Transaccion completada!";
-                if (upload.HasFile)
+            {    
+                if(upload.HasFile)
                 {
                     filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
+                    url = "/images/" + upload.FileName;
+                }                    
+                client.sp_AgregarRestaurante((SQLTrans.LoginData)Session["userdate"], txtRname.Text, txtReferencia.Text, url);                
+                output.Text = "Transaccion completada!";
+                if (upload.HasFile)
+                {                    
                     upload.SaveAs(filename);
                 }
             }

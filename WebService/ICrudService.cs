@@ -16,11 +16,17 @@ namespace WebService
         [OperationContract]
         bool isAdmin(string user);
         [OperationContract]
-        List<Restaurantes> GetRestaurantes(int id = -1);
+        List<Restaurantes> GetRestaurante(int id);
         [OperationContract]
-        List<Usuarios> GetUsuarios(string id = null);
+        List<Restaurantes> GetRestaurantes();
         [OperationContract]
-        List<Platillos> GetPlatillos(int id = -1);
+        List<Usuarios> GetUsuario(string id);
+        [OperationContract]
+        List<Usuarios> GetUsuarios();
+        [OperationContract]
+        List<Platillos> GetPlatillo(int id);
+        [OperationContract]
+        List<Platillos> GetPlatillos();
         [OperationContract]
         List<Comentarios> GetComentarios(int id_platillo);
         [OperationContract]
@@ -119,6 +125,10 @@ namespace WebService
         public decimal PRECIO;
         [DataMember]
         public string DESCRIPCION;
+        [DataMember]
+        public string RESTAURANTE;
+        [DataMember]
+        public string TIPO;
         [DataMember]
         public string URL;
     }

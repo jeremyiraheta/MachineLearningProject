@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="CrQelLMIWiYTf/45WlVNIFEc80Y=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="jjuhPpvmWaLppJO347ldxVLFO7I=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_ICrudService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_ICrudService" contract="SQLTrans.ICrudService" bindingType="basicHttpBinding" address="http://localhost:50435/CrudService.svc" bindingConfiguration="BasicHttpBinding_ICrudService">
+    <endpoint name="BasicHttpBinding_ICrudService" contract="SQLTrans.ICrudService" bindingType="basicHttpBinding" address="http://localhost:50075/CrudService.svc" bindingConfiguration="BasicHttpBinding_ICrudService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:50435/CrudService.svc</serializedValue>
+          <serializedValue>http://localhost:50075/CrudService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
