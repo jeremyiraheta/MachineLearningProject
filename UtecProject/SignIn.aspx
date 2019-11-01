@@ -12,38 +12,47 @@
                 <td style="padding: 10px 20px 0px 20px">
                     <asp:Label ID="Label1" runat="server" Text="Usuario:"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtUsername" runat="server" Width="100%"></asp:TextBox></td>
+                    <asp:TextBox ID="txtUsername" runat="server" Width="90%"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtUsername" runat="server" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>                    
+                    <br />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Minimo 5 letras, no use letras raras" ForeColor="Red" ControlToValidate="txtUsername" ValidationExpression="^(?=.{5,50}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?&lt;![_.])$"></asp:RegularExpressionValidator>
+                </td>
             </tr>
             <tr>
                 <td style="padding: 10px 20px 0px 20px">
                     <asp:Label ID="Label5" runat="server" Text="Password:"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Width="100%"></asp:TextBox></td>
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Width="90%">
+                        </asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="txtPassword" runat="server" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>                    </td>
             </tr>
             <tr>
                 <td style="padding: 10px 20px 0px 20px">
                     <asp:Label ID="Label2" runat="server" Text="Confirmar Password:"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="TextBox2" runat="server" Width="100%" TextMode="Password"></asp:TextBox></td>
+                    <asp:TextBox ID="txtPassword2" runat="server" Width="90%" TextMode="Password"></asp:TextBox><br />
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtPassword2" ControlToCompare="txtPassword" ErrorMessage="Los password deben coincidir" ForeColor="Red"></asp:CompareValidator>
+                </td>
             </tr>
             <tr>
                 <td style="padding: 10px 20px 0px 20px">
                     <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtEmail" runat="server" Width="100%"></asp:TextBox></td>
+                    <asp:TextBox ID="txtEmail" runat="server" Width="90%" TextMode="Email"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator5" ControlToValidate="txtEmail" runat="server" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>                    </td>
             </tr>
             <tr>
                 <td style="padding: 10px 20px 0px 20px">
                     <asp:Label ID="Label7" runat="server" Text="Nombres:"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtNombre" runat="server" Width="100%"></asp:TextBox></td>
+                    <asp:TextBox ID="txtNombre" runat="server" Width="90%"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtNombre" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
+                    
+                </td>
             </tr>
             <tr>
                 <td style="padding: 10px 20px 0px 20px">
                     <asp:Label ID="Label8" runat="server" Text="Apellidos:"></asp:Label></td>
 
                 <td>
-                    <asp:TextBox ID="txtApellidos" runat="server" Width="100%" TextMode="Email"></asp:TextBox></td>
+                    <asp:TextBox ID="txtApellidos" runat="server" Width="90%"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtApellidos" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>                    
+                </td>
             </tr>
             <tr>
                 <td style="padding: 10px 20px 0px 20px">

@@ -8,12 +8,16 @@
         <br />
         <table style="border:solid 2px;">
         <tr><td style="padding:10px 20px 0px 20px"><asp:Label ID="Label1" runat="server" Text="Nombre:"></asp:Label></td>
-        <td><asp:TextBox ID="txtRname" runat="server" Width="100%"></asp:TextBox></td></tr>        
+        <td><asp:TextBox ID="txtRname" runat="server" Width="90%"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtRname"></asp:RequiredFieldValidator>
+            </td></tr>        
               
         <tr><td style="padding:10px 20px 0px 20px"><asp:Label ID="Label4" runat="server" Text="Referencia:"></asp:Label></td>
         <td>
             
-            <asp:TextBox ID="txtReferencia" runat="server" Width="100%" TextMode="MultiLine" Height="59px"></asp:TextBox>
+            <asp:TextBox ID="txtReferencia" runat="server" Width="90%" TextMode="MultiLine" Height="59px"></asp:TextBox>
+            
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtReferencia"></asp:RequiredFieldValidator>
             
             </td></tr>        
         <tr><td style="padding:10px 20px 0px 20px"><asp:Label ID="Label6" runat="server" Text="Imagen de restaurante:"></asp:Label></td>

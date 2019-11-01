@@ -24,7 +24,7 @@ namespace PRProject
             if(Session["userdata"] != null)
             {
                 SQLTrans.LoginData ldata = ((SQLTrans.LoginData)Session["userdata"]);
-                new SQLTrans.CrudServiceClient().sp_AgregarEstadistica(ldata);
+                try { new SQLTrans.CrudServiceClient().sp_AgregarEstadistica(ldata); } catch { }
                 LiteralControl submenu = new LiteralControl();
                 user.InnerText = ldata.USER;
                 user.HRef = "~/Users.aspx?id=" + ldata.USER;                

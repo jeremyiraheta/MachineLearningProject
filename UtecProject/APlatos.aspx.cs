@@ -40,6 +40,9 @@ namespace PRProject
                 output.Text = "Transaccion completada!";  
                 if(upload.HasFile)
                     upload.SaveAs(filename);
+                txtDescripcion.Text = "";
+                txtDname.Text = "";
+                txtPrice.Text = "";
             }
             catch (Exception)
             {

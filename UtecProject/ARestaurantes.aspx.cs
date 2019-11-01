@@ -31,12 +31,14 @@ namespace PRProject
                     filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
                     url = "/images/" + upload.FileName;
                 }                    
-                client.sp_AgregarRestaurante((SQLTrans.LoginData)Session["userdate"], txtRname.Text, txtReferencia.Text, url);                
+                client.sp_AgregarRestaurante((SQLTrans.LoginData)Session["userdata"], txtRname.Text, txtReferencia.Text, url);                
                 output.Text = "Transaccion completada!";
                 if (upload.HasFile)
                 {                    
                     upload.SaveAs(filename);
                 }
+                txtReferencia.Text = "";
+                txtRname.Text = "";
             }
             catch (Exception)
             {

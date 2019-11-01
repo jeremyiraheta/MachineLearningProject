@@ -68,14 +68,14 @@
 
     <div>
     </div>
-    <div id="userlist" style="padding: 10px 5% 25px;" class="hidden" runat="server">
+    <div id="userlist" style="padding: 10px 5% 25px;" class="shidden" runat="server">
         <h1>Listado de Platillos
         </h1>
         <br />
         <br />
         <table style="border-style: solid; height: 100%; width: 90%;">
             <thead>
-                <tr><td style="width: 189px;"><b>Nombre</b></td><td><b>Tipo</b></td><td style="width:200px"><b>Restaurante</b></td><td><b>Precio</b></td><td><b>Edicion</b></td></tr>
+                <tr><td><b>Imagen</b></td><td style="width: 189px;"><b>Nombre</b></td><td style="width:80px"><b>Tipo</b></td><td style="width:150px"><b>Restaurante</b></td><td><b>Precio</b></td><td id="edition" runat="server"><b>Edicion</b></td></tr>
             </thead>
             <tbody id="tbody" runat="server">
 

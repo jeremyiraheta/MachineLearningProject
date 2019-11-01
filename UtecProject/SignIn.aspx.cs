@@ -17,16 +17,17 @@ namespace PRProject
         protected void btnReg_Click(object sender, EventArgs e)
         {
             string filename = "";
-            
+            string url = "";
             SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
             try
             {
-                client.sp_AgregarUsuario(txtUsername.Text, txtNombre.Text, txtApellidos.Text, txtEmail.Text,Calendar1.SelectedDate.ToShortDateString(), txtPassword.Text, filename);
+                
                 if (upload.HasFile)
                 {
                     filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
-                    upload.SaveAs(filename);
+                    url = "/images/" + upload.FileName;
                 }
+                client.sp_AgregarUsuario(txtUsername.Text, txtNombre.Text, txtApellidos.Text, txtEmail.Text, Calendar1.SelectedDate.ToShortDateString(), txtPassword.Text, url);
                 output.Text = "Transaccion completada!";
                 Response.Redirect("LogIn.aspx");
             }

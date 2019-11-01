@@ -86,6 +86,7 @@
     <Content Include="css\wzslider.css" />
     <Content Include="FastFood.aspx" />
     <Content Include="Fotos.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="History.aspx" />
     <Content Include="images\sin-imagen.gif" />
     <Content Include="images\webPageConstruction.jpg" />
@@ -206,6 +207,9 @@
     </Compile>
     <Compile Include="Fotos.aspx.designer.cs">
       <DependentUpon>Fotos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="History.aspx.cs">
       <DependentUpon>History.aspx</DependentUpon>

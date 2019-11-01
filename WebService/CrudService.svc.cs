@@ -180,7 +180,7 @@ namespace WebService
                 nu.APELLIDO = Convert.ToString(row["APELLIDO"]);
                 nu.URL = Convert.ToString(row["URL"]);
                 nu.CORREO_ELECTRONICO = Convert.ToString(row["CORREO_ELECTRONICO"]);
-                nu.VISITAS = Convert.ToInt32(row["VISITAS"]);
+                try { nu.VISITAS = Convert.ToInt32(row["VISITAS"]); } catch { }
                 nu.NOMBRE = Convert.ToString(row["NOMBRE"]);
                 nu.FECHA_CUMPLE = Convert.ToString(row["FECHA_CUMPLE"]);
                 r.Add(nu);

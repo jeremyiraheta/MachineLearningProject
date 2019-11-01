@@ -54,7 +54,7 @@
         <br />
         <table style="border-style: solid; height: 100%; width: 90%;">
             <thead>
-                <tr><td style="width: 189px;"><b>Nombre</b></td><td style="width:200px"><b>Referencia</b></td><td><b>Rate</b></td><td><b>Edicion</b></td></tr>
+                <tr><td><b>Imagen</b></td><td style="width: 189px;"><b>Nombre</b></td><td style="width:200px"><b>Referencia</b></td><td style="width:10%"><b>Rate</b></td><td id="edicion" runat="server"><b>Edicion</b></td></tr>
             </thead>
             <tbody id="tbody" runat="server">
 
