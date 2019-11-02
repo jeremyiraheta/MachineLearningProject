@@ -30,6 +30,8 @@ namespace WebService
         [OperationContract]
         List<Comentarios> GetComentarios(int id_platillo);
         [OperationContract]
+        List<Comentarios> GetLastsComentarios();
+        [OperationContract]
         List<string> GetTiposPlatillo();
         [OperationContract]
         void sp_AgregarRestaurante(LoginData login, string name, string reference, string img);
@@ -59,6 +61,10 @@ namespace WebService
         void sp_AlterComentario(LoginData login, int id, string comentario);
         [OperationContract]
         void sp_AlterUsuario(LoginData login,string image, string nombre, string apellido, string correo, string birth, bool admin, string password = null);
+        [OperationContract]
+        List<Platillos> sp_RecomendarProductos();
+        [OperationContract]
+        List<Platillos> sp_RecomendarProductosPersonalizado(string user);
     }
     [DataContract]
     public class LoginData
@@ -131,6 +137,8 @@ namespace WebService
         public string TIPO;
         [DataMember]
         public string URL;
+        [DataMember]
+        public string FECHA;
     }
     [DataContract]
     public class Comentarios
@@ -138,18 +146,20 @@ namespace WebService
         [DataMember]
         public int ID_COMENTARIOS;
         [DataMember]
-        public int ID_USUARIO;
+        public string ID_USUARIO;
         [DataMember]
         public int ID_PLATILLOS;
         [DataMember]
         public string COMENTARIOS;
         [DataMember]
-        public string URL;        
+        public string URL;
+        [DataMember]
+        public string FECHA;       
     }
     [DataContract]
     public enum VIEWS
     {
-        vComentario,
+        vComentarios,
         vPlatillos,
         vRestaurantes,
         vUsuarios

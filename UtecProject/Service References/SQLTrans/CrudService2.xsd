@@ -46,6 +46,7 @@
   <xs:complexType name="Platillos">
     <xs:sequence>
       <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FECHA" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID_PLATILLOS" type="xs:int" />
       <xs:element minOccurs="0" name="ID_RESTAURANTES" type="xs:int" />
       <xs:element minOccurs="0" name="ID_TIPO" type="xs:int" />
@@ -67,9 +68,10 @@
   <xs:complexType name="Comentarios">
     <xs:sequence>
       <xs:element minOccurs="0" name="COMENTARIOS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FECHA" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID_COMENTARIOS" type="xs:int" />
       <xs:element minOccurs="0" name="ID_PLATILLOS" type="xs:int" />
-      <xs:element minOccurs="0" name="ID_USUARIO" type="xs:int" />
+      <xs:element minOccurs="0" name="ID_USUARIO" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

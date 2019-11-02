@@ -20,8 +20,15 @@ namespace WebService
         public DataSet Select(string table, string where = "")
         {
             DataSet ds = new DataSet();
-            adapter = new SqlDataAdapter(string.Concat("select * from ", table,(where != "") ? " where " + where : ""), conexion);            
-            adapter.Fill(ds,table);
+            adapter = new SqlDataAdapter(string.Concat("select * from ", table,(where != "") ? " where " + where : ""), conexion);
+            try { adapter.Fill(ds, table); } catch { Console.Write("Error en select..."); }
+            return ds;
+        }
+        public DataSet Select(string query)
+        {
+            DataSet ds = new DataSet();
+            adapter = new SqlDataAdapter(query, conexion);
+            try { adapter.Fill(ds); } catch { Console.Write("Error en select..."); }
             return ds;
         }
         public DataSet View(VIEWS v, string where = "")
@@ -152,7 +159,11 @@ namespace WebService
                 nr.ID = Convert.ToString(row[0]);
                 nr.NOMBRE = Convert.ToString(row[3]);
                 nr.REFERENCIA = Convert.ToString(row[4]);
-                nr.RATE = Convert.ToString(row[5]);
+                try
+                {
+                    nr.RATE = Convert.ToString(row[5]);
+                }
+                catch { }
                 nr.URL = Convert.ToString(row[6]);
                 try
                 {
@@ -172,7 +183,8 @@ namespace WebService
         {
             DataSet dsAll = (id == null) ? View(VIEWS.vUsuarios,"") : View(VIEWS.vUsuarios, "ID_USUARIO='" + id + "'");
             List<Usuarios> r = new List<Usuarios>();
-            foreach(DataRow row in dsAll.Tables[0].Rows)
+            if (dsAll.Tables.Count == 0) return r;
+            foreach (DataRow row in dsAll.Tables[0].Rows)
             {
                 Usuarios nu = new Usuarios();
                 nu.ID_USUARIO = Convert.ToString(row["ID_USUARIO"]);
@@ -193,9 +205,10 @@ namespace WebService
         }
         public List<Platillos> GetPlatillo(int id)
         {
-            DataSet dsAll = (id == -1) ? View(VIEWS.vPlatillos) : View(VIEWS.vPlatillos, "ID_PLATILLOS" + id);
+            DataSet dsAll = (id == -1) ? View(VIEWS.vPlatillos) : View(VIEWS.vPlatillos, "ID_PLATILLOS=" + id);
             List<Platillos> r = new List<Platillos>();
-            foreach(DataRow row in dsAll.Tables[0].Rows)
+            if (dsAll.Tables.Count == 0) return r;
+            foreach (DataRow row in dsAll.Tables[0].Rows)
             {
                 Platillos np = new Platillos();
                 np.DESCRIPCION = Convert.ToString(row["DESCRIPCION"]);
@@ -204,10 +217,15 @@ namespace WebService
                 np.ID_TIPO = Convert.ToInt32(row["ID_TIPO"]);
                 np.NOMBRE = Convert.ToString(row["NOMBRE"]);
                 np.PRECIO = Convert.ToDecimal(row["PRECIO"]);
-                np.RATE = Convert.ToDecimal(row["RATE"]);
+                try
+                {
+                    np.RATE = Convert.ToDecimal(row["RATE"]);
+                }
+                catch { }
                 np.URL = Convert.ToString(row["URL"]);
                 np.TIPO= Convert.ToString(row["TIPO"]);
                 np.RESTAURANTE = Convert.ToString(row["RESTAURANTE"]);
+                np.FECHA = Convert.ToString(row["FECHA"]);
                 r.Add(np);
             }
             return r;
@@ -218,29 +236,58 @@ namespace WebService
         }
         public List<Comentarios> GetComentarios(int id_platillo)
         {
-            DataSet dsAll = View(VIEWS.vComentario, "ID_PLATILLOS=" + id_platillo);
+            DataSet dsAll = View(VIEWS.vComentarios, "ID_PLATILLOS=" + id_platillo);
             List<Comentarios> r = new List<Comentarios>();
+            if (dsAll.Tables.Count == 0) return r;
             foreach(DataRow row in dsAll.Tables[0].Rows)
             {
                 Comentarios nc = new Comentarios();
                 nc.COMENTARIOS = Convert.ToString(row["COMENTARIOS"]);
                 nc.ID_COMENTARIOS = Convert.ToInt32(row["ID_COMENTARIOS"]);
                 nc.ID_PLATILLOS = Convert.ToInt32(row["ID_PLATILLOS"]);
-                nc.ID_USUARIO = Convert.ToInt32(row["ID_USUARIO"]);
+                nc.ID_USUARIO = Convert.ToString(row["ID_USUARIO"]);
                 nc.URL = Convert.ToString(row["URL"]);
+                r.Add(nc);
+            }
+            return r;
+        }
+        public List<Comentarios> GetLastsComentarios()
+        {
+            DataSet dsAll = Select("select top 5 * from vComentarios order by ID_COMENTARIOS desc");
+            List<Comentarios> r = new List<Comentarios>();
+            if (dsAll.Tables.Count == 0) return r;
+            foreach (DataRow row in dsAll.Tables[0].Rows)
+            {
+                Comentarios nc = new Comentarios();
+                nc.COMENTARIOS = Convert.ToString(row["COMENTARIOS"]);
+                nc.ID_COMENTARIOS = Convert.ToInt32(row["ID_COMENTARIOS"]);
+                nc.ID_PLATILLOS = Convert.ToInt32(row["ID_PLATILLOS"]);
+                nc.ID_USUARIO = Convert.ToString(row["ID_USUARIO"]);
+                nc.URL = Convert.ToString(row["URL"]);
+                nc.FECHA = Convert.ToString(row["FECHA"]);
                 r.Add(nc);
             }
             return r;
         }
         public List<string> GetTiposPlatillo()
         {
-            DataSet dsAll = Select("TIPOPLATILLO");
+            DataSet dsAll = Select("select * from TIPOPLATILLO");
             List<string> r = new List<string>();
+            if (dsAll.Tables.Count == 0)
+                return r;
             foreach(DataRow row in dsAll.Tables[0].Rows)
             {
                 r.Add(Convert.ToString(row[0]) + "," + Convert.ToString(row[1]));
             }
             return r;
+        }
+        public List<Platillos> sp_RecomendarProductos()
+        {
+            return null;
+        }
+        public List<Platillos> sp_RecomendarProductosPersonalizado(string user)
+        {
+            return null;
         }
         public void sp_AgregarPunto(LoginData login, int x, int y, int restaurante)
         {

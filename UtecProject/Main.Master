@@ -37,6 +37,7 @@
     <link rel="stylesheet" id="wzslidercss" href="css/wzslider.css" type="text/css" media="all" />
     <link rel="stylesheet" id="wpzshortcodescss" href="css/shortcodes.css" type="text/css" media="all" />
     <link rel="stylesheet" id="zoomfontawesomecss" href="css/fontawesome.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="stars" href="css/stars.css" type="text/css" media="all" />
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-migrate.min.js"></script>
     <script type="text/javascript" src="js/init.js"></script>

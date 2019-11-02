@@ -21,7 +21,7 @@
             <asp:DropDownList ID="ddCategorias" Width="90%" runat="server">
             </asp:DropDownList>
             </td></tr>        
-        <tr><td style="padding:10px 20px 0px 20px"><asp:Label ID="Label3" runat="server" Text="Precio: "></asp:Label></td>
+        <tr><td style="padding:10px 20px 0px 20px"><asp:Label ID="Label3" runat="server" Text="Precio($): "></asp:Label></td>
         <td><asp:TextBox ID="txtPrice" runat="server" Width="80%"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtPrice" ForeColor="Red"></asp:RequiredFieldValidator>
             <br />
             <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Rango de valores no valido" MaximumValue="100" MinimumValue="0" Type="Currency" ControlToValidate="txtPrice" ForeColor="Red"></asp:RangeValidator>

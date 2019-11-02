@@ -36,7 +36,7 @@ namespace PRProject
                     filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
                     url = "/images/" + upload.FileName;
                 }
-                client.sp_AgregarPlatillo((SQLTrans.LoginData)Session["userdate"],txtDname.Text,float.Parse(txtPrice.Text),txtDescripcion.Text,Convert.ToInt32(ddCategorias.SelectedValue),Convert.ToInt32(ddRestaurantes.SelectedValue),url);
+                client.sp_AgregarPlatillo((SQLTrans.LoginData)Session["userdata"],txtDname.Text,float.Parse(txtPrice.Text),txtDescripcion.Text,Convert.ToInt32(ddCategorias.SelectedValue),Convert.ToInt32(ddRestaurantes.SelectedValue),url);
                 output.Text = "Transaccion completada!";  
                 if(upload.HasFile)
                     upload.SaveAs(filename);

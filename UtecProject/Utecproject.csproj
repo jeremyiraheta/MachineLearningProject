@@ -80,6 +80,7 @@
     <Content Include="css\instagram-widget.css" />
     <Content Include="css\shortcodes.css" />
     <Content Include="css\socicon.css" />
+    <Content Include="css\stars.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style.min.css" />
     <Content Include="css\theme-utils.css" />

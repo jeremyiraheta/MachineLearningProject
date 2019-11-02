@@ -46,14 +46,15 @@ namespace PRProject
             else
             {
                 userlist.Attributes.Remove("class");
-                if (!admin) edicion.Attributes.Add("class", "hidden");
-                string users = "";
+                string locales = "";
                 foreach (SQLTrans.Restaurantes r in client.GetRestaurantes())
                 {
-                    users += string.Concat("<tr><td><img src='", r.URL, "' height='200px' width='200px' /></td><td>", r.NOMBRE, "</td><td>", r.REFERENCIA, "</td><td>", r.RATE, "</td><td><a href=Locales.aspx?id=", r.ID, ">Ver</a>&emsp;<a href=Locales.aspx?id=",
-                        r.ID, "&action=edit>Editar</a>&emsp;<a href=Locales.aspx?id=", r.ID, "&action=delete>Eliminar</a></td></tr>\n");
+                    locales += string.Concat("<tr><td><img src='", (r.URL == null || r.URL == string.Empty) ? "/images/sin-imagen.gif" : r.URL, "' height='200px' width='200px' /></td><td>", r.NOMBRE, "</td><td>", r.REFERENCIA, "</td><td>", r.RATE, "</td><td><a href=Locales.aspx?id=", r.ID, ">Ver</a>&emsp;");
+                    if(ldata!=null)
+                        if(ldata.isAdmin)
+                            locales+=string.Concat("<a href=Locales.aspx?id=",r.ID, "&action=edit>Editar</a>&emsp;<a href=Locales.aspx?id=", r.ID, "&action=delete>Eliminar</a></td></tr>\n");
                 }
-                tbody.InnerHtml = users;
+                tbody.InnerHtml = locales;
             }
         }
     }

@@ -324,6 +324,9 @@ namespace PRProject.SQLTrans {
         private string DESCRIPCIONField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FECHAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ID_PLATILLOSField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -369,6 +372,19 @@ namespace PRProject.SQLTrans {
                 if ((object.ReferenceEquals(this.DESCRIPCIONField, value) != true)) {
                     this.DESCRIPCIONField = value;
                     this.RaisePropertyChanged("DESCRIPCION");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FECHA {
+            get {
+                return this.FECHAField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FECHAField, value) != true)) {
+                    this.FECHAField = value;
+                    this.RaisePropertyChanged("FECHA");
                 }
             }
         }
@@ -513,13 +529,16 @@ namespace PRProject.SQLTrans {
         private string COMENTARIOSField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FECHAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ID_COMENTARIOSField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ID_PLATILLOSField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ID_USUARIOField;
+        private string ID_USUARIOField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string URLField;
@@ -543,6 +562,19 @@ namespace PRProject.SQLTrans {
                 if ((object.ReferenceEquals(this.COMENTARIOSField, value) != true)) {
                     this.COMENTARIOSField = value;
                     this.RaisePropertyChanged("COMENTARIOS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FECHA {
+            get {
+                return this.FECHAField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FECHAField, value) != true)) {
+                    this.FECHAField = value;
+                    this.RaisePropertyChanged("FECHA");
                 }
             }
         }
@@ -574,12 +606,12 @@ namespace PRProject.SQLTrans {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ID_USUARIO {
+        public string ID_USUARIO {
             get {
                 return this.ID_USUARIOField;
             }
             set {
-                if ((this.ID_USUARIOField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.ID_USUARIOField, value) != true)) {
                     this.ID_USUARIOField = value;
                     this.RaisePropertyChanged("ID_USUARIO");
                 }
@@ -738,6 +770,12 @@ namespace PRProject.SQLTrans {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetComentarios", ReplyAction="http://tempuri.org/ICrudService/GetComentariosResponse")]
         System.Threading.Tasks.Task<PRProject.SQLTrans.Comentarios[]> GetComentariosAsync(int id_platillo);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetLastsComentarios", ReplyAction="http://tempuri.org/ICrudService/GetLastsComentariosResponse")]
+        PRProject.SQLTrans.Comentarios[] GetLastsComentarios();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetLastsComentarios", ReplyAction="http://tempuri.org/ICrudService/GetLastsComentariosResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Comentarios[]> GetLastsComentariosAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetTiposPlatillo", ReplyAction="http://tempuri.org/ICrudService/GetTiposPlatilloResponse")]
         string[] GetTiposPlatillo();
         
@@ -828,6 +866,18 @@ namespace PRProject.SQLTrans {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AlterUsuario", ReplyAction="http://tempuri.org/ICrudService/sp_AlterUsuarioResponse")]
         System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, string image, string nombre, string apellido, string correo, string birth, bool admin, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_RecomendarProductos", ReplyAction="http://tempuri.org/ICrudService/sp_RecomendarProductosResponse")]
+        PRProject.SQLTrans.Platillos[] sp_RecomendarProductos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_RecomendarProductos", ReplyAction="http://tempuri.org/ICrudService/sp_RecomendarProductosResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_RecomendarProductosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizado", ReplyAction="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizadoResponse")]
+        PRProject.SQLTrans.Platillos[] sp_RecomendarProductosPersonalizado(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizado", ReplyAction="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizadoResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_RecomendarProductosPersonalizadoAsync(string user);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -990,6 +1040,14 @@ namespace PRProject.SQLTrans {
             return base.Channel.GetComentariosAsync(id_platillo);
         }
         
+        public PRProject.SQLTrans.Comentarios[] GetLastsComentarios() {
+            return base.Channel.GetLastsComentarios();
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Comentarios[]> GetLastsComentariosAsync() {
+            return base.Channel.GetLastsComentariosAsync();
+        }
+        
         public string[] GetTiposPlatillo() {
             return base.Channel.GetTiposPlatillo();
         }
@@ -1128,6 +1186,22 @@ namespace PRProject.SQLTrans {
         
         public System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, string image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
             return base.Channel.sp_AlterUsuarioAsync(login, image, nombre, apellido, correo, birth, admin, password);
+        }
+        
+        public PRProject.SQLTrans.Platillos[] sp_RecomendarProductos() {
+            return base.Channel.sp_RecomendarProductos();
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_RecomendarProductosAsync() {
+            return base.Channel.sp_RecomendarProductosAsync();
+        }
+        
+        public PRProject.SQLTrans.Platillos[] sp_RecomendarProductosPersonalizado(string user) {
+            return base.Channel.sp_RecomendarProductosPersonalizado(user);
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_RecomendarProductosPersonalizadoAsync(string user) {
+            return base.Channel.sp_RecomendarProductosPersonalizadoAsync(user);
         }
     }
 }

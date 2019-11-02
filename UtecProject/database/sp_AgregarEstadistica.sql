@@ -6,5 +6,5 @@ begin
 	if(@cantidad is not null)
 		update ESTADISTICA set CANTIDAD += 1 where ID_USUARIO = @iduser
 	else
-		insert into ESTADISTICA(ID_USUARIO,CANTIDAD) values(@iduser, 1)
+		insert into ESTADISTICA(ID_USUARIO,CANTIDAD,ULTIMAENTRADA) values(@iduser, 1, GETDATE())
 end

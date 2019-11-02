@@ -32,7 +32,7 @@
                 <td style="padding: 10px 20px 0px 20px;width: 125px">
                     <asp:Label ID="Label2" runat="server" Text="Restaurante:"></asp:Label></td>
                 <td>
-                    <asp:DropDownList ID="ddRestaurantes" runat="server" Height="16px" Width="188px">
+                    <asp:DropDownList ID="ddRestaurantes" runat="server" Height="16px" Width="188px" Enabled="False">
                     </asp:DropDownList>
                     </td>
             </tr>
@@ -40,7 +40,7 @@
                 <td style="padding: 10px 20px 0px 20px;width: 125px">
                     <asp:Label ID="Label3" runat="server" Text="Tipo:"></asp:Label></td>
                 <td>
-                    <asp:DropDownList ID="ddTipos" runat="server" Height="16px" Width="188px">
+                    <asp:DropDownList ID="ddTipos" runat="server" Height="16px" Width="188px" Enabled="False">
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -60,15 +60,37 @@
                 <td style="padding: 10px 20px 0px 20px;width: 125px">
                     <asp:Label ID="Label6" runat="server" Text="Rate:"></asp:Label></td>
                 <td>
-                    <asp:Label ID="lrate" runat="server" Text="0"></asp:Label>
+                    <div class="txt-center">  
+        <div class="rating">
+            <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" runat="server" />
+            <label for="star5" >☆</label>
+            <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" runat="server" />
+            <label for="star4" >☆</label>
+            <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" runat="server" />
+            <label for="star3" >☆</label>
+            <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" runat="server" />
+            <label for="star2" >☆</label>
+            <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" runat="server" />
+            <label for="star1" >☆</label>
+            <div class="clear"></div>
+        </div>    
+</div>
                  </td>
             </tr>
         </table>
-        </div>
+        <br />
+        <div id="divcomments" runat="server">
 
-    <div>
-    </div>
-    <div id="userlist" style="padding: 10px 5% 25px;" class="shidden" runat="server">
+        </div>
+        <div id="commentform" class="hidden" runat="server">
+        <div id="respond" class="wp-block-calendar">
+            <h3 id="reply-title" class="comment-reply-title">Agregar Comentario</h3>
+            <asp:TextBox ID="txtComment" runat="server" Height="64px" TextMode="MultiLine" Width="398px"></asp:TextBox>
+            <br />
+            <asp:Button ID="btnComment" runat="server" Text="Comentar" OnClick="btnComment_Click" />
+            </div>
+        </div></div>
+    <div id="userlist" style="padding: 10px 5% 25px;" class="hidden" runat="server">
         <h1>Listado de Platillos
         </h1>
         <br />

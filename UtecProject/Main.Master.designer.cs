@@ -130,6 +130,15 @@ namespace PRProject {
         protected global::System.Web.UI.HtmlControls.HtmlLink zoomfontawesomecss;
         
         /// <summary>
+        /// Control stars.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlLink stars;
+        
+        /// <summary>
         /// Control head.
         /// </summary>
         /// <remarks>

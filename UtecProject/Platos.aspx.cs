@@ -55,21 +55,66 @@ namespace PRProject
                 cdish.Text = dish.NOMBRE;
                 txtNombre.Text = dish.NOMBRE;
                 txtDescripcion.Text = dish.DESCRIPCION;
-                txtPrecio.Text = "$" + dish.PRECIO.ToString();
+                txtPrecio.Text = "$" + Math.Round(dish.PRECIO,2).ToString();
                 ddRestaurantes.SelectedValue = dish.ID_RESTAURANTES.ToString();
                 ddTipos.SelectedValue = dish.ID_TIPO.ToString();
+                if (dish.RATE >= 1 && dish.RATE < 2)
+                    star1.Checked = true;
+                else if (dish.RATE >= 2 && dish.RATE < 3)
+                    star2.Checked = true;
+                else if (dish.RATE >= 3 && dish.RATE < 4)
+                    star3.Checked = true;
+                else if (dish.RATE >= 4 && dish.RATE < 5)
+                    star4.Checked = true;
+                else if (dish.RATE > 5)
+                    star5.Checked = true;
+                SQLTrans.Comentarios[] comments = client.GetComentarios(id);
+                string comentarios = string.Concat(comments.Length, " Comentarios\n<ol class='commentlist'>");
+
+                foreach (SQLTrans.Comentarios c in comments)
+                {
+                    string url = (c.URL == null || c.URL == string.Empty) ? "/images/sin-imagen.gif" : c.URL;
+                    comentarios = string.Concat(comentarios,$"<li class='comment byuser comment-author-demoadmin bypostauthor even thread-even depth-1' id='li-comment-{c.ID_COMENTARIOS}'>",
+                        $"<div id='comment-{c.ID_COMENTARIOS}'><div class='comment-author vcard'>",$"<img src='{url}' clas='avatar avatar-48 photo' height='48' width='48'>", "<cite class='fn'>",
+                        "<a href='Users.aspx?id=", c.ID_USUARIO,"'>", c.ID_USUARIO,"</a> <small><br/>", c.FECHA, "</small></div><div class='comment-body'><p>",c.COMENTARIOS,"</p></div></div></li>");
+                }
+                comentarios = string.Concat(comentarios, "</ol>");
+                divcomments.InnerHtml = comentarios;
+                if(ldata != null)
+                    commentform.Attributes.Remove("class");
             }
             else
             {
-                userlist.Attributes.Remove("class");
-                edition.Attributes.Add("class", "hidden");
-                string users = "";
+                userlist.Attributes.Remove("class");                
+                string platillos = "";
                 foreach (SQLTrans.Platillos p in client.GetPlatillos())
                 {
-                    users += string.Concat("<tr><td><img src='", p.URL, "' height='200px' width='200px' /></td><td>", p.NOMBRE, "</td><td>", p.TIPO, "</td><td>", p.RESTAURANTE, "</td><td>", p.PRECIO, "</td><td><a href=Platos.aspx?id=", p.ID_PLATILLOS, ">Ver</a>&emsp;<a href=Platos.aspx?id=",
-                        p.ID_PLATILLOS, "&action=edit>Editar</a>&emsp;<a href=Platos.aspx?id=", p.ID_PLATILLOS, "&action=delete>Eliminar</a></td></tr>\n");
+                    platillos += string.Concat("<tr><td><img src='", (p.URL == null || p.URL == "") ? "/images/sin-imagen.gif" : p.URL, "' height='200px' width='200px' /></td><td>", p.NOMBRE, "</td><td>", p.TIPO, "</td><td>", p.RESTAURANTE, "</td><td>", Math.Round(p.PRECIO, 2), "</td><td><a href=Platos.aspx?id=", p.ID_PLATILLOS, ">Ver</a>&emsp;");                        
+                    if (ldata != null)
+                        if (ldata.isAdmin)
+                            platillos += string.Concat("<a href=Platos.aspx?id=", p.ID_PLATILLOS, "&action=edit>Editar</a>&emsp;<a href=Platos.aspx?id=", p.ID_PLATILLOS, "&action=delete>Eliminar</a></td></tr>\n");
+
                 }
-                tbody.InnerHtml = users;
+                tbody.InnerHtml = platillos;
+            }
+        }
+
+        protected void btnComment_Click(object sender, EventArgs e)
+        {
+            SQLTrans.LoginData ldata = ((SQLTrans.LoginData)Session["userdata"]);
+            try
+            {                
+                if (ldata == null)
+                {
+                    output.Text = MSGNOGRANT;
+                    return;
+                }
+                client.sp_AgregarComentario(ldata, Request["id"], txtComment.Text);
+                Page.Validate();
+            }
+            catch
+            {
+                output.Text = "Ocurrio un error en la transaccion!";
             }
         }
     }

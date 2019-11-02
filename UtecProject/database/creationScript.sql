@@ -59,6 +59,7 @@ create table PLATILLOS (
    RATE                 float                null,
    PRECIO               float                not null,
    DESCRIPCION          nvarchar(200)        not null,
+   FECHA				date,
    constraint PK_PLATILLOS primary key (ID_PLATILLOS),
    constraint FK_PLATILLO_REFERENCE_RESTAURA foreign key (ID_RESTAURANTES)
       references RESTAURANTES (ID_RESTAURANTES),
@@ -81,6 +82,7 @@ create table USUARIOS (
    FECHA_CUMPLE         datetime             not null,
    CONTRASENA           varbinary(500)       not null,
    ADMIN                bit                  not null,
+   FECHAREGISTRO		date,
    constraint PK_USUARIOS primary key (ID_USUARIO),
    constraint FK_USUARIOS_REFERENCE_IMAGENES foreign key (ID_IMAGEN)
       references IMAGENES (ID_IMAGEN)
@@ -127,6 +129,7 @@ create table COMENTARIOS (
    ID_USUARIO           varchar(50)          null,
    ID_PLATILLOS         int                  null,
    COMENTARIOS          nvarchar(200)        not null,
+   FECHA				date,
    constraint PK_COMENTARIOS primary key (ID_COMENTARIOS),
    constraint FK_COMENTAR_REFERENCE_USUARIOS foreign key (ID_USUARIO)
       references USUARIOS (ID_USUARIO),
@@ -142,6 +145,7 @@ create table ESTADISTICA (
    ID_ESTADISTICA       int                  identity,
    ID_USUARIO           varchar(50)          null,
    CANTIDAD             int                  not null,
+   ULTIMAENTRADA		date,
    constraint PK_ESTADISTICA primary key (ID_ESTADISTICA),
    constraint FK_ESTADIST_REFERENCE_USUARIOS foreign key (ID_USUARIO)
       references USUARIOS (ID_USUARIO)

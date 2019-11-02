@@ -5,8 +5,8 @@ begin
 	declare @img varchar(200) = null
 	if @image is not null
 		exec @img = sp_AgregarImagen @image
-	insert into USUARIOS(ID_USUARIO, nombre, apellido, CORREO_ELECTRONICO, FECHA_CUMPLE, CONTRASENA, [ADMIN], ID_IMAGEN) values(
-		@id, @nombre,@apellido,@correo, @borndate,EncryptByPassPhrase('1NeeDh3LpM3', @pass), 0, @img
+	insert into USUARIOS(ID_USUARIO, nombre, apellido, CORREO_ELECTRONICO, FECHA_CUMPLE, CONTRASENA, [ADMIN], ID_IMAGEN,FECHAREGISTRO) values(
+		@id, @nombre,@apellido,@correo, @borndate,EncryptByPassPhrase('1NeeDh3LpM3', @pass), 0, @img,GETDATE()
 	)
   exec sp_AgregarLog @id, -1, 'USUARIOS','C'
 end

@@ -57,6 +57,12 @@
   <wsdl:message name="ICrudService_GetComentarios_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetComentariosResponse" />
   </wsdl:message>
+  <wsdl:message name="ICrudService_GetLastsComentarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastsComentarios" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetLastsComentarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastsComentariosResponse" />
+  </wsdl:message>
   <wsdl:message name="ICrudService_GetTiposPlatillo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTiposPlatillo" />
   </wsdl:message>
@@ -147,6 +153,18 @@
   <wsdl:message name="ICrudService_sp_AlterUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:sp_AlterUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="ICrudService_sp_RecomendarProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_RecomendarProductos" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_RecomendarProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_RecomendarProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_RecomendarProductosPersonalizado_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_RecomendarProductosPersonalizado" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_RecomendarProductosPersonalizado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_RecomendarProductosPersonalizadoResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICrudService">
     <wsdl:operation name="isAdmin">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/isAdmin" message="tns:ICrudService_isAdmin_InputMessage" />
@@ -179,6 +197,10 @@
     <wsdl:operation name="GetComentarios">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetComentarios" message="tns:ICrudService_GetComentarios_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetComentariosResponse" message="tns:ICrudService_GetComentarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastsComentarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetLastsComentarios" message="tns:ICrudService_GetLastsComentarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetLastsComentariosResponse" message="tns:ICrudService_GetLastsComentarios_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetTiposPlatillo">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetTiposPlatillo" message="tns:ICrudService_GetTiposPlatillo_InputMessage" />
@@ -239,6 +261,14 @@
     <wsdl:operation name="sp_AlterUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AlterUsuario" message="tns:ICrudService_sp_AlterUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AlterUsuarioResponse" message="tns:ICrudService_sp_AlterUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_RecomendarProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_RecomendarProductos" message="tns:ICrudService_sp_RecomendarProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_RecomendarProductosResponse" message="tns:ICrudService_sp_RecomendarProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_RecomendarProductosPersonalizado">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizado" message="tns:ICrudService_sp_RecomendarProductosPersonalizado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizadoResponse" message="tns:ICrudService_sp_RecomendarProductosPersonalizado_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICrudService" type="tns:ICrudService">
@@ -308,6 +338,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetComentarios">
       <soap:operation soapAction="http://tempuri.org/ICrudService/GetComentarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastsComentarios">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetLastsComentarios" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -443,6 +482,24 @@
     </wsdl:operation>
     <wsdl:operation name="sp_AlterUsuario">
       <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AlterUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_RecomendarProductos">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_RecomendarProductos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_RecomendarProductosPersonalizado">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
