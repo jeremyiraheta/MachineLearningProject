@@ -72,6 +72,36 @@
     <Content Include="AMapa.aspx" />
     <Content Include="APlatos.aspx" />
     <Content Include="ARestaurantes.aspx" />
+    <Content Include="cache\3cca1e4df4d601664e8ee5f5f104600a-105x75.jpg" />
+    <Content Include="cache\3cca1e4df4d601664e8ee5f5f104600a-180x155.jpg" />
+    <Content Include="cache\3cca1e4df4d601664e8ee5f5f104600a-300x200.jpg" />
+    <Content Include="cache\3cca1e4df4d601664e8ee5f5f104600a-600x320.jpg" />
+    <Content Include="cache\befa5c7cfca376be94eddaf5af8d72f6-105x75.jpg" />
+    <Content Include="cache\befa5c7cfca376be94eddaf5af8d72f6-180x155.jpg" />
+    <Content Include="cache\befa5c7cfca376be94eddaf5af8d72f6-300x200.jpg" />
+    <Content Include="cache\befa5c7cfca376be94eddaf5af8d72f6-600x320.jpg" />
+    <Content Include="cache\photodune-1042349-apple-pie-s-180x155.jpg" />
+    <Content Include="cache\photodune-1090323-vegetarian-pizza-s-105x75.jpg" />
+    <Content Include="cache\photodune-1090323-vegetarian-pizza-s-600x320.jpg" />
+    <Content Include="cache\photodune-1161136-chicken-wrap-s-300x200.jpg" />
+    <Content Include="cache\photodune-1166262-hot-chicken-wings-s-300x200.jpg" />
+    <Content Include="cache\photodune-1215759-greek-salad-s-300x200.jpg" />
+    <Content Include="cache\photodune-1482642-pancakes-on-wooden-table-s-105x75.jpg" />
+    <Content Include="cache\photodune-1482642-pancakes-on-wooden-table-s-180x155.jpg" />
+    <Content Include="cache\photodune-1482642-pancakes-on-wooden-table-s-600x320.jpg" />
+    <Content Include="cache\photodune-1569178-cheese-burger-s-300x200.jpg" />
+    <Content Include="cache\photodune-1917628-beef-steak-s-105x75.jpg" />
+    <Content Include="cache\photodune-1917628-beef-steak-s-600x320.jpg" />
+    <Content Include="cache\photodune-2008747-sandwich-s-300x200.jpg" />
+    <Content Include="cache\photodune-2287754-tiramisu-s-105x75.jpg" />
+    <Content Include="cache\photodune-2287754-tiramisu-s-600x320.jpg" />
+    <Content Include="cache\photodune-2613254-spare-ribs-with-sour-cream-s-105x75.jpg" />
+    <Content Include="cache\photodune-2613254-spare-ribs-with-sour-cream-s-180x155.jpg" />
+    <Content Include="cache\photodune-2613254-spare-ribs-with-sour-cream-s-600x320.jpg" />
+    <Content Include="cache\photodune-3623201-delicious-muffins-m-105x75.jpg" />
+    <Content Include="cache\photodune-3623201-delicious-muffins-m-600x320.jpg" />
+    <Content Include="cache\photodune-575438-spaghetti-with-garlic-and-oil-s-300x200.jpg" />
+    <Content Include="cache\photodune-761960-cheesecakes-s-180x155.jpg" />
     <Content Include="css\academicons.min.css" />
     <Content Include="css\dashicons.min.css" />
     <Content Include="css\font-awesome.min.css" />
@@ -89,6 +119,18 @@
     <Content Include="Fotos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="History.aspx" />
+    <Content Include="images\bg.png" />
+    <Content Include="images\bg_footer.png" />
+    <Content Include="images\carousel_arrows.png" />
+    <Content Include="images\clock.png" />
+    <Content Include="images\difficulty.png" />
+    <Content Include="images\green-bg.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\menu.png" />
+    <Content Include="images\person.png" />
+    <Content Include="images\search-icon.png" />
+    <Content Include="images\separator.png" />
     <Content Include="images\sin-imagen.gif" />
     <Content Include="images\webPageConstruction.jpg" />
     <Content Include="js\dropdown.js" />
@@ -107,22 +149,10 @@
     <Content Include="packages.config" />
     <Content Include="Main.Master" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
-    <None Include="Service References\SQLTrans\CrudService.wsdl" />
-    <None Include="Service References\SQLTrans\CrudService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SQLTrans\CrudService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SQLTrans\CrudService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SQLTrans\CrudService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SQLTrans\CrudService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="cache\Thumbs.db" />
+    <None Include="Service References\SQLTrans\CrudService1.disco" />
+    <Content Include="Web.config" />
+    <None Include="Properties\PublishProfiles\utecprojectp2.pubxml" />
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Comentarios.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -138,6 +168,22 @@
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Usuarios.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\SQLTrans\CrudService1.wsdl" />
+    <None Include="Service References\SQLTrans\CrudService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SQLTrans\CrudService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SQLTrans\CrudService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SQLTrans\CrudService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SQLTrans\CrudService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -148,7 +194,6 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Platos.aspx" />
-    <None Include="Service References\SQLTrans\CrudService.disco" />
     <None Include="Service References\SQLTrans\configuration91.svcinfo" />
     <None Include="Service References\SQLTrans\configuration.svcinfo" />
     <None Include="Service References\SQLTrans\Reference.svcmap">
@@ -157,7 +202,6 @@
     </None>
     <Content Include="SignIn.aspx" />
     <Content Include="Users.aspx" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutUs.aspx.cs">

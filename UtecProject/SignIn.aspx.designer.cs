@@ -193,13 +193,22 @@ namespace PRProject {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Control Calendar1.
+        /// Control txtBirth.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.WebControls.TextBox txtBirth;
+        
+        /// <summary>
+        /// Control RequiredFieldValidato7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidato7;
         
         /// <summary>
         /// Control Label6.

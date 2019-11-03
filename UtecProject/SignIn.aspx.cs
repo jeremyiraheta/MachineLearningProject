@@ -27,7 +27,7 @@ namespace PRProject
                     filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
                     url = "/images/" + upload.FileName;
                 }
-                client.sp_AgregarUsuario(txtUsername.Text, txtNombre.Text, txtApellidos.Text, txtEmail.Text, Calendar1.SelectedDate.ToShortDateString(), txtPassword.Text, url);
+                client.sp_AgregarUsuario(txtUsername.Text, txtNombre.Text, txtApellidos.Text, txtEmail.Text, txtBirth.Text, txtPassword.Text, url);
                 output.Text = "Transaccion completada!";
                 Response.Redirect("LogIn.aspx");
             }

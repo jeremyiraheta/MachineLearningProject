@@ -15,7 +15,8 @@ namespace WebService
     {
         const string NOLOGIN = "Transaccion no valida no es usuario valido!";
         const string NOGRANT = "Transaccion no valida no tiene los privilegios correctos!";
-        string conexion = "Data Source=localhost; Initial Catalog=UTEC;Integrated Security=true;";
+        const bool PRODUCCION = true;
+        string conexion =(PRODUCCION) ? "Server=tcp:utecproyecto.database.windows.net,1433;Initial Catalog=UTEC;Persist Security Info=False;User ID=jeremy.iraheta;Password=R4damantis;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" : "Data Source=localhost; Initial Catalog=UTEC;Integrated Security=true;";
         SqlDataAdapter adapter;
         public DataSet Select(string table, string where = "")
         {
