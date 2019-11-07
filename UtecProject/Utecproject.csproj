@@ -150,7 +150,7 @@
     <Content Include="Main.Master" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="cache\Thumbs.db" />
-    <None Include="Service References\SQLTrans\CrudService1.disco" />
+    <None Include="Service References\SQLTrans\CrudService.disco" />
     <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\utecprojectp2.pubxml" />
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Comentarios.datasource">
@@ -162,28 +162,28 @@
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Restaurantes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\SQLTrans\PRProject.SQLTrans.sp_DeleteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Usuarios.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\SQLTrans\CrudService1.wsdl" />
-    <None Include="Service References\SQLTrans\CrudService5.xsd">
+    <None Include="Service References\SQLTrans\CrudService.wsdl" />
+    <None Include="Service References\SQLTrans\CrudService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SQLTrans\CrudService51.xsd">
+    <None Include="Service References\SQLTrans\CrudService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SQLTrans\CrudService52.xsd">
+    <None Include="Service References\SQLTrans\CrudService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SQLTrans\CrudService53.xsd">
+    <None Include="Service References\SQLTrans\CrudService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SQLTrans\CrudService54.xsd">
+    <None Include="Service References\SQLTrans\CrudService4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Logs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

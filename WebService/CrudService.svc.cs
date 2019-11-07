@@ -15,7 +15,11 @@ namespace WebService
     {
         const string NOLOGIN = "Transaccion no valida no es usuario valido!";
         const string NOGRANT = "Transaccion no valida no tiene los privilegios correctos!";
+#if DEBUG
+        const bool PRODUCCION = false;
+#else
         const bool PRODUCCION = true;
+#endif
         string conexion =(PRODUCCION) ? "Server=tcp:utecproyecto.database.windows.net,1433;Initial Catalog=UTEC;Persist Security Info=False;User ID=jeremy.iraheta;Password=R4damantis;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" : "Data Source=localhost; Initial Catalog=UTEC;Integrated Security=true;";
         SqlDataAdapter adapter;
         public DataSet Select(string table, string where = "")
@@ -128,6 +132,8 @@ namespace WebService
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@url", url));
             c.Open();
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("select @@IDENTITY", c);
             r = Convert.ToInt32(cmd.ExecuteScalar());
             c.Close();            
             return r;            
@@ -290,6 +296,45 @@ namespace WebService
         {
             return null;
         }
+        public List<Platillos> sp_UltimosPlatillos(int offset, int count)
+        {
+            return null;
+        }
+        public List<Logs> GetLogs(LoginData login, int offset, int count)
+        {
+            if (!isValidUser(login.USER, login.PASS))
+                throw new Exception(NOLOGIN);
+            DataSet ds = new DataSet();
+            List<Logs> logs = new List<Logs>();
+            adapter = new SqlDataAdapter("sp_Logs", conexion);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@start_row", offset));
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@end_row", count));
+            adapter.Fill(ds);
+            adapter.Dispose();
+
+            if (ds.Tables.Count == 0) return logs;
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                Logs nl = new Logs();
+                nl.ID_ACTION = Convert.ToInt32(r["ID_ACTION"]);
+                nl.ID_USUARIO = Convert.ToString(r["ID_USUARIO"]);
+                nl.ID_OBJETO = Convert.ToInt32(r["ID_OBJETO"]);
+                nl.TIPO = Convert.ToChar(r["TIPO"]);
+                nl.TABLA = Convert.ToString(r["TABLA"]);
+                nl.CREACION = Convert.ToString(r["CREACION"]);
+                logs.Add(nl);
+            }
+            return logs;
+        }
+        public int Count(string table)
+        {
+            DataSet ds = Select("select count(*) from " + table);
+            int ret = 0;
+            if (ds.Tables.Count > 0)
+                try { ret = Convert.ToInt32(ds.Tables[0].Rows[0][0]); } catch { }
+            return ret;
+        }
         public void sp_AgregarPunto(LoginData login, int x, int y, int restaurante)
         {
             if (!isValidUser(login.USER, login.PASS))
@@ -386,7 +431,7 @@ namespace WebService
             adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@id", id));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@user", login.USER));
-            adapter.SelectCommand.Parameters.Add(new SqlParameter("@image", img));
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@image", img));           
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@point", point));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@nombre", nombre));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@referencia", referencia));

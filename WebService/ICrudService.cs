@@ -34,6 +34,12 @@ namespace WebService
         [OperationContract]
         List<string> GetTiposPlatillo();
         [OperationContract]
+        List<Platillos> sp_UltimosPlatillos(int offset, int count);
+        [OperationContract]
+        List<Logs> GetLogs(LoginData login, int offset, int count);
+        [OperationContract]
+        int Count(string table);
+        [OperationContract]
         void sp_AgregarRestaurante(LoginData login, string name, string reference, string img);
         [OperationContract]
         void sp_AgregarUsuario(string id, string nombre, string apellido, string correo, string borndate, string pass, string img);
@@ -65,6 +71,7 @@ namespace WebService
         List<Platillos> sp_RecomendarProductos();
         [OperationContract]
         List<Platillos> sp_RecomendarProductosPersonalizado(string user);
+       
     }
     [DataContract]
     public class LoginData
@@ -157,6 +164,21 @@ namespace WebService
         public string FECHA;       
     }
     [DataContract]
+    public class Logs
+    {
+        [DataMember]
+        public int ID_ACTION;
+        [DataMember]
+        public string ID_USUARIO;
+        [DataMember]
+        public int ID_OBJETO;
+        [DataMember]
+        public string CREACION;
+        [DataMember]
+        public string TABLA;
+        [DataMember]
+        public char TIPO;
+    }
     public enum VIEWS
     {
         vComentarios,
@@ -167,8 +189,11 @@ namespace WebService
     [DataContract]
     public enum DeleteType
     {
+        [EnumMember]
         Restaurante,
+        [EnumMember]
         Platillo,
+        [EnumMember]
         Comentario
     }
 }

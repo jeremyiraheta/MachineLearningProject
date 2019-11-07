@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,20 +16,24 @@ namespace PRProject
         }
 
         protected void btnReg_Click(object sender, EventArgs e)
-        {
-            string filename = "";
+        {            
             string url = "";
+            string name = "";
             SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
             try
             {
                 
                 if (upload.HasFile)
                 {
-                    filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
-                    url = "/images/" + upload.FileName;
+                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    url = "/images/" + name;
                 }
                 client.sp_AgregarUsuario(txtUsername.Text, txtNombre.Text, txtApellidos.Text, txtEmail.Text, txtBirth.Text, txtPassword.Text, url);
                 output.Text = "Transaccion completada!";
+                if(upload.HasFile)
+                {
+                    upload.SaveAs(Path.Combine(Server.MapPath("~/images"), name));
+                }
                 Response.Redirect("LogIn.aspx");
             }
             catch (Exception)
@@ -37,5 +42,6 @@ namespace PRProject
                 output.Text = "Ocurrio un error y no se completo la transaccion!";
             }
         }
+        
     }
 }

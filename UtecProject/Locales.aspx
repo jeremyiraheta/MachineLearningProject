@@ -3,11 +3,16 @@
     <style type="text/css">
         .hidden{
             display:none;
-        }        
+        }  
+        .image-upload img
+        {
+            width: 30px;
+            cursor: pointer;
+        }     
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">
-    <asp:Literal ID="output" runat="server"></asp:Literal>
+    <h4 style="text-align:center;"><asp:Literal ID="output" runat="server"></asp:Literal></h4>
     <div id="portrait" class="hidden" style="padding: 55px 25% 37px;" runat="server">
         <h1>Datos de Restaurante: 
             <asp:Literal ID="rest" runat="server"></asp:Literal>
@@ -17,7 +22,12 @@
         <table style="border-style: solid; border-color: inherit; border-width: 2px; width: 434px;">
             <tr>
                 <td style="padding: 10px 20px 0px 20px; text-align:center;" colspan="2">
-                    <asp:Image ID="img" runat="server" Height="300px" Width ="400px"/>
+                    <div class="image-upload">
+                        <label for="file-input">
+                        <asp:Image ID="img" runat="server" Height="300px" Width ="400px"/>
+                            <asp:FileUpload ID="upload" runat="server" Enabled="False" CssClass="hidden" />
+                        </label>                        
+                    </div>
                     </td>
             </tr>
 
@@ -43,8 +53,11 @@
                  </td>
             </tr>
         </table>
-        </div>
+        <div id="editcontrols" style="text-align:center;" runat="server">
 
+        </div>
+        </div>
+    
     <div>
     </div>
     <div id="userlist" style="padding: 10px 5% 25px;" class="hidden" runat="server">

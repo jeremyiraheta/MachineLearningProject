@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -27,19 +28,20 @@ namespace PRProject
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            string filename = "";
             string url = "";
+            string name = "";
             try
             {
                 if (upload.HasFile)
                 {
-                    filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
-                    url = "/images/" + upload.FileName;
+                    
+                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    url = "/images/" + name;
                 }
                 client.sp_AgregarPlatillo((SQLTrans.LoginData)Session["userdata"],txtDname.Text,float.Parse(txtPrice.Text),txtDescripcion.Text,Convert.ToInt32(ddCategorias.SelectedValue),Convert.ToInt32(ddRestaurantes.SelectedValue),url);
                 output.Text = "Transaccion completada!";  
                 if(upload.HasFile)
-                    upload.SaveAs(filename);
+                    upload.SaveAs(Path.Combine(Server.MapPath("~/images"), name));
                 txtDescripcion.Text = "";
                 txtDname.Text = "";
                 txtPrice.Text = "";
@@ -50,5 +52,6 @@ namespace PRProject
                 output.Text = "Ocurrio un error y no se completo la transaccion!";
             }
         }
+        
     }
 }

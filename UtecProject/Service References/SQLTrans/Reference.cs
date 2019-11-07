@@ -718,6 +718,145 @@ namespace PRProject.SQLTrans {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Logs", Namespace="http://schemas.datacontract.org/2004/07/WebService")]
+    [System.SerializableAttribute()]
+    public partial class Logs : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CREACIONField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ID_ACTIONField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ID_OBJETOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ID_USUARIOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TABLAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private char TIPOField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CREACION {
+            get {
+                return this.CREACIONField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CREACIONField, value) != true)) {
+                    this.CREACIONField = value;
+                    this.RaisePropertyChanged("CREACION");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID_ACTION {
+            get {
+                return this.ID_ACTIONField;
+            }
+            set {
+                if ((this.ID_ACTIONField.Equals(value) != true)) {
+                    this.ID_ACTIONField = value;
+                    this.RaisePropertyChanged("ID_ACTION");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID_OBJETO {
+            get {
+                return this.ID_OBJETOField;
+            }
+            set {
+                if ((this.ID_OBJETOField.Equals(value) != true)) {
+                    this.ID_OBJETOField = value;
+                    this.RaisePropertyChanged("ID_OBJETO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ID_USUARIO {
+            get {
+                return this.ID_USUARIOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ID_USUARIOField, value) != true)) {
+                    this.ID_USUARIOField = value;
+                    this.RaisePropertyChanged("ID_USUARIO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TABLA {
+            get {
+                return this.TABLAField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TABLAField, value) != true)) {
+                    this.TABLAField = value;
+                    this.RaisePropertyChanged("TABLA");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char TIPO {
+            get {
+                return this.TIPOField;
+            }
+            set {
+                if ((this.TIPOField.Equals(value) != true)) {
+                    this.TIPOField = value;
+                    this.RaisePropertyChanged("TIPO");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DeleteType", Namespace="http://schemas.datacontract.org/2004/07/WebService")]
+    public enum DeleteType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Restaurante = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Platillo = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Comentario = 2,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SQLTrans.ICrudService")]
     public interface ICrudService {
@@ -782,6 +921,24 @@ namespace PRProject.SQLTrans {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetTiposPlatillo", ReplyAction="http://tempuri.org/ICrudService/GetTiposPlatilloResponse")]
         System.Threading.Tasks.Task<string[]> GetTiposPlatilloAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_UltimosPlatillos", ReplyAction="http://tempuri.org/ICrudService/sp_UltimosPlatillosResponse")]
+        PRProject.SQLTrans.Platillos[] sp_UltimosPlatillos(int offset, int count);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_UltimosPlatillos", ReplyAction="http://tempuri.org/ICrudService/sp_UltimosPlatillosResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_UltimosPlatillosAsync(int offset, int count);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetLogs", ReplyAction="http://tempuri.org/ICrudService/GetLogsResponse")]
+        PRProject.SQLTrans.Logs[] GetLogs(PRProject.SQLTrans.LoginData login, int offset, int count);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetLogs", ReplyAction="http://tempuri.org/ICrudService/GetLogsResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Logs[]> GetLogsAsync(PRProject.SQLTrans.LoginData login, int offset, int count);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/Count", ReplyAction="http://tempuri.org/ICrudService/CountResponse")]
+        int Count(string table);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/Count", ReplyAction="http://tempuri.org/ICrudService/CountResponse")]
+        System.Threading.Tasks.Task<int> CountAsync(string table);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AgregarRestaurante", ReplyAction="http://tempuri.org/ICrudService/sp_AgregarRestauranteResponse")]
         void sp_AgregarRestaurante(PRProject.SQLTrans.LoginData login, string name, string reference, string img);
         
@@ -836,12 +993,11 @@ namespace PRProject.SQLTrans {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AgregarValoracion", ReplyAction="http://tempuri.org/ICrudService/sp_AgregarValoracionResponse")]
         System.Threading.Tasks.Task sp_AgregarValoracionAsync(PRProject.SQLTrans.LoginData login, string idplatillo, float rate);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento Tipo del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_Delete", ReplyAction="http://tempuri.org/ICrudService/sp_DeleteResponse")]
-        PRProject.SQLTrans.sp_DeleteResponse sp_Delete(PRProject.SQLTrans.sp_DeleteRequest request);
+        void sp_Delete(PRProject.SQLTrans.LoginData login, PRProject.SQLTrans.DeleteType Tipo, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_Delete", ReplyAction="http://tempuri.org/ICrudService/sp_DeleteResponse")]
-        System.Threading.Tasks.Task<PRProject.SQLTrans.sp_DeleteResponse> sp_DeleteAsync(PRProject.SQLTrans.sp_DeleteRequest request);
+        System.Threading.Tasks.Task sp_DeleteAsync(PRProject.SQLTrans.LoginData login, PRProject.SQLTrans.DeleteType Tipo, int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AlterRestaurant", ReplyAction="http://tempuri.org/ICrudService/sp_AlterRestaurantResponse")]
         void sp_AlterRestaurant(PRProject.SQLTrans.LoginData login, int id, int img, int point, string nombre, string referencia);
@@ -878,75 +1034,6 @@ namespace PRProject.SQLTrans {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizado", ReplyAction="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizadoResponse")]
         System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_RecomendarProductosPersonalizadoAsync(string user);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class sp_DeleteRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="sp_Delete", Namespace="http://tempuri.org/", Order=0)]
-        public PRProject.SQLTrans.sp_DeleteRequestBody Body;
-        
-        public sp_DeleteRequest() {
-        }
-        
-        public sp_DeleteRequest(PRProject.SQLTrans.sp_DeleteRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class sp_DeleteRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public PRProject.SQLTrans.LoginData login;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string Tipo;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int id;
-        
-        public sp_DeleteRequestBody() {
-        }
-        
-        public sp_DeleteRequestBody(PRProject.SQLTrans.LoginData login, string Tipo, int id) {
-            this.login = login;
-            this.Tipo = Tipo;
-            this.id = id;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class sp_DeleteResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="sp_DeleteResponse", Namespace="http://tempuri.org/", Order=0)]
-        public PRProject.SQLTrans.sp_DeleteResponseBody Body;
-        
-        public sp_DeleteResponse() {
-        }
-        
-        public sp_DeleteResponse(PRProject.SQLTrans.sp_DeleteResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class sp_DeleteResponseBody {
-        
-        public sp_DeleteResponseBody() {
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1056,6 +1143,30 @@ namespace PRProject.SQLTrans {
             return base.Channel.GetTiposPlatilloAsync();
         }
         
+        public PRProject.SQLTrans.Platillos[] sp_UltimosPlatillos(int offset, int count) {
+            return base.Channel.sp_UltimosPlatillos(offset, count);
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_UltimosPlatillosAsync(int offset, int count) {
+            return base.Channel.sp_UltimosPlatillosAsync(offset, count);
+        }
+        
+        public PRProject.SQLTrans.Logs[] GetLogs(PRProject.SQLTrans.LoginData login, int offset, int count) {
+            return base.Channel.GetLogs(login, offset, count);
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Logs[]> GetLogsAsync(PRProject.SQLTrans.LoginData login, int offset, int count) {
+            return base.Channel.GetLogsAsync(login, offset, count);
+        }
+        
+        public int Count(string table) {
+            return base.Channel.Count(table);
+        }
+        
+        public System.Threading.Tasks.Task<int> CountAsync(string table) {
+            return base.Channel.CountAsync(table);
+        }
+        
         public void sp_AgregarRestaurante(PRProject.SQLTrans.LoginData login, string name, string reference, string img) {
             base.Channel.sp_AgregarRestaurante(login, name, reference, img);
         }
@@ -1128,32 +1239,12 @@ namespace PRProject.SQLTrans {
             return base.Channel.sp_AgregarValoracionAsync(login, idplatillo, rate);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PRProject.SQLTrans.sp_DeleteResponse PRProject.SQLTrans.ICrudService.sp_Delete(PRProject.SQLTrans.sp_DeleteRequest request) {
-            return base.Channel.sp_Delete(request);
+        public void sp_Delete(PRProject.SQLTrans.LoginData login, PRProject.SQLTrans.DeleteType Tipo, int id) {
+            base.Channel.sp_Delete(login, Tipo, id);
         }
         
-        public void sp_Delete(PRProject.SQLTrans.LoginData login, string Tipo, int id) {
-            PRProject.SQLTrans.sp_DeleteRequest inValue = new PRProject.SQLTrans.sp_DeleteRequest();
-            inValue.Body = new PRProject.SQLTrans.sp_DeleteRequestBody();
-            inValue.Body.login = login;
-            inValue.Body.Tipo = Tipo;
-            inValue.Body.id = id;
-            PRProject.SQLTrans.sp_DeleteResponse retVal = ((PRProject.SQLTrans.ICrudService)(this)).sp_Delete(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<PRProject.SQLTrans.sp_DeleteResponse> PRProject.SQLTrans.ICrudService.sp_DeleteAsync(PRProject.SQLTrans.sp_DeleteRequest request) {
-            return base.Channel.sp_DeleteAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<PRProject.SQLTrans.sp_DeleteResponse> sp_DeleteAsync(PRProject.SQLTrans.LoginData login, string Tipo, int id) {
-            PRProject.SQLTrans.sp_DeleteRequest inValue = new PRProject.SQLTrans.sp_DeleteRequest();
-            inValue.Body = new PRProject.SQLTrans.sp_DeleteRequestBody();
-            inValue.Body.login = login;
-            inValue.Body.Tipo = Tipo;
-            inValue.Body.id = id;
-            return ((PRProject.SQLTrans.ICrudService)(this)).sp_DeleteAsync(inValue);
+        public System.Threading.Tasks.Task sp_DeleteAsync(PRProject.SQLTrans.LoginData login, PRProject.SQLTrans.DeleteType Tipo, int id) {
+            return base.Channel.sp_DeleteAsync(login, Tipo, id);
         }
         
         public void sp_AlterRestaurant(PRProject.SQLTrans.LoginData login, int id, int img, int point, string nombre, string referencia) {

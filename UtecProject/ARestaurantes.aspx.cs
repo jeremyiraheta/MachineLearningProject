@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.IO;
 namespace PRProject
 {
     public partial class ARestaurantes : System.Web.UI.Page
@@ -21,22 +21,20 @@ namespace PRProject
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            string filename="";
+            string name="";
             string url="";       
             SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
             try
             {    
                 if(upload.HasFile)
                 {
-                    filename = System.IO.Path.Combine(Server.MapPath("~/images"), upload.FileName);
-                    url = "/images/" + upload.FileName;
+                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    url = "/images/" + name;
                 }                    
                 client.sp_AgregarRestaurante((SQLTrans.LoginData)Session["userdata"], txtRname.Text, txtReferencia.Text, url);                
                 output.Text = "Transaccion completada!";
                 if (upload.HasFile)
-                {                    
-                    upload.SaveAs(filename);
-                }
+                    upload.SaveAs(Server.MapPath(Path.Combine("~/images/", name)));
                 txtReferencia.Text = "";
                 txtRname.Text = "";
             }
@@ -46,6 +44,6 @@ namespace PRProject
                 output.Text = "Ocurrio un error y no se completo la transaccion!";
             }
             
-        }
+        }       
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +12,8 @@ namespace PRProject
     {
         const string MSGNOGRANT = "<center><div color=red><h1>No tienes permisos para ver este contenido</h1></div></center>";
         const string MSGNODISH = "<center><div color=red><h1>No se encontro al local</h1></div></center>";
+        const string MSGDEL = "<center><div color=red><h1>Local Eliminado!</h1></div></center>";
+        const string MSGNODEL = "<center><div color=red><h1>No fue posible eliminar el local!</h1></div></center>";
         SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,9 +26,34 @@ namespace PRProject
                 output.Text = MSGNOGRANT;
             }
             else if (Request["id"] != null)
-            {
-                portrait.Attributes.Remove("class");
+            {                               
                 int id = Convert.ToInt32(Request["id"]);
+                if (Request["action"] == "delete")
+                {
+                    try
+                    {
+                        client.sp_Delete(ldata, SQLTrans.DeleteType.Restaurante, id);
+                        output.Text = MSGDEL;
+                    }
+                    catch { output.Text = MSGNODEL; }
+                    return;
+                }
+                if (Request["action"] == "edit")
+                {
+                    Button btnEdit = new Button();
+                    Button btnDel = new Button();                    
+                    btnEdit.Text = "Editar";
+                    btnDel.Text = "Eliminar";
+                    btnDel.Click += BtnDel_Click;
+                    btnEdit.Click += BtnEdit_Click;
+                    editcontrols.Controls.Add(btnEdit);
+                    editcontrols.Controls.Add(btnDel);
+                    txtNombre.ReadOnly = false;
+                    txtReferencia.ReadOnly = false;
+                    upload.Enabled = true;
+                    upload.CssClass = "";
+                }
+                portrait.Attributes.Remove("class");
                 SQLTrans.Restaurantes restaurants;
                 try
                 {
@@ -36,12 +64,15 @@ namespace PRProject
                     output.Text = MSGNODISH;
                     return;
                 }
-                if (restaurants.URL == null || restaurants.URL == "")
-                    img.ImageUrl = "/images/sin-imagen.gif";
-                else
-                    img.ImageUrl = restaurants.URL;
-                txtNombre.Text = restaurants.NOMBRE;
-                txtReferencia.Text = restaurants.REFERENCIA;
+                if(!IsPostBack)
+                {
+                    if (restaurants.URL == null || restaurants.URL == "")
+                        img.ImageUrl = "/images/sin-imagen.gif";
+                    else
+                        img.ImageUrl = restaurants.URL;
+                    txtNombre.Text = restaurants.NOMBRE;
+                    txtReferencia.Text = restaurants.REFERENCIA;
+                }
             }
             else
             {
@@ -56,6 +87,37 @@ namespace PRProject
                 }
                 tbody.InnerHtml = locales;
             }
+        }        
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            SQLTrans.LoginData ldata = ((SQLTrans.LoginData)Session["userdata"]);            
+            try
+            {
+                int img = -1;
+                string name = "";
+                string url = "";             
+                if (upload.HasFile)
+                {
+                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    url = "/images/" + name;
+                    img = client.sp_AgregarImagen(ldata, url);
+                    upload.SaveAs(Server.MapPath(Path.Combine("~/images/", name)));
+                }
+                int id = int.Parse(Request["id"]);                
+                client.sp_AlterRestaurant(ldata, id, img, -1, txtNombre.Text, txtReferencia.Text);
+                output.Text = "Transaccion realizada!";
+            }
+            catch (Exception)
+            {
+
+                output.Text = "Ocurrio un error!";
+            }           
+        }
+
+        private void BtnDel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Locales.aspx?id=" + Request["id"] + "&action=delete");
         }
     }
 }

@@ -3,11 +3,16 @@
     <style type="text/css">
         .hidden{
             display:none;
-        }        
+        }    
+        .image-upload img
+        {
+            width: 30px;
+            cursor: pointer;
+        }    
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">
-    <asp:Literal ID="output" runat="server"></asp:Literal>
+    <h4 style="text-align:center;"><asp:Literal ID="output" runat="server"></asp:Literal></h4>
     <div id="portrait" class="hidden" style="padding: 55px 25% 37px;" runat="server">
         <h1>Datos de Platillo: 
             <asp:Literal ID="cdish" runat="server"></asp:Literal>
@@ -16,8 +21,13 @@
         <br />
         <table style="border-style: solid; border-color: inherit; border-width: 2px; width: 434px;">
             <tr>
-                <td style="padding: 10px 20px 0px 20px; text-align:center;" colspan="2">
-                    <asp:Image ID="img" runat="server" />
+                 <td style="padding: 10px 20px 0px 20px; text-align:center;" colspan="2">
+                    <div id="image-upload">
+                        <label for="file-input">
+                        <asp:Image ID="img" runat="server" Height="300px" Width ="400px"/>
+                            <asp:FileUpload ID="upload" runat="server" Enabled="False" CssClass="hidden" />
+                        </label>
+                    </div>
                     </td>
             </tr>
 
@@ -46,7 +56,7 @@
             </tr>
             <tr>
                 <td style="padding: 10px 20px 0px 20px;width: 125px">
-                    <asp:Label ID="Label4" runat="server" Text="Precio:"></asp:Label></td>
+                    <asp:Label ID="Label4" runat="server" Text="Precio($):"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtPrecio" runat="server" Width="100%" ReadOnly="True"></asp:TextBox></td>
             </tr>
@@ -78,6 +88,9 @@
                  </td>
             </tr>
         </table>
+        <div id="editcontrols" style="text-align:center;" runat="server">
+
+        </div>
         <br />
         <div id="divcomments" runat="server">
 
