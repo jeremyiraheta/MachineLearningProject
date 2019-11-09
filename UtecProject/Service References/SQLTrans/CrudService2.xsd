@@ -1,113 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WebService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WebService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:50075/CrudService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="ArrayOfRestaurantes">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Restaurantes" nillable="true" type="tns:Restaurantes" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfRestaurantes" nillable="true" type="tns:ArrayOfRestaurantes" />
-  <xs:complexType name="Restaurantes">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="NOMBRE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RATE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="REFERENCIA" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="X" type="xs:int" />
-      <xs:element minOccurs="0" name="Y" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Restaurantes" nillable="true" type="tns:Restaurantes" />
-  <xs:complexType name="ArrayOfUsuarios">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Usuarios" nillable="true" type="tns:Usuarios" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfUsuarios" nillable="true" type="tns:ArrayOfUsuarios" />
-  <xs:complexType name="Usuarios">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ADMIN" type="xs:boolean" />
-      <xs:element minOccurs="0" name="APELLIDO" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CORREO_ELECTRONICO" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FECHA_CUMPLE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ID_USUARIO" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="NOMBRE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="VISITAS" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Usuarios" nillable="true" type="tns:Usuarios" />
-  <xs:complexType name="ArrayOfPlatillos">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Platillos" nillable="true" type="tns:Platillos" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPlatillos" nillable="true" type="tns:ArrayOfPlatillos" />
-  <xs:complexType name="Platillos">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="DESCRIPCION" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FECHA" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ID_PLATILLOS" type="xs:int" />
-      <xs:element minOccurs="0" name="ID_RESTAURANTES" type="xs:int" />
-      <xs:element minOccurs="0" name="ID_TIPO" type="xs:int" />
-      <xs:element minOccurs="0" name="NOMBRE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PRECIO" type="xs:decimal" />
-      <xs:element minOccurs="0" name="RATE" type="xs:decimal" />
-      <xs:element minOccurs="0" name="RESTAURANTE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TIPO" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Platillos" nillable="true" type="tns:Platillos" />
-  <xs:complexType name="ArrayOfComentarios">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Comentarios" nillable="true" type="tns:Comentarios" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfComentarios" nillable="true" type="tns:ArrayOfComentarios" />
-  <xs:complexType name="Comentarios">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="COMENTARIOS" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FECHA" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ID_COMENTARIOS" type="xs:int" />
-      <xs:element minOccurs="0" name="ID_PLATILLOS" type="xs:int" />
-      <xs:element minOccurs="0" name="ID_USUARIO" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Comentarios" nillable="true" type="tns:Comentarios" />
-  <xs:complexType name="LoginData">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="PASS" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="USER" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="isAdmin" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="LoginData" nillable="true" type="tns:LoginData" />
-  <xs:complexType name="ArrayOfLogs">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Logs" nillable="true" type="tns:Logs" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfLogs" nillable="true" type="tns:ArrayOfLogs" />
-  <xs:complexType name="Logs">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CREACION" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ID_ACTION" type="xs:int" />
-      <xs:element minOccurs="0" name="ID_OBJETO" type="xs:int" />
-      <xs:element minOccurs="0" name="ID_USUARIO" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TABLA" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TIPO" type="ser:char" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Logs" nillable="true" type="tns:Logs" />
-  <xs:simpleType name="DeleteType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Restaurante" />
-      <xs:enumeration value="Platillo" />
-      <xs:enumeration value="Comentario" />
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="anyType" nillable="true" type="xs:anyType" />
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+  <xs:element name="boolean" nillable="true" type="xs:boolean" />
+  <xs:element name="byte" nillable="true" type="xs:byte" />
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+  <xs:element name="decimal" nillable="true" type="xs:decimal" />
+  <xs:element name="double" nillable="true" type="xs:double" />
+  <xs:element name="float" nillable="true" type="xs:float" />
+  <xs:element name="int" nillable="true" type="xs:int" />
+  <xs:element name="long" nillable="true" type="xs:long" />
+  <xs:element name="QName" nillable="true" type="xs:QName" />
+  <xs:element name="short" nillable="true" type="xs:short" />
+  <xs:element name="string" nillable="true" type="xs:string" />
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+  <xs:element name="char" nillable="true" type="tns:char" />
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration" />
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="DeleteType" nillable="true" type="tns:DeleteType" />
+  <xs:element name="guid" nillable="true" type="tns:guid" />
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName" />
+  <xs:attribute name="Id" type="xs:ID" />
+  <xs:attribute name="Ref" type="xs:IDREF" />
 </xs:schema>

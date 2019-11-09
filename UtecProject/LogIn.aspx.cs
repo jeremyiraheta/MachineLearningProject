@@ -18,20 +18,29 @@ namespace PRProject
         {
             SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
             DataSet ds = client.sp_ValidarUsuario(txtUser.Text, txtPass.Text);
+            string user="";
             if (ds.Tables[0].Rows.Count > 0)
             {
-                SQLTrans.LoginData linfo = new SQLTrans.LoginData();
-                linfo.USER = txtUser.Text;
-                linfo.PASS = txtPass.Text;
-                linfo.isAdmin = client.isAdmin(linfo.USER);
-                Session["userdata"] = linfo;
-                Response.Redirect("Default.aspx");
-            }
-            else
-            {
-                Session.Remove("userdata");
-                output.Text = "Usuario o Password incorrectos!";
-            }
+                try
+                {
+                    user = ds.Tables[0].Rows[0][0].ToString();
+                }
+                catch { }
+               if(user != txtUser.Text)
+                {
+                    Session.Remove("userdata");
+                    output.Text = "Usuario o Password incorrectos!";
+                }
+                        else
+                {
+                    SQLTrans.LoginData linfo = new SQLTrans.LoginData();
+                    linfo.USER = txtUser.Text;
+                    linfo.PASS = txtPass.Text;
+                    linfo.isAdmin = client.isAdmin(linfo.USER);
+                    Session["userdata"] = linfo;
+                    Response.Redirect("Default.aspx");
+                }
+            }                        
         }
     }
 }

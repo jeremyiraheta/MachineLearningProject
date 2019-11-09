@@ -157,49 +157,22 @@ namespace PRProject {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// Control star5.
+        /// Control dishrate.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton star5;
+        protected global::System.Web.UI.WebControls.Literal dishrate;
         
         /// <summary>
-        /// Control star4.
+        /// Control rate.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton star4;
-        
-        /// <summary>
-        /// Control star3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton star3;
-        
-        /// <summary>
-        /// Control star2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton star2;
-        
-        /// <summary>
-        /// Control star1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton star1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rate;
         
         /// <summary>
         /// Control editcontrols.

@@ -9,8 +9,8 @@ namespace PRProject
 {
     public partial class Users : System.Web.UI.Page
     {
-        const string MSGNOGRANT = "<center><div color=red><h1>No tienes permisos para ver este contenido</h1></div></center>";
-        const string MSGNOUSER = "<center><div color=red><h1>No se encontro al usuario</h1></div></center>";
+        const string MSGNOGRANT = "No tienes permisos para ver este contenido";
+        const string MSGNOUSER = "No se encontro al usuario";
         protected void Page_Load(object sender, EventArgs e)
         {
             SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
@@ -34,8 +34,8 @@ namespace PRProject
                         output.Text = MSGNOUSER;
                         return;
                     }
-                    username.Text = ldata.USER;
-                    if (user.URL == null)
+                    username.Text = id;
+                    if (user.URL == null || user.URL=="")
                         img.ImageUrl = "/images/sin-imagen.gif";
                     else
                         img.ImageUrl = "/images/" +  user.URL;

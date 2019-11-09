@@ -93,7 +93,8 @@ namespace PRProject
                     output.Text = MSGNOUSER;
                     return;
                 }
-               if(!IsPostBack)
+                rate.Controls.Add(LoadControl("rating.ascx"));
+                if (!IsPostBack)
                 {
                     if (dish.URL == null || dish.URL == "")
                         img.ImageUrl = "/images/sin-imagen.gif";
@@ -105,16 +106,7 @@ namespace PRProject
                     txtPrecio.Text = Math.Round(dish.PRECIO, 2).ToString();
                     ddRestaurantes.SelectedValue = dish.ID_RESTAURANTES.ToString();
                     ddTipos.SelectedValue = dish.ID_TIPO.ToString();
-                    if (dish.RATE >= 1 && dish.RATE < 2)
-                        star1.Checked = true;
-                    else if (dish.RATE >= 2 && dish.RATE < 3)
-                        star2.Checked = true;
-                    else if (dish.RATE >= 3 && dish.RATE < 4)
-                        star3.Checked = true;
-                    else if (dish.RATE >= 4 && dish.RATE < 5)
-                        star4.Checked = true;
-                    else if (dish.RATE > 5)
-                        star5.Checked = true;
+                    dishrate.Text = dish.RATE.ToString();
                 }
                 SQLTrans.Comentarios[] comments = client.GetComentarios(id);
                 string comentarios = string.Concat(comments.Length, " Comentarios\n<ol class='commentlist'>");
@@ -185,7 +177,7 @@ namespace PRProject
                 string url = "";
                 if (upload.HasFile)
                 {
-                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    name = clases.Tools.ImgName(upload.FileName, Server.MapPath("~/images/"));
                     url = "/images/" + name;
                     img = client.sp_AgregarImagen(ldata, url);
                     upload.SaveAs(Server.MapPath(Path.Combine("~/images/", name)));
@@ -204,6 +196,39 @@ namespace PRProject
         private void BtnDel_Click(object sender, EventArgs e)
         {
             Response.Redirect("Platos.aspx?id=" + Request["id"] + "&action=delete");
+        }
+        private void createRating()
+        {
+            RadioButton r1 = new RadioButton();
+            RadioButton r2 = new RadioButton();
+            RadioButton r3 = new RadioButton();
+            RadioButton r4 = new RadioButton();
+            RadioButton r5 = new RadioButton();
+            r1.CssClass = "radio-btn hide";
+            r1.AutoPostBack = true;
+            r1.CheckedChanged += (object sender, EventArgs e) => {
+
+            };
+            r2.CssClass = "radio-btn hide";
+            r2.AutoPostBack = true;
+            r2.CheckedChanged += (object sender, EventArgs e) => {
+
+            };
+            r3.CssClass = "radio-btn hide";
+            r3.AutoPostBack = true;
+            r3.CheckedChanged += (object sender, EventArgs e) => {
+
+            };
+            r4.CssClass = "radio-btn hide";
+            r4.AutoPostBack = true;
+            r4.CheckedChanged += (object sender, EventArgs e) => {
+
+            };
+            r5.CssClass = "radio-btn hide";
+            r5.AutoPostBack = true;
+            r5.CheckedChanged += (object sender, EventArgs e) => {
+
+            };
         }
     }
 }

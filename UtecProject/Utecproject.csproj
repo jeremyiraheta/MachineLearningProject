@@ -110,7 +110,6 @@
     <Content Include="css\instagram-widget.css" />
     <Content Include="css\shortcodes.css" />
     <Content Include="css\socicon.css" />
-    <Content Include="css\stars.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style.min.css" />
     <Content Include="css\theme-utils.css" />
@@ -151,6 +150,7 @@
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="cache\Thumbs.db" />
     <None Include="Service References\SQLTrans\CrudService.disco" />
+    <Content Include="rating.ascx" />
     <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\utecprojectp2.pubxml" />
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Comentarios.datasource">
@@ -163,6 +163,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Usuarios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Logs.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\SQLTrans\CrudService.wsdl" />
@@ -181,9 +184,6 @@
     <None Include="Service References\SQLTrans\CrudService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Logs.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -232,6 +232,7 @@
     <Compile Include="ARestaurantes.aspx.designer.cs">
       <DependentUpon>ARestaurantes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="clases\Tools.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -299,6 +300,13 @@
       <DependentUpon>Platos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rating.ascx.cs">
+      <DependentUpon>rating.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="rating.ascx.designer.cs">
+      <DependentUpon>rating.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Service References\SQLTrans\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

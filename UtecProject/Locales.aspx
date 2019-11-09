@@ -3,12 +3,7 @@
     <style type="text/css">
         .hidden{
             display:none;
-        }  
-        .image-upload img
-        {
-            width: 30px;
-            cursor: pointer;
-        }     
+        }      
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">

@@ -28,7 +28,7 @@ namespace PRProject
             {    
                 if(upload.HasFile)
                 {
-                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    name = clases.Tools.ImgName(upload.FileName, Server.MapPath("~/images/"));
                     url = "/images/" + name;
                 }                    
                 client.sp_AgregarRestaurante((SQLTrans.LoginData)Session["userdata"], txtRname.Text, txtReferencia.Text, url);                

@@ -99,7 +99,7 @@ namespace PRProject
                 string url = "";             
                 if (upload.HasFile)
                 {
-                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    name = clases.Tools.ImgName(upload.FileName, Server.MapPath("~/images/"));
                     url = "/images/" + name;
                     img = client.sp_AgregarImagen(ldata, url);
                     upload.SaveAs(Server.MapPath(Path.Combine("~/images/", name)));

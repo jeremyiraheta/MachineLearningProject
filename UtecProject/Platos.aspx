@@ -3,17 +3,12 @@
     <style type="text/css">
         .hidden{
             display:none;
-        }    
-        .image-upload img
-        {
-            width: 30px;
-            cursor: pointer;
-        }    
+        }       
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">
     <h4 style="text-align:center;"><asp:Literal ID="output" runat="server"></asp:Literal></h4>
-    <div id="portrait" class="hidden" style="padding: 55px 25% 37px;" runat="server">
+    <div id="portrait" class="shidden" style="padding: 55px 25% 37px;" runat="server">
         <h1>Datos de Platillo: 
             <asp:Literal ID="cdish" runat="server"></asp:Literal>
         </h1>
@@ -70,22 +65,14 @@
                 <td style="padding: 10px 20px 0px 20px;width: 125px">
                     <asp:Label ID="Label6" runat="server" Text="Rate:"></asp:Label></td>
                 <td>
-                    <div class="txt-center">  
-        <div class="rating">
-            <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" runat="server" />
-            <label for="star5" >☆</label>
-            <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" runat="server" />
-            <label for="star4" >☆</label>
-            <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" runat="server" />
-            <label for="star3" >☆</label>
-            <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" runat="server" />
-            <label for="star2" >☆</label>
-            <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" runat="server" />
-            <label for="star1" >☆</label>
-            <div class="clear"></div>
-        </div>    
-</div>
+                    <asp:Literal ID="dishrate" runat="server"></asp:Literal>
                  </td>
+            </tr>
+            <tr <%if (Session["userdata"] == null) Response.Write("class='hidden'"); %> >
+                <td style="padding: 10px 20px 0px 20px;width: 125px">Calificar:</td>
+                <td><div class="txt-center" id="rate" runat="server">  
+           
+                </div></td>
             </tr>
         </table>
         <div id="editcontrols" style="text-align:center;" runat="server">

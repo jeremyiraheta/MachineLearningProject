@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -51,14 +50,6 @@ namespace PRProject
         protected void Application_End(object sender, EventArgs e)
         {
 
-        }
-        public static string ImgName(string filename, string path)
-        {
-            string ret = filename;
-            string ext = filename.Substring(filename.LastIndexOf('.') + 1);
-            while (File.Exists(Path.Combine(path, ret)))
-                ret = "IMG_" + new Random(DateTime.Now.Millisecond).Next() + "." + ext;
-            return ret;
-        }
+        }        
     }
 }

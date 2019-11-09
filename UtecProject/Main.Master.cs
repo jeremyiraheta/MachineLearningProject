@@ -13,6 +13,15 @@ namespace PRProject
         {
             string[] stipos = new SQLTrans.CrudServiceClient().GetTiposPlatillo();
             LiteralControl tipos = new LiteralControl();
+            SQLTrans.Comentarios[] c = new SQLTrans.CrudServiceClient().GetLastsComentarios();
+            string lc = "";
+            foreach (SQLTrans.Comentarios i in c)
+            {   
+                string url = i.URL;
+                if (url == "" || url == null) url = "/images/sin-imagen.gif";
+                lc += $"<li><a href=#><img src={url} class='avatar avatar-40 photo' height='40' width='40'></a> <a href=#>{i.ID_USUARIO}: </a>{i.COMENTARIOS}<div class=clear></div></li>";
+            }
+            lastcomments.InnerHtml = lc;
             foreach (string t in stipos)
             {
                 string[] sp = t.Split(',');

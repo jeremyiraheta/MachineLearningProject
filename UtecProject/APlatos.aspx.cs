@@ -35,7 +35,7 @@ namespace PRProject
                 if (upload.HasFile)
                 {
                     
-                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    name = clases.Tools.ImgName(upload.FileName, Server.MapPath("~/images/"));
                     url = "/images/" + name;
                 }
                 client.sp_AgregarPlatillo((SQLTrans.LoginData)Session["userdata"],txtDname.Text,float.Parse(txtPrice.Text),txtDescripcion.Text,Convert.ToInt32(ddCategorias.SelectedValue),Convert.ToInt32(ddRestaurantes.SelectedValue),url);

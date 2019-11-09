@@ -25,7 +25,7 @@ namespace PRProject
                 
                 if (upload.HasFile)
                 {
-                    name = Global.ImgName(upload.FileName, Server.MapPath("~/images/"));
+                    name = clases.Tools.ImgName(upload.FileName, Server.MapPath("~/images/"));
                     url = "/images/" + name;
                 }
                 client.sp_AgregarUsuario(txtUsername.Text, txtNombre.Text, txtApellidos.Text, txtEmail.Text, txtBirth.Text, txtPassword.Text, url);

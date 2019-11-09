@@ -298,7 +298,36 @@ namespace WebService
         }
         public List<Platillos> sp_UltimosPlatillos(int offset, int count)
         {
-            return null;
+            DataSet ds = new DataSet();
+            List<Platillos> platillos = new List<Platillos>();
+            adapter = new SqlDataAdapter("sp_UltimosPlatillos", conexion);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@start_row", offset));
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@end_row", count));
+            adapter.Fill(ds);
+            adapter.Dispose();
+            if (ds.Tables.Count == 0) return platillos;
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                Platillos nl = new Platillos();
+                nl.DESCRIPCION = Convert.ToString(r["DESCRIPCION"]);
+                nl.FECHA = Convert.ToString(r["FECHA"]);
+                nl.ID_PLATILLOS = Convert.ToInt32(r["ID_PLATILLOS"]);
+                nl.ID_RESTAURANTES = Convert.ToInt32(r["ID_RESTAURANTES"]);
+                nl.ID_TIPO = Convert.ToInt32(r["ID_TIPO"]);
+                nl.NOMBRE = Convert.ToString(r["NOMBRE"]);
+                nl.PRECIO = Convert.ToDecimal(r["PRECIO"]);
+                try
+                {
+                    nl.RATE = Convert.ToDecimal(r["RATE"].ToString());
+                }
+                catch { }
+                nl.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
+                nl.TIPO = Convert.ToString(r["TIPO"]);
+                nl.URL = Convert.ToString(r["URL"]);                
+                platillos.Add(nl);
+            }
+            return platillos;
         }
         public List<Logs> GetLogs(LoginData login, int offset, int count)
         {
@@ -319,7 +348,7 @@ namespace WebService
                 Logs nl = new Logs();
                 nl.ID_ACTION = Convert.ToInt32(r["ID_ACTION"]);
                 nl.ID_USUARIO = Convert.ToString(r["ID_USUARIO"]);
-                nl.ID_OBJETO = Convert.ToInt32(r["ID_OBJETO"]);
+                nl.ID_OBJETO = Convert.ToInt32(r["ID_OBJECT"]);
                 nl.TIPO = Convert.ToChar(r["TIPO"]);
                 nl.TABLA = Convert.ToString(r["TABLA"]);
                 nl.CREACION = Convert.ToString(r["CREACION"]);
@@ -446,6 +475,9 @@ namespace WebService
             adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@id", id));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@user", login.USER));
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@restaurant", restaurant));
+            if(img != -1)
+                adapter.SelectCommand.Parameters.Add(new SqlParameter("@image", img));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@tipo", tipo));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@precio", precio));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@nombre", nombre));
