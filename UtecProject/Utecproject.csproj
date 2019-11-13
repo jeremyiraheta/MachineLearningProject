@@ -102,6 +102,7 @@
     <Content Include="cache\photodune-3623201-delicious-muffins-m-600x320.jpg" />
     <Content Include="cache\photodune-575438-spaghetti-with-garlic-and-oil-s-300x200.jpg" />
     <Content Include="cache\photodune-761960-cheesecakes-s-180x155.jpg" />
+    <Content Include="changepass.ascx" />
     <Content Include="css\academicons.min.css" />
     <Content Include="css\dashicons.min.css" />
     <Content Include="css\font-awesome.min.css" />
@@ -231,6 +232,13 @@
     </Compile>
     <Compile Include="ARestaurantes.aspx.designer.cs">
       <DependentUpon>ARestaurantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="changepass.ascx.cs">
+      <DependentUpon>changepass.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="changepass.ascx.designer.cs">
+      <DependentUpon>changepass.ascx</DependentUpon>
     </Compile>
     <Compile Include="clases\Tools.cs" />
     <Compile Include="Default.aspx.cs">

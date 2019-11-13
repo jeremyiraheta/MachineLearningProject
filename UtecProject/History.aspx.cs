@@ -52,7 +52,7 @@ namespace PRProject
                     string h = "";
                     if (inicio - 10 < 0)
                         h = "display:none;";
-                    logs += $"<tr><td><td style='text-align:right;{h}'><a href=History.aspx?inicio={inicio-10}&fin={fin-10}>Anterior</a></td><td></td><td></td><td style='text-align:right;'><a href=History.aspx?inicio={inicio+10}&fin={fin+10}>Siguiente</a></td></tr>";
+                    logs += $"<tr><td><a style='text-align:right;{h}' href=History.aspx?inicio={inicio-10}&fin={fin-10}>Anterior</a></td><td></td><td></td><td style='text-align:right;'><a href=History.aspx?inicio={inicio+10}&fin={fin+10}>Siguiente</a></td></tr>";
                     tbody.InnerHtml = logs;
                 }
             }

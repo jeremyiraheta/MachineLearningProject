@@ -39,7 +39,11 @@ namespace PRProject
                 user.HRef = "~/Users.aspx?id=" + ldata.USER;                
                 if(ldata.isAdmin)
                 {
-
+                    signin.InnerText = "Crear Usuarios";
+                }
+                else
+                {
+                    signin.Attributes.Add("style", "display:none;");
                 }
                 submenu.Text = string.Concat("<ul class='sub-menu' style='display: none; visibility: hidden;'>",
                                  "<li id = 'menu-item-47' class='menu-item menu-item-type-post_type menu-item-object-page'><a href = 'ARestaurantes.aspx' >Agregar Restaurante</a></li>",

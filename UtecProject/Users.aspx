@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">
     <h4 style="text-align:center;"><asp:Literal ID="output" runat="server"></asp:Literal></h4>
-    <div id="portrait" class="hidden" style="padding: 55px 25% 37px;" runat="server">
+    <div id="portrait" class="shidden" style="padding: 55px 25% 37px;" runat="server">
         <h1>Datos de Usuario: 
             <asp:Literal ID="username" runat="server"></asp:Literal>
         </h1>
@@ -17,7 +17,12 @@
         <table style="border-style: solid; border-color: inherit; border-width: 2px; width: 434px;">
             <tr>
                 <td style="padding: 10px 20px 0px 20px; text-align:center;" colspan="2">
-                    <asp:Image ID="img" runat="server" />
+                   <div id="image-upload">
+                        <label for="file-input">
+                        <asp:Image ID="img" runat="server" Height="300px" Width ="400px"/>
+                            <asp:FileUpload ID="upload" runat="server" Enabled="False" CssClass="hidden" />
+                        </label>
+                    </div>
                     </td>
             </tr>
 
@@ -59,7 +64,12 @@
                     <asp:Label ID="lcount" runat="server" Text="0"></asp:Label>
                  </td>
             </tr>
+            <tr><td  id="pass" runat="server" colspan="2">                
+                </td></tr>
         </table>
+         <div id="editcontrols" style="text-align:center;" runat="server">
+
+        </div>
         </div>
 
     <div>

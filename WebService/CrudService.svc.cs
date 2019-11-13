@@ -288,13 +288,133 @@ namespace WebService
             }
             return r;
         }
+        public int GetValoracion(string user, int platillo)
+        {
+            DataSet ds = Select("VALORACIONES", $"ID_USUARIO='{user}' and ID_PLATILLO={platillo}");
+            int val = -1;
+            if (ds.Tables.Count > 0)
+                int.TryParse(ds.Tables[0].Rows[0][0].ToString(), out val);
+            return val;
+        }
+        public Dictionary<int,int> GetValoraciones(string user)
+        {
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+            DataSet ds = Select("select id_platillo, rate from valoraciones");
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                dic.Add(int.Parse(r[0].ToString()), int.Parse(r[1].ToString()));
+            }
+            return dic;
+        }
         public List<Platillos> sp_RecomendarProductos()
         {
-            return null;
+            DataSet rsTops = Select("select top 10 * from vPlatillos order by rate desc");
+            DataSet rsClicks = Select("select top 10 p.* from ACCIONCLICK a inner join vPlatillos p on p.ID_PLATILLOS = a.ID_PLATILLOS order by CANTIDAD desc");
+            List<Platillos> platillos = new List<Platillos>();
+            foreach (DataRow r in rsTops.Tables[0].Rows)
+            {
+                Platillos p = new Platillos();
+                p.ID_PLATILLOS = Convert.ToInt32(r["ID_PLATILLOS"]);
+                p.ID_RESTAURANTES = Convert.ToInt32(r["ID_RESTAURANTES"]);
+                p.ID_TIPO = Convert.ToInt32(r["ID_TIPO"]);
+                p.NOMBRE = Convert.ToString(r["NOMBRE"]);
+                try { p.RATE = (decimal)Math.Round(float.Parse(r["RATE"].ToString())); } catch { }
+                p.PRECIO = Convert.ToDecimal(r["PRECIO"]);
+                p.DESCRIPCION = Convert.ToString(r["DESCRIPCION"]);
+                p.FECHA = Convert.ToString(r["FECHA"]);
+                p.TIPO = Convert.ToString(r["TIPO"]);
+                p.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
+                p.URL = Convert.ToString(r["URL"]);
+                platillos.Add(p);
+            }
+            foreach (DataRow r in rsClicks.Tables[0].Rows)
+            {
+                Platillos p = new Platillos();
+                p.ID_PLATILLOS = Convert.ToInt32(r["ID_PLATILLOS"]);
+                p.ID_RESTAURANTES = Convert.ToInt32(r["ID_RESTAURANTES"]);
+                p.ID_TIPO = Convert.ToInt32(r["ID_TIPO"]);
+                p.NOMBRE = Convert.ToString(r["NOMBRE"]);
+                try { p.RATE = (decimal)Math.Round(float.Parse(r["RATE"].ToString())); } catch { }
+                p.PRECIO = Convert.ToDecimal(r["PRECIO"]);
+                p.DESCRIPCION = Convert.ToString(r["DESCRIPCION"]);
+                p.FECHA = Convert.ToString(r["FECHA"]);
+                p.TIPO = Convert.ToString(r["TIPO"]);
+                p.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
+                p.URL = Convert.ToString(r["URL"]);
+                platillos.Add(p);
+            }
+            if(platillos.Count > 10)
+            {
+                Random rnd = new Random();
+                for (int i = 0; i < 10; i++)
+                {
+                    bool removed = false;
+                    int antiloop = 10;
+                    do
+                    {
+                        Platillos tr = platillos[rnd.Next(0, platillos.Count-1)];
+                        antiloop--;
+                        if (antiloop == 10) removed = true;
+                        if(tr.RATE < 3)
+                        {
+                            platillos.Remove(tr);
+                            removed = true;
+                        }
+                    } while (!removed);
+                }
+            }
+            return platillos;
         }
         public List<Platillos> sp_RecomendarProductosPersonalizado(string user)
         {
+            DataSet ds = Select($"select top 10 id_usuarioa,id_usuariob from recomendaciones where id_usuarioa='{user}' or id_usuariob='{user}' order by coincidencias");
+            List<Platillos> platillos = new List<Platillos>();
+            Dictionary<int, int> unificated = new Dictionary<int, int>();
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                string ruser = (r["id_usuarioa"].ToString() == user) ? r["id_usuariob"].ToString() : r["id_usuarioa"].ToString();
+                Dictionary<int, int> dic1 = GetValoraciones(ruser);
+                Dictionary<int, int> dic2 = GetValoraciones(user);
+                foreach (int k in dic1.Keys)
+                {
+                    if (!dic2.ContainsKey(k)) unificated.Add(k,dic2[k]);
+                }
+            }
+            string into = "";
+            foreach (int i in unificated.Keys)
+            {
+                into += i + ",";
+            }
+            if (into == "") return platillos; else into = into.Substring(0, into.Length - 1);
+            DataSet rsTops = Select($"select * from vPlatillos where id_platillo into ({into})");
+            foreach (DataRow r in rsTops.Tables[0].Rows)
+            {
+                Platillos p = new Platillos();
+                p.ID_PLATILLOS = Convert.ToInt32(r["ID_PLATILLOS"]);
+                p.ID_RESTAURANTES = Convert.ToInt32(r["ID_RESTAURANTES"]);
+                p.ID_TIPO = Convert.ToInt32(r["ID_TIPO"]);
+                p.NOMBRE = Convert.ToString(r["NOMBRE"]);
+                try { p.RATE = (decimal)Math.Round(float.Parse(r["RATE"].ToString())); } catch { }
+                p.PRECIO = Convert.ToDecimal(r["PRECIO"]);
+                p.DESCRIPCION = Convert.ToString(r["DESCRIPCION"]);
+                p.FECHA = Convert.ToString(r["FECHA"]);
+                p.TIPO = Convert.ToString(r["TIPO"]);
+                p.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
+                p.URL = Convert.ToString(r["URL"]);
+                platillos.Add(p);
+            }
             return null;
+        }
+        public void sp_AgregarClick(LoginData login, int idplatillo, string iduser)
+        {
+            if (!isValidUser(login.USER, login.PASS))
+                throw new Exception(NOLOGIN);
+            adapter = new SqlDataAdapter("sp_AgregarClick", conexion);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@idplatillo", idplatillo));
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@iduser", iduser));            
+            adapter.Fill(new DataSet());
+            adapter.Dispose();
         }
         public List<Platillos> sp_UltimosPlatillos(int offset, int count)
         {
@@ -497,7 +617,7 @@ namespace WebService
             adapter.Fill(new DataSet());
             adapter.Dispose();
         }
-        public void sp_AlterUsuario(LoginData login,string image, string nombre, string apellido, string correo, string birth, bool admin, string password=null)
+        public void sp_AlterUsuario(LoginData login,int image, string nombre, string apellido, string correo, string birth, bool admin, string password=null)
         {
             if (!isValidUser(login.USER, login.PASS))
                 throw new Exception(NOLOGIN);

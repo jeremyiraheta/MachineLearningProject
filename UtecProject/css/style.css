@@ -461,7 +461,7 @@ li.current_page_parent  a:after {  }
 *********************************************************************************************/
 
 #slider_wrap { background:#fff; position:relative; overflow:hidden; width: 100%; border: 1px solid #c3c3ba; border-top: 0; -webkit-border-bottom-right-radius: 8px; -webkit-border-bottom-left-radius: 8px; -moz-border-radius-bottomright: 8px; -moz-border-radius-bottomleft: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; margin: 0 0 40px; }
-#slider {  float:left;  background-color: #fff; width: 640px; -webkit-border-bottom-left-radius: 8px; -moz-border-radius-bottomleft: 8px; border-bottom-left-radius: 8px; }
+#slider {  float:left;  background-color: #fff; width: 100%; -webkit-border-bottom-left-radius: 8px; -moz-border-radius-bottomleft: 8px; border-bottom-left-radius: 8px; }
 #slider_nav { float:right; width:337px; background-color: #f3f3e7; border-left: 1px solid #dbdbc8; -webkit-border-bottom-right-radius: 8px; -moz-border-radius-bottomright: 8px; border-bottom-right-radius: 8px; overflow: hidden; }
 #slider_nav .item { padding: 15px; border-bottom: 1px solid #e6e6ce; cursor: pointer; }
 #slider_nav .item, #slider_nav .thumb:before, #slider_nav .thumb img { -moz-transition: all 200ms; -webkit-transition: all 200ms; transition: all 200ms; }
@@ -728,8 +728,8 @@ html[xmlns] .slides {display: block;}
 #content, .single .post, .page .post_content, .attachment .post_content {
 	float: left;
 	background: #fff;
-	width: 570px;
-	padding: 30px 35px;
+	width: 80%;
+	padding: 30px 100px;
 	border: 1px solid #deddd2;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;

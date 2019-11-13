@@ -40,6 +40,8 @@ namespace WebService
         [OperationContract]
         int Count(string table);
         [OperationContract]
+        int GetValoracion(string user, int platillo);
+        [OperationContract]
         void sp_AgregarRestaurante(LoginData login, string name, string reference, string img);
         [OperationContract]
         void sp_AgregarUsuario(string id, string nombre, string apellido, string correo, string borndate, string pass, string img);
@@ -66,11 +68,13 @@ namespace WebService
         [OperationContract]
         void sp_AlterComentario(LoginData login, int id, string comentario);
         [OperationContract]
-        void sp_AlterUsuario(LoginData login,string image, string nombre, string apellido, string correo, string birth, bool admin, string password = null);
+        void sp_AlterUsuario(LoginData login,int image, string nombre, string apellido, string correo, string birth, bool admin, string password = null);
         [OperationContract]
         List<Platillos> sp_RecomendarProductos();
         [OperationContract]
         List<Platillos> sp_RecomendarProductosPersonalizado(string user);
+        [OperationContract]
+        void sp_AgregarClick(LoginData login, int idplatillo, string iduser);
        
     }
     [DataContract]

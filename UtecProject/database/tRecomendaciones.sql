@@ -20,7 +20,10 @@ begin
 			else if Exists(select * from RECOMENDACIONES where (ID_USUARIOA = @id and ID_USUARIOB =@iduser))
 				update RECOMENDACIONES set COINCIDENCIAS += 1 where (ID_USUARIOA = @id and ID_USUARIOB =@iduser)
 			else
-				insert into RECOMENDACIONES values(@iduser,@id,1)
+				begin
+          if @iduser != @id
+            insert into RECOMENDACIONES values(@iduser,@id,1)
+        end
 			fetch next from each_row into @id,@rate        
 		END;
  

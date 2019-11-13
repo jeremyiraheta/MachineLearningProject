@@ -106,22 +106,6 @@ create table ACCIONCLICK (
 go
 
 /*==============================================================*/
-/* Table: ACCIONTIEMPO                                          */
-/*==============================================================*/
-create table ACCIONTIEMPO (
-   ID_ACCION            int                  identity,
-   ID_PLATILLOS         int                  null,
-   ID_USUARIO           varchar(50)          null,
-   TIEMPO               int                  not null,
-   constraint PK_ACCIONTIEMPO primary key (ID_ACCION),
-   constraint FK_ACCIONTI_REFERENCE_PLATILLO foreign key (ID_PLATILLOS)
-      references PLATILLOS (ID_PLATILLOS),
-   constraint FK_ACCIONTI_REFERENCE_USUARIOS foreign key (ID_USUARIO)
-      references USUARIOS (ID_USUARIO)
-)
-go
-
-/*==============================================================*/
 /* Table: COMENTARIOS                                           */
 /*==============================================================*/
 create table COMENTARIOS (

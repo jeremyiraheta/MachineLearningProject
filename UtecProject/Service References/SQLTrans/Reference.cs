@@ -939,6 +939,12 @@ namespace PRProject.SQLTrans {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/Count", ReplyAction="http://tempuri.org/ICrudService/CountResponse")]
         System.Threading.Tasks.Task<int> CountAsync(string table);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetValoracion", ReplyAction="http://tempuri.org/ICrudService/GetValoracionResponse")]
+        int GetValoracion(string user, int platillo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/GetValoracion", ReplyAction="http://tempuri.org/ICrudService/GetValoracionResponse")]
+        System.Threading.Tasks.Task<int> GetValoracionAsync(string user, int platillo);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AgregarRestaurante", ReplyAction="http://tempuri.org/ICrudService/sp_AgregarRestauranteResponse")]
         void sp_AgregarRestaurante(PRProject.SQLTrans.LoginData login, string name, string reference, string img);
         
@@ -1018,10 +1024,10 @@ namespace PRProject.SQLTrans {
         System.Threading.Tasks.Task sp_AlterComentarioAsync(PRProject.SQLTrans.LoginData login, int id, string comentario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AlterUsuario", ReplyAction="http://tempuri.org/ICrudService/sp_AlterUsuarioResponse")]
-        void sp_AlterUsuario(PRProject.SQLTrans.LoginData login, string image, string nombre, string apellido, string correo, string birth, bool admin, string password);
+        void sp_AlterUsuario(PRProject.SQLTrans.LoginData login, int image, string nombre, string apellido, string correo, string birth, bool admin, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AlterUsuario", ReplyAction="http://tempuri.org/ICrudService/sp_AlterUsuarioResponse")]
-        System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, string image, string nombre, string apellido, string correo, string birth, bool admin, string password);
+        System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, int image, string nombre, string apellido, string correo, string birth, bool admin, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_RecomendarProductos", ReplyAction="http://tempuri.org/ICrudService/sp_RecomendarProductosResponse")]
         PRProject.SQLTrans.Platillos[] sp_RecomendarProductos();
@@ -1034,6 +1040,12 @@ namespace PRProject.SQLTrans {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizado", ReplyAction="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizadoResponse")]
         System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_RecomendarProductosPersonalizadoAsync(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AgregarClick", ReplyAction="http://tempuri.org/ICrudService/sp_AgregarClickResponse")]
+        void sp_AgregarClick(PRProject.SQLTrans.LoginData login, int idplatillo, string iduser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AgregarClick", ReplyAction="http://tempuri.org/ICrudService/sp_AgregarClickResponse")]
+        System.Threading.Tasks.Task sp_AgregarClickAsync(PRProject.SQLTrans.LoginData login, int idplatillo, string iduser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1167,6 +1179,14 @@ namespace PRProject.SQLTrans {
             return base.Channel.CountAsync(table);
         }
         
+        public int GetValoracion(string user, int platillo) {
+            return base.Channel.GetValoracion(user, platillo);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetValoracionAsync(string user, int platillo) {
+            return base.Channel.GetValoracionAsync(user, platillo);
+        }
+        
         public void sp_AgregarRestaurante(PRProject.SQLTrans.LoginData login, string name, string reference, string img) {
             base.Channel.sp_AgregarRestaurante(login, name, reference, img);
         }
@@ -1271,11 +1291,11 @@ namespace PRProject.SQLTrans {
             return base.Channel.sp_AlterComentarioAsync(login, id, comentario);
         }
         
-        public void sp_AlterUsuario(PRProject.SQLTrans.LoginData login, string image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
+        public void sp_AlterUsuario(PRProject.SQLTrans.LoginData login, int image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
             base.Channel.sp_AlterUsuario(login, image, nombre, apellido, correo, birth, admin, password);
         }
         
-        public System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, string image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
+        public System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, int image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
             return base.Channel.sp_AlterUsuarioAsync(login, image, nombre, apellido, correo, birth, admin, password);
         }
         
@@ -1293,6 +1313,14 @@ namespace PRProject.SQLTrans {
         
         public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> sp_RecomendarProductosPersonalizadoAsync(string user) {
             return base.Channel.sp_RecomendarProductosPersonalizadoAsync(user);
+        }
+        
+        public void sp_AgregarClick(PRProject.SQLTrans.LoginData login, int idplatillo, string iduser) {
+            base.Channel.sp_AgregarClick(login, idplatillo, iduser);
+        }
+        
+        public System.Threading.Tasks.Task sp_AgregarClickAsync(PRProject.SQLTrans.LoginData login, int idplatillo, string iduser) {
+            return base.Channel.sp_AgregarClickAsync(login, idplatillo, iduser);
         }
     }
 }

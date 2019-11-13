@@ -5,7 +5,7 @@ begin
 (
      SELECT
          v.*,
-          ROW_NUMBER() OVER(ORDER BY id_platillos) AS row_number
+          ROW_NUMBER() OVER(ORDER BY id_platillos desc) AS row_number
      FROM
           vPlatillos v
 )

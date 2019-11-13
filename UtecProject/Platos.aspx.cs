@@ -61,6 +61,7 @@ namespace PRProject
                     Button btnDel = new Button();
                     btnEdit.Text = "Editar";
                     btnDel.Text = "Eliminar";
+                    btnDel.OnClientClick = "if ( ! UserDeleteConfirmation()) return false;";
                     btnDel.Click += BtnDel_Click;
                     btnEdit.Click += BtnEdit_Click;
                     editcontrols.Controls.Add(btnEdit);
@@ -106,7 +107,7 @@ namespace PRProject
                     txtPrecio.Text = Math.Round(dish.PRECIO, 2).ToString();
                     ddRestaurantes.SelectedValue = dish.ID_RESTAURANTES.ToString();
                     ddTipos.SelectedValue = dish.ID_TIPO.ToString();
-                    dishrate.Text = dish.RATE.ToString();
+                    dishrate.Text = dish.RATE == 0 ? "Sin datos" : Math.Round(dish.RATE,2).ToString();
                 }
                 SQLTrans.Comentarios[] comments = client.GetComentarios(id);
                 string comentarios = string.Concat(comments.Length, " Comentarios\n<ol class='commentlist'>");
@@ -137,7 +138,7 @@ namespace PRProject
                     platillos += string.Concat("<tr><td><img src='", (p.URL == null || p.URL == "") ? "/images/sin-imagen.gif" : p.URL, "' height='200px' width='200px' /></td><td>", p.NOMBRE, "</td><td>", p.TIPO, "</td><td>", p.RESTAURANTE, "</td><td>$", Math.Round(p.PRECIO, 2), "</td><td><a href=Platos.aspx?id=", p.ID_PLATILLOS, ">Ver</a>&emsp;");                        
                     if (ldata != null)
                         if (ldata.isAdmin)
-                            platillos += string.Concat("<a href=Platos.aspx?id=", p.ID_PLATILLOS, "&action=edit>Editar</a>&emsp;<a href=Platos.aspx?id=", p.ID_PLATILLOS, "&action=delete OnClientClick=\"return confirm('Are you sure?');\">Eliminar</a></td></tr>\n");
+                            platillos += string.Concat("<a href=Platos.aspx?id=", p.ID_PLATILLOS, "&action=edit>Editar</a>&emsp;<a href=Platos.aspx?id=", p.ID_PLATILLOS, "&action=delete OnClick=\"if ( ! UserDeleteConfirmation()) return false;\">Eliminar</a></td></tr>\n");
 
                 }
                 tbody.InnerHtml = platillos;
@@ -160,7 +161,7 @@ namespace PRProject
                     return;
                 }
                 client.sp_AgregarComentario(ldata, Request["id"], txtComment.Text);
-                Page.Validate();
+                Response.Redirect(Request.RawUrl);
             }
             catch
             {
@@ -196,39 +197,6 @@ namespace PRProject
         private void BtnDel_Click(object sender, EventArgs e)
         {
             Response.Redirect("Platos.aspx?id=" + Request["id"] + "&action=delete");
-        }
-        private void createRating()
-        {
-            RadioButton r1 = new RadioButton();
-            RadioButton r2 = new RadioButton();
-            RadioButton r3 = new RadioButton();
-            RadioButton r4 = new RadioButton();
-            RadioButton r5 = new RadioButton();
-            r1.CssClass = "radio-btn hide";
-            r1.AutoPostBack = true;
-            r1.CheckedChanged += (object sender, EventArgs e) => {
-
-            };
-            r2.CssClass = "radio-btn hide";
-            r2.AutoPostBack = true;
-            r2.CheckedChanged += (object sender, EventArgs e) => {
-
-            };
-            r3.CssClass = "radio-btn hide";
-            r3.AutoPostBack = true;
-            r3.CheckedChanged += (object sender, EventArgs e) => {
-
-            };
-            r4.CssClass = "radio-btn hide";
-            r4.AutoPostBack = true;
-            r4.CheckedChanged += (object sender, EventArgs e) => {
-
-            };
-            r5.CssClass = "radio-btn hide";
-            r5.AutoPostBack = true;
-            r5.CheckedChanged += (object sender, EventArgs e) => {
-
-            };
-        }
+        }        
     }
 }

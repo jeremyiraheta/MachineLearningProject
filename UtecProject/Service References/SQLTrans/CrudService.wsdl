@@ -87,6 +87,12 @@
   <wsdl:message name="ICrudService_Count_OutputMessage">
     <wsdl:part name="parameters" element="tns:CountResponse" />
   </wsdl:message>
+  <wsdl:message name="ICrudService_GetValoracion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValoracion" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_GetValoracion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValoracionResponse" />
+  </wsdl:message>
   <wsdl:message name="ICrudService_sp_AgregarRestaurante_InputMessage">
     <wsdl:part name="parameters" element="tns:sp_AgregarRestaurante" />
   </wsdl:message>
@@ -183,6 +189,12 @@
   <wsdl:message name="ICrudService_sp_RecomendarProductosPersonalizado_OutputMessage">
     <wsdl:part name="parameters" element="tns:sp_RecomendarProductosPersonalizadoResponse" />
   </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarClick_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarClick" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AgregarClick_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AgregarClickResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICrudService">
     <wsdl:operation name="isAdmin">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/isAdmin" message="tns:ICrudService_isAdmin_InputMessage" />
@@ -235,6 +247,10 @@
     <wsdl:operation name="Count">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/Count" message="tns:ICrudService_Count_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/CountResponse" message="tns:ICrudService_Count_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValoracion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/GetValoracion" message="tns:ICrudService_GetValoracion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/GetValoracionResponse" message="tns:ICrudService_GetValoracion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="sp_AgregarRestaurante">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarRestaurante" message="tns:ICrudService_sp_AgregarRestaurante_InputMessage" />
@@ -299,6 +315,10 @@
     <wsdl:operation name="sp_RecomendarProductosPersonalizado">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizado" message="tns:ICrudService_sp_RecomendarProductosPersonalizado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizadoResponse" message="tns:ICrudService_sp_RecomendarProductosPersonalizado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarClick">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarClick" message="tns:ICrudService_sp_AgregarClick_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarClickResponse" message="tns:ICrudService_sp_AgregarClick_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICrudService" type="tns:ICrudService">
@@ -413,6 +433,15 @@
     </wsdl:operation>
     <wsdl:operation name="Count">
       <soap:operation soapAction="http://tempuri.org/ICrudService/Count" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValoracion">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/GetValoracion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -557,6 +586,15 @@
     </wsdl:operation>
     <wsdl:operation name="sp_RecomendarProductosPersonalizado">
       <soap:operation soapAction="http://tempuri.org/ICrudService/sp_RecomendarProductosPersonalizado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AgregarClick">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarClick" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

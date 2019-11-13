@@ -18,7 +18,34 @@ namespace PRProject
             ldata = ((SQLTrans.LoginData)Session["userdata"]);  
             if(!IsPostBack)
             {
-                
+                int v = 0;
+                if (ldata == null) return;
+                v = client.GetValoracion(ldata.USER, id);
+                switch(v)
+                {
+                    case 1:
+                        star1.Checked = true;
+                        break;
+                    case 2:
+                        star2.Checked = true;
+                        break;
+                    case 3:
+                        star3.Checked = true;
+                        break;
+                    case 4:
+                        star4.Checked = true;
+                        break;
+                    case 5:
+                        star5.Checked = true;
+                        break;
+                    default:
+                        star1.Checked = false;
+                        star2.Checked = false;
+                        star3.Checked = false;
+                        star4.Checked = false;
+                        star5.Checked = false;
+                        break;
+                }
             }
         }
 

@@ -10,10 +10,10 @@ namespace PRProject
 {
     public partial class Locales : System.Web.UI.Page
     {
-        const string MSGNOGRANT = "<center><div color=red><h1>No tienes permisos para ver este contenido</h1></div></center>";
-        const string MSGNODISH = "<center><div color=red><h1>No se encontro al local</h1></div></center>";
-        const string MSGDEL = "<center><div color=red><h1>Local Eliminado!</h1></div></center>";
-        const string MSGNODEL = "<center><div color=red><h1>No fue posible eliminar el local!</h1></div></center>";
+        const string MSGNOGRANT = "No tienes permisos para ver este contenido";
+        const string MSGNODISH = "No se encontro al local";
+        const string MSGDEL = "Local Eliminado!";
+        const string MSGNODEL = "No fue posible eliminar el local!";
         SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,6 +44,7 @@ namespace PRProject
                     Button btnDel = new Button();                    
                     btnEdit.Text = "Editar";
                     btnDel.Text = "Eliminar";
+                    btnDel.OnClientClick = "if ( ! UserDeleteConfirmation()) return false;";
                     btnDel.Click += BtnDel_Click;
                     btnEdit.Click += BtnEdit_Click;
                     editcontrols.Controls.Add(btnEdit);
@@ -83,7 +84,7 @@ namespace PRProject
                     locales += string.Concat("<tr><td><img src='", (r.URL == null || r.URL == string.Empty) ? "/images/sin-imagen.gif" : r.URL, "' height='200px' width='200px' /></td><td>", r.NOMBRE, "</td><td>", r.REFERENCIA, "</td><td>", r.RATE, "</td><td><a href=Locales.aspx?id=", r.ID, ">Ver</a>&emsp;");
                     if(ldata!=null)
                         if(ldata.isAdmin)
-                            locales+=string.Concat("<a href=Locales.aspx?id=",r.ID, "&action=edit>Editar</a>&emsp;<a href=Locales.aspx?id=", r.ID, "&action=delete>Eliminar</a></td></tr>\n");
+                            locales+=string.Concat("<a href=Locales.aspx?id=",r.ID, "&action=edit>Editar</a>&emsp;<a href=Locales.aspx?id=", r.ID, "&action=delete onclick=\"if ( ! UserDeleteConfirmation()) return false;\">Eliminar</a></td></tr>\n");
                 }
                 tbody.InnerHtml = locales;
             }

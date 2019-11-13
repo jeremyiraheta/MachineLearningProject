@@ -177,6 +177,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetValoracion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="platillo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValoracionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetValoracionResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="sp_AgregarRestaurante">
     <xs:complexType>
       <xs:sequence>
@@ -393,7 +408,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WebService" minOccurs="0" name="login" nillable="true" type="q25:LoginData" />
-        <xs:element minOccurs="0" name="image" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="image" type="xs:int" />
         <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="apellido" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
@@ -432,6 +447,20 @@
       <xs:sequence>
         <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/WebService" minOccurs="0" name="sp_RecomendarProductosPersonalizadoResult" nillable="true" type="q27:ArrayOfPlatillos" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sp_AgregarClick">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WebService" minOccurs="0" name="login" nillable="true" type="q28:LoginData" />
+        <xs:element minOccurs="0" name="idplatillo" type="xs:int" />
+        <xs:element minOccurs="0" name="iduser" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sp_AgregarClickResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

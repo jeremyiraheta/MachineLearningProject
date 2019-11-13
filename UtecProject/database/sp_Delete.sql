@@ -4,6 +4,8 @@ begin
 	if(@tipo = 'R')
 	begin
 		delete from COMENTARIOS where ID_PLATILLOS in (select ID_PLATILLOS from PLATILLOS where ID_RESTAURANTES=@id)
+		delete from VALORACIONES where ID_PLATILLOS in (select ID_PLATILLOS from PLATILLOS where ID_RESTAURANTES=@id)
+		delete from ACCIONCLICK where ID_PLATILLOS in (select ID_PLATILLOS from PLATILLOS where ID_RESTAURANTES=@id)
 		delete from PLATILLOS where ID_RESTAURANTES = @id
 		delete from RESTAURANTES where ID_RESTAURANTES = @id		
 		exec sp_AgregarLog @user,@id, 'RESTAURANTES','D'
@@ -11,6 +13,8 @@ begin
 	if(@tipo = 'P')
 	begin
 		delete from COMENTARIOS where ID_PLATILLOS = @id
+		delete from VALORACIONES where ID_PLATILLOS = @id
+		delete from ACCIONCLICK where ID_PLATILLOS = @id
 		delete from PLATILLOS where ID_PLATILLOS = @id		
 		exec sp_AgregarLog @user,@id, 'PLATILLOS','D'
 	end

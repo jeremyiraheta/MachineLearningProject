@@ -5,7 +5,7 @@ begin
 (
      SELECT
          v.*,
-          ROW_NUMBER() OVER(ORDER BY id_action) AS row_number
+          ROW_NUMBER() OVER(ORDER BY id_action desc) AS row_number
      FROM
           LOGS v
 )
