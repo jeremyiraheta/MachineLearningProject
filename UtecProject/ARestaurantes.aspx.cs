@@ -38,10 +38,10 @@ namespace PRProject
                 txtReferencia.Text = "";
                 txtRname.Text = "";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                output.Text = "Ocurrio un error y no se completo la transaccion!";
+                output.Text = "Ocurrio un error y no se completo la transaccion!" + (char)13 + ex.Message;
             }
             
         }       

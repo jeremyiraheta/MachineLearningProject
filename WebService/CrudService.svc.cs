@@ -325,6 +325,7 @@ namespace WebService
                 p.TIPO = Convert.ToString(r["TIPO"]);
                 p.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
                 p.URL = Convert.ToString(r["URL"]);
+                if (p.URL == "") p.URL = "/images/sin-imagen.gif";
                 platillos.Add(p);
             }
             foreach (DataRow r in rsClicks.Tables[0].Rows)
@@ -341,6 +342,7 @@ namespace WebService
                 p.TIPO = Convert.ToString(r["TIPO"]);
                 p.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
                 p.URL = Convert.ToString(r["URL"]);
+                if (p.URL == "") p.URL = "/images/sin-imagen.gif";
                 platillos.Add(p);
             }
             if(platillos.Count > 10)
@@ -363,7 +365,7 @@ namespace WebService
                     } while (!removed);
                 }
             }
-            return platillos;
+            return (platillos.Count > 0) ? platillos : sp_UltimosPlatillos(0, 10); 
         }
         public List<Platillos> sp_RecomendarProductosPersonalizado(string user)
         {
@@ -385,7 +387,7 @@ namespace WebService
             {
                 into += i + ",";
             }
-            if (into == "") return platillos; else into = into.Substring(0, into.Length - 1);
+            if (into == "") return sp_UltimosPlatillos(0,10); else into = into.Substring(0, into.Length - 1);
             DataSet rsTops = Select($"select * from vPlatillos where id_platillo into ({into})");
             foreach (DataRow r in rsTops.Tables[0].Rows)
             {
@@ -401,9 +403,10 @@ namespace WebService
                 p.TIPO = Convert.ToString(r["TIPO"]);
                 p.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
                 p.URL = Convert.ToString(r["URL"]);
+                if (p.URL == "") p.URL = "/images/sin-imagen.gif";
                 platillos.Add(p);
             }
-            return null;
+            return (platillos.Count > 0) ? platillos : sp_UltimosPlatillos(0,10);
         }
         public void sp_AgregarClick(LoginData login, int idplatillo, string iduser)
         {
@@ -444,7 +447,8 @@ namespace WebService
                 catch { }
                 nl.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
                 nl.TIPO = Convert.ToString(r["TIPO"]);
-                nl.URL = Convert.ToString(r["URL"]);                
+                nl.URL = Convert.ToString(r["URL"]);
+                if (nl.URL == "") nl.URL = "/images/sin-imagen.gif";
                 platillos.Add(nl);
             }
             return platillos;
@@ -636,6 +640,39 @@ namespace WebService
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@admin", admin));
             adapter.Fill(new DataSet());
             adapter.Dispose();
+        }
+        public Dictionary<int, string> getGallery()
+        {
+            Dictionary<int, string> gallery = new Dictionary<int, string>();
+            DataSet ds = Select("select p.ID_PLATILLOS,i.ID_IMAGEN from platillos p inner join IMAGENES i on i.ID_IMAGEN = p.ID_IMAGEN");
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                gallery.Add(int.Parse(r[0].ToString()), r[1].ToString());
+            }
+            return gallery;
+        }
+        public List<Platillos> buscarPlatillo(string buscar)
+        {
+            List<Platillos> platillos = new List<Platillos>();
+            DataSet ds = Select($"select * from platillos where NOMBRE like '%{buscar}%'");
+            foreach (DataRow r in ds.Tables[0].Rows)
+            {
+                Platillos p = new Platillos();
+                p.ID_PLATILLOS = Convert.ToInt32(r["ID_PLATILLOS"]);
+                p.ID_RESTAURANTES = Convert.ToInt32(r["ID_RESTAURANTES"]);
+                p.ID_TIPO = Convert.ToInt32(r["ID_TIPO"]);
+                p.NOMBRE = Convert.ToString(r["NOMBRE"]);
+                try { p.RATE = (decimal)Math.Round(float.Parse(r["RATE"].ToString())); } catch { }
+                p.PRECIO = Convert.ToDecimal(r["PRECIO"]);
+                p.DESCRIPCION = Convert.ToString(r["DESCRIPCION"]);
+                p.FECHA = Convert.ToString(r["FECHA"]);
+                p.TIPO = Convert.ToString(r["TIPO"]);
+                p.RESTAURANTE = Convert.ToString(r["RESTAURANTE"]);
+                p.URL = Convert.ToString(r["URL"]);
+                if (p.URL == "") p.URL = "/images/sin-imagen.gif";
+                platillos.Add(p);
+            }
+            return platillos;
         }
     }
 }

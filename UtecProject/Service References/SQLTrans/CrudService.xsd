@@ -463,4 +463,30 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="getGallery">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getGalleryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getGalleryResult" nillable="true" type="q29:ArrayOfKeyValueOfintstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="buscarPlatillo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="buscar" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="buscarPlatilloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WebService" minOccurs="0" name="buscarPlatilloResult" nillable="true" type="q30:ArrayOfPlatillos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

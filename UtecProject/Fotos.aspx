@@ -3,5 +3,17 @@
     
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">    
-        <center><img alt="" style="width: 500px;height: 500px;" class="auto-style1" src="images/webPageConstruction.jpg" /></center>
+        <div id="content">
+	 
+		<div class="post_content">
+						
+			<h1 class="title">Galeria</h1>
+			
+			<div class="entry">
+                <div class="gallery" id="gallery" runat="server">
+
+                    </div>
+                </div>
+            </div>
+            </div>
 </asp:Content>

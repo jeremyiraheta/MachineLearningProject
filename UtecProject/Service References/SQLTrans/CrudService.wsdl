@@ -195,6 +195,18 @@
   <wsdl:message name="ICrudService_sp_AgregarClick_OutputMessage">
     <wsdl:part name="parameters" element="tns:sp_AgregarClickResponse" />
   </wsdl:message>
+  <wsdl:message name="ICrudService_getGallery_InputMessage">
+    <wsdl:part name="parameters" element="tns:getGallery" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_getGallery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getGalleryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_buscarPlatillo_InputMessage">
+    <wsdl:part name="parameters" element="tns:buscarPlatillo" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_buscarPlatillo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:buscarPlatilloResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICrudService">
     <wsdl:operation name="isAdmin">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/isAdmin" message="tns:ICrudService_isAdmin_InputMessage" />
@@ -319,6 +331,14 @@
     <wsdl:operation name="sp_AgregarClick">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarClick" message="tns:ICrudService_sp_AgregarClick_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AgregarClickResponse" message="tns:ICrudService_sp_AgregarClick_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getGallery">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/getGallery" message="tns:ICrudService_getGallery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/getGalleryResponse" message="tns:ICrudService_getGallery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarPlatillo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/buscarPlatillo" message="tns:ICrudService_buscarPlatillo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/buscarPlatilloResponse" message="tns:ICrudService_buscarPlatillo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICrudService" type="tns:ICrudService">
@@ -595,6 +615,24 @@
     </wsdl:operation>
     <wsdl:operation name="sp_AgregarClick">
       <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AgregarClick" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGallery">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/getGallery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPlatillo">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/buscarPlatillo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

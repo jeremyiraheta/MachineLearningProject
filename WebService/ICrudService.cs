@@ -75,7 +75,11 @@ namespace WebService
         List<Platillos> sp_RecomendarProductosPersonalizado(string user);
         [OperationContract]
         void sp_AgregarClick(LoginData login, int idplatillo, string iduser);
-       
+        [OperationContract]
+        Dictionary<int, string> getGallery();
+        [OperationContract]
+        List<Platillos> buscarPlatillo(string buscar);
+
     }
     [DataContract]
     public class LoginData

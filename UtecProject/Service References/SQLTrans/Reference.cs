@@ -1046,6 +1046,18 @@ namespace PRProject.SQLTrans {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AgregarClick", ReplyAction="http://tempuri.org/ICrudService/sp_AgregarClickResponse")]
         System.Threading.Tasks.Task sp_AgregarClickAsync(PRProject.SQLTrans.LoginData login, int idplatillo, string iduser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/getGallery", ReplyAction="http://tempuri.org/ICrudService/getGalleryResponse")]
+        System.Collections.Generic.Dictionary<int, string> getGallery();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/getGallery", ReplyAction="http://tempuri.org/ICrudService/getGalleryResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> getGalleryAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/buscarPlatillo", ReplyAction="http://tempuri.org/ICrudService/buscarPlatilloResponse")]
+        PRProject.SQLTrans.Platillos[] buscarPlatillo(string buscar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/buscarPlatillo", ReplyAction="http://tempuri.org/ICrudService/buscarPlatilloResponse")]
+        System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> buscarPlatilloAsync(string buscar);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1321,6 +1333,22 @@ namespace PRProject.SQLTrans {
         
         public System.Threading.Tasks.Task sp_AgregarClickAsync(PRProject.SQLTrans.LoginData login, int idplatillo, string iduser) {
             return base.Channel.sp_AgregarClickAsync(login, idplatillo, iduser);
+        }
+        
+        public System.Collections.Generic.Dictionary<int, string> getGallery() {
+            return base.Channel.getGallery();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, string>> getGalleryAsync() {
+            return base.Channel.getGalleryAsync();
+        }
+        
+        public PRProject.SQLTrans.Platillos[] buscarPlatillo(string buscar) {
+            return base.Channel.buscarPlatillo(buscar);
+        }
+        
+        public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> buscarPlatilloAsync(string buscar) {
+            return base.Channel.buscarPlatilloAsync(buscar);
         }
     }
 }

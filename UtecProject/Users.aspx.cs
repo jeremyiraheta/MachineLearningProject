@@ -11,7 +11,7 @@ namespace PRProject
     public partial class Users : System.Web.UI.Page
     {
         const string MSGNOGRANT = "No tienes permisos para ver este contenido";
-        const string MSGNOUSER = "No se encontro al usuario";
+        const string MSGNOUSER = "No se encontro al usuario";                
         protected void Page_Load(object sender, EventArgs e)
         {
             SQLTrans.CrudServiceClient client = new SQLTrans.CrudServiceClient();
@@ -86,7 +86,7 @@ namespace PRProject
 
         private void BtnCPass_Click(object sender, EventArgs e)
         {
-            pass.Controls.Add(LoadControl("changepass.ascx"));            
+            pass.Controls.Add(LoadControl("changepass.ascx"));                 
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -105,13 +105,14 @@ namespace PRProject
                     img = client.sp_AgregarImagen(ldata, url);
                     upload.SaveAs(Server.MapPath(Path.Combine("~/images/", name)));
                 }
-                int id = int.Parse(Request["id"]);
+                string id = Request["id"].ToString();
                 TextBox c = (TextBox)FindControl("txtnewpass");
                 TextBox old = (TextBox)FindControl("txtoldpass");
                 if(old != null)
                     if(old.Text != ldata.PASS)
                     {
-
+                        output.Text = "Ingrese su password actual correctamente!";
+                        return;
                     }
                 client.sp_AlterUsuario(ldata, img, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtBirth.Text, chkAdmin.Checked, c != null ? c.Text : ldata.PASS);
                 output.Text = "Transaccion realizada!";

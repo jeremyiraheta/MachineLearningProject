@@ -8,7 +8,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">
     <h4 style="text-align:center;"><asp:Literal ID="output" runat="server"></asp:Literal></h4>
-    <div id="portrait" class="shidden" style="padding: 55px 25% 37px;" runat="server">
+    <div id="portrait" class="hidden" style="padding: 55px 25% 37px;" runat="server">
         <h1>Datos de Usuario: 
             <asp:Literal ID="username" runat="server"></asp:Literal>
         </h1>
