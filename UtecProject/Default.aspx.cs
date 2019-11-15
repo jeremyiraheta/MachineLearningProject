@@ -14,7 +14,22 @@ namespace PRProject
         {
             LoginData ldata = (LoginData)Session["userdata"];
             int inicio = 0;
-            int fin = 10;            
+            int fin = 10; 
+            if(Request["offset"] == "2")
+            {
+                inicio += 10;
+                fin += 10;
+            }
+            if (Request["offset"] == "3")
+            {
+                inicio += 20;
+                fin += 20;
+            }
+            if (Request["offset"] == "4")
+            {
+                inicio += 30;
+                fin += 30;
+            }
             Platillos[] uplatillos = client.sp_UltimosPlatillos(inicio, fin);
             string splatillos = "";
             foreach (Platillos p in uplatillos)
@@ -55,7 +70,7 @@ namespace PRProject
                 }
                 pplatillos += "</div>" + (char)13;                
             } while (stk.Count > 0);
-            carousel.InnerHtml = pplatillos;
+            c.InnerHtml = pplatillos;
         }
         private string getDishSlide(int id, string nombre, string descripcion, string restaurante, string img, decimal rate)
         {
@@ -86,7 +101,6 @@ namespace PRProject
         private string getCarrouselItem(int id, string nombre, string url)
         {
             string dish = "<div class=\"item\">"+
-
                                 "<div class=\"thumb\">" +
                                     $"<a href=\"Platos.aspx?id={id}\" title=\"{nombre}\">" +
                                         $"<img src=\"{url}\" alt=\"{nombre}\" class=\"Thumbnail thumbnail carousel \" width=\"300\" height=\"200\" /></a>"+
@@ -94,7 +108,7 @@ namespace PRProject
                                 $"<h4 class=\"title\" style=\"min-height: 50px;\"><a href=\"Platos.aspx?id={id}\" rel=\"bookmark\" title=\"{nombre}\">{nombre}</a></h4>"+
                                 "<div class=\"meta\">"+                                    
                                     "<p class=\"buttons\">"+
-                                        $"<a href = \"Platos.aspx?id={id}\" class=\"more\">Calificar</a>"+
+                                        $"<a href=\"Platos.aspx?id={id}\" class=\"more\">Calificar</a>"+
                                     "</p>"+
                                     "<div class=\"clear\"></div>"+
                                 "</div>"+

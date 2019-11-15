@@ -13,8 +13,10 @@
             </div>
             <div id="content-wrap">
                 <div id="carousel_wrap">
-                    <div id="carousel" style="height: 333px;" runat="server">
-                        
+                    <div id="carousel" style="height: 333px;">
+                        <div class="entry-content" runat="server" id="c">
+
+                        </div>
                     </div>
                     <div id="carousel_nav">
                         <div class="prev">Prev</div>
@@ -30,11 +32,11 @@
 
                     <div class="cleaner">&nbsp;</div>
                     <div class="navigation">
-                        <span aria-current="page" class="page-numbers current">1</span>
-                        <a class="page-numbers" href="#">2</a>
-                        <a class="page-numbers" href="#">3</a>
-                        <a class="page-numbers" href="#">4</a>
-                        <a class="next page-numbers" href="#">Older  ?</a>
+                        <a class="page-numbers" href="Default.aspx">1</a>
+                        <a class="page-numbers" href="Default.aspx?offset=2" >2</a>
+                        <a class="page-numbers" href="Default.aspx?offset=3">3</a>
+                        <a class="page-numbers" href="Default.aspx?offset=4">4</a>
+                        
                     </div>
                     <div class="cleaner">&nbsp;</div>
                 </div>

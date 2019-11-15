@@ -654,7 +654,7 @@ namespace WebService
         public List<Platillos> buscarPlatillo(string buscar)
         {
             List<Platillos> platillos = new List<Platillos>();
-            DataSet ds = Select($"select * from platillos where NOMBRE like '%{buscar}%'");
+            DataSet ds = Select($"select * from vplatillos where NOMBRE like '%{buscar}%'");
             foreach (DataRow r in ds.Tables[0].Rows)
             {
                 Platillos p = new Platillos();

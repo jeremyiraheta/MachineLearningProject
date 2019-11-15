@@ -48,12 +48,12 @@
                 </div>
                 <!-- / #logo -->
 
-                <form method="get" id="searchform" action="#">
-                    <fieldset>
-                        <input type="text" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" value="Buscar" name="s" id="s" />
-                        <input type="submit" id="searchsubmit" value="Search" />
-                    </fieldset>
-                </form>
+                <form method="get" id="searchform" action="Search.aspx">
+    <fieldset>
+        <input type="text" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" value="Search" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="Search">
+    </fieldset>
+</form>
 
                 <div class="clear"></div>
 

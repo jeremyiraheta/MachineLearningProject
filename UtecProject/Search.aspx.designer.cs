@@ -10,33 +10,33 @@
 namespace PRProject {
     
     
-    public partial class Default {
+    public partial class Search {
         
         /// <summary>
-        /// Control dishslider.
+        /// Control userlist.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dishslider;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userlist;
         
         /// <summary>
-        /// Control c.
+        /// Control edition.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl c;
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell edition;
         
         /// <summary>
-        /// Control lastsdishes.
+        /// Control tbody.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lastsdishes;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbody;
     }
 }
