@@ -60,9 +60,6 @@ table.cinereousTable tfoot td {
 <td>Iraheta Quintanilla, Jeremy Rutilio</td><td>25-4158-2018</td></tr>
 <tr>
 <td>Flores Portillo, Rosa Delmi</td><td>25-0108-2014</td></tr>
-<tr>
-<td>Torres Chavez,Lidia Gabriela</td><td>25-2645-2014</td></tr>
 </tbody>
-</tr>
 </table>
 </asp:Content>

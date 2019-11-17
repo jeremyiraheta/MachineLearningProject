@@ -150,9 +150,9 @@
     <Content Include="Main.Master" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="cache\Thumbs.db" />
-    <None Include="Service References\SQLTrans\CrudService.disco" />
     <Content Include="rating.ascx" />
     <Content Include="Search.aspx" />
+    <None Include="Service References\SQLTrans\CrudService1.disco" />
     <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\utecprojectp2.pubxml" />
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Comentarios.datasource">
@@ -170,20 +170,20 @@
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Logs.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\SQLTrans\CrudService.wsdl" />
-    <None Include="Service References\SQLTrans\CrudService.xsd">
+    <None Include="Service References\SQLTrans\CrudService1.wsdl" />
+    <None Include="Service References\SQLTrans\CrudService5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SQLTrans\CrudService1.xsd">
+    <None Include="Service References\SQLTrans\CrudService51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SQLTrans\CrudService2.xsd">
+    <None Include="Service References\SQLTrans\CrudService52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SQLTrans\CrudService3.xsd">
+    <None Include="Service References\SQLTrans\CrudService53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SQLTrans\CrudService4.xsd">
+    <None Include="Service References\SQLTrans\CrudService54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">

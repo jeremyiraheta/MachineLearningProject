@@ -19,16 +19,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:50075/Crudservice.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://utecprojectp2.azurewebsites.net/CrudService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="CrudService.disco" MetadataType="Disco" ID="8cf43513-fc46-40f2-ad61-6c0971a78a84" SourceId="1" SourceUrl="http://localhost:50075/CrudService.svc?disco" />
-    <MetadataFile FileName="CrudService.xsd" MetadataType="Schema" ID="bbb80c38-e943-436b-adf2-37355a76786a" SourceId="1" SourceUrl="http://localhost:50075/CrudService.svc?xsd=xsd0" />
-    <MetadataFile FileName="CrudService1.xsd" MetadataType="Schema" ID="71fa6520-4a89-4e56-b6dc-e3208fbfeb7e" SourceId="1" SourceUrl="http://localhost:50075/CrudService.svc?xsd=xsd2" />
-    <MetadataFile FileName="CrudService.wsdl" MetadataType="Wsdl" ID="48273cd1-5647-4f9a-91c2-61b5abf64158" SourceId="1" SourceUrl="http://localhost:50075/CrudService.svc?wsdl" />
-    <MetadataFile FileName="CrudService2.xsd" MetadataType="Schema" ID="b19a8ecc-1b22-46ef-b1e8-892bc27c1a77" SourceId="1" SourceUrl="http://localhost:50075/CrudService.svc?xsd=xsd1" />
-    <MetadataFile FileName="CrudService3.xsd" MetadataType="Schema" ID="9ba8edf0-72e5-4f44-a0e0-9697cd4ba6a0" SourceId="1" SourceUrl="http://localhost:50075/CrudService.svc?xsd=xsd4" />
-    <MetadataFile FileName="CrudService4.xsd" MetadataType="Schema" ID="dcbb267d-99e5-4c5b-8706-16f849439c36" SourceId="1" SourceUrl="http://localhost:50075/CrudService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CrudService5.xsd" MetadataType="Schema" ID="a7a93141-20ee-4980-8c3a-b7eb50e4a173" SourceId="1" SourceUrl="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CrudService51.xsd" MetadataType="Schema" ID="46877f3a-e851-4b79-97e2-09d326a8ac6a" SourceId="1" SourceUrl="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CrudService1.disco" MetadataType="Disco" ID="ce5e7ec5-e09a-4663-8198-98ecef8d6d45" SourceId="1" SourceUrl="http://utecprojectp2.azurewebsites.net/CrudService.svc?disco" />
+    <MetadataFile FileName="CrudService1.wsdl" MetadataType="Wsdl" ID="a730685e-0afc-4f3f-85b0-437452a5bfab" SourceId="1" SourceUrl="http://utecprojectp2.azurewebsites.net/CrudService.svc?wsdl" />
+    <MetadataFile FileName="CrudService52.xsd" MetadataType="Schema" ID="6825d465-00e3-4182-9c81-3d40e97a0999" SourceId="1" SourceUrl="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CrudService53.xsd" MetadataType="Schema" ID="844a6eb3-be9e-4dd2-ae65-113c58f2c34e" SourceId="1" SourceUrl="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CrudService54.xsd" MetadataType="Schema" ID="e51b34de-d283-4832-ab95-201385e640f0" SourceId="1" SourceUrl="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

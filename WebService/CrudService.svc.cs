@@ -16,7 +16,7 @@ namespace WebService
         const string NOLOGIN = "Transaccion no valida no es usuario valido!";
         const string NOGRANT = "Transaccion no valida no tiene los privilegios correctos!";
 #if DEBUG
-        const bool PRODUCCION = false;
+        const bool PRODUCCION = true;
 #else
         const bool PRODUCCION = true;
 #endif
@@ -299,7 +299,7 @@ namespace WebService
         public Dictionary<int,int> GetValoraciones(string user)
         {
             Dictionary<int, int> dic = new Dictionary<int, int>();
-            DataSet ds = Select("select id_platillo, rate from valoraciones");
+            DataSet ds = Select($"select id_platillos, rate from valoraciones where id_usuario='{user}'");
             foreach (DataRow r in ds.Tables[0].Rows)
             {
                 dic.Add(int.Parse(r[0].ToString()), int.Parse(r[1].ToString()));
@@ -379,7 +379,11 @@ namespace WebService
                 Dictionary<int, int> dic2 = GetValoraciones(user);
                 foreach (int k in dic1.Keys)
                 {
-                    if (!dic2.ContainsKey(k)) unificated.Add(k,dic2[k]);
+                    if (!dic2.ContainsKey(k)) unificated.Add(k,dic1[k]);                    
+                }
+                foreach (int k in dic2.Keys)
+                {
+                    if (!dic1.ContainsKey(k)) unificated.Add(k, dic2[k]);
                 }
             }
             string into = "";
@@ -388,7 +392,7 @@ namespace WebService
                 into += i + ",";
             }
             if (into == "") return sp_UltimosPlatillos(0,10); else into = into.Substring(0, into.Length - 1);
-            DataSet rsTops = Select($"select * from vPlatillos where id_platillo into ({into})");
+            DataSet rsTops = Select($"select * from vPlatillos where id_platillos in ({into})");
             foreach (DataRow r in rsTops.Tables[0].Rows)
             {
                 Platillos p = new Platillos();

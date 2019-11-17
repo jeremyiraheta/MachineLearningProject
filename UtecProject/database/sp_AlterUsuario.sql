@@ -1,4 +1,4 @@
-create procedure sp_AlterUsuario(@iduser varchar(50), @password varchar(50), @image int, @nombre nvarchar(200), @apellido nvarchar(200), @correo varchar(200), @admin bit)
+create procedure sp_AlterUsuario(@iduser varchar(50), @password varchar(50), @image int, @nombre nvarchar(200), @apellido nvarchar(200), @correo varchar(200), @admin bit, @birth date)
 as
 begin
 	if(@image != -1)
