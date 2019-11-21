@@ -94,7 +94,7 @@ namespace PRProject
                     output.Text = MSGNOUSER;
                     return;
                 }
-                rate.Controls.Add(LoadControl("rating.ascx"));
+                rate.Controls.Add(LoadControl("rating.ascx?id="+id));
                 if (!IsPostBack)
                 {
                     if (dish.URL == null || dish.URL == "")

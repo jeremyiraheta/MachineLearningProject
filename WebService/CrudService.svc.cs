@@ -368,31 +368,33 @@ namespace WebService
             return (platillos.Count > 0) ? platillos : sp_UltimosPlatillos(0, 10); 
         }
         public List<Platillos> sp_RecomendarProductosPersonalizado(string user)
-        {//select v1.id_usuario, v2.id_usuario,count(v1.rate) coincidencias from valoraciones v1 inner join valoraciones v2 on v1.id_platillos = v2.id_platillos and v1.id_usuario != v2.id_usuario and v1.rate = v2.rate group by v1.id_usuario,v2.id_usuario
-            DataSet ds = Select($"select top 10 id_usuarioa,id_usuariob from recomendaciones where id_usuarioa='{user}' or id_usuariob='{user}' order by coincidencias");
+        {
+            DataSet ds=new DataSet();
+            adapter = new SqlDataAdapter("sp_RecomendacionPersonalizada", conexion);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@user", user));                        
+            adapter.Fill(ds);
+            adapter.Dispose();
             List<Platillos> platillos = new List<Platillos>();
             Dictionary<int, int> unificated = new Dictionary<int, int>();
+            if (ds.Tables.Count == 0) return sp_RecomendarProductos();
             foreach (DataRow r in ds.Tables[0].Rows)
             {
-                string ruser = (r["id_usuarioa"].ToString() == user) ? r["id_usuariob"].ToString() : r["id_usuarioa"].ToString();
+                string ruser = r["usuarioa"].ToString();
                 Dictionary<int, int> dic1 = GetValoraciones(ruser);
                 Dictionary<int, int> dic2 = GetValoraciones(user);
                 foreach (int k in dic1.Keys)
                 {
                     if (!dic2.ContainsKey(k)) unificated.Add(k,dic1[k]);                    
-                }
-                foreach (int k in dic2.Keys)
-                {
-                    if (!dic1.ContainsKey(k)) unificated.Add(k, dic2[k]);
-                }
+                }                
             }
             string into = "";
             foreach (int i in unificated.Keys)
             {
                 into += i + ",";
             }
-            if (into == "") return sp_UltimosPlatillos(0,10); else into = into.Substring(0, into.Length - 1);
-            DataSet rsTops = Select($"select * from vPlatillos where id_platillos in ({into})");
+            if (into == "") return sp_RecomendarProductos(); else into = into.Substring(0, into.Length - 1);
+            DataSet rsTops = Select($"select * from vPlatillos where id_platillos in ({into}) order by RATE desc");
             foreach (DataRow r in rsTops.Tables[0].Rows)
             {
                 Platillos p = new Platillos();
@@ -410,7 +412,22 @@ namespace WebService
                 if (p.URL == "") p.URL = "/images/sin-imagen.gif";
                 platillos.Add(p);
             }
-            return (platillos.Count > 0) ? platillos : sp_UltimosPlatillos(0,10);
+            if(platillos.Count<10)
+            {
+                List<Platillos> tmp = sp_RecomendarProductos();
+                Random r = new Random();
+                if (platillos.Count + tmp.Count > 10)
+                {
+                    while (platillos.Count < 10)
+                    {
+                        Platillos t = tmp[r.Next(0, tmp.Count - 1)];
+                        if (!platillos.Contains(t)) platillos.Add(t);
+                    }
+                }
+                else
+                    platillos.AddRange(tmp);
+            }
+            return (platillos.Count > 0) ? platillos : sp_RecomendarProductos();
         }
         public void sp_AgregarClick(LoginData login, int idplatillo, string iduser)
         {
@@ -648,10 +665,10 @@ namespace WebService
         public Dictionary<int, string> getGallery()
         {
             Dictionary<int, string> gallery = new Dictionary<int, string>();
-            DataSet ds = Select("select p.ID_PLATILLOS,i.ID_IMAGEN from platillos p inner join IMAGENES i on i.ID_IMAGEN = p.ID_IMAGEN");
+            DataSet ds = Select("select p.ID_PLATILLOS,i.URL from platillos p inner join IMAGENES i on i.ID_IMAGEN = p.ID_IMAGEN");
             foreach (DataRow r in ds.Tables[0].Rows)
             {
-                gallery.Add(int.Parse(r[0].ToString()), r[1].ToString());
+                gallery.Add(int.Parse(r["ID_PLATILLOS"].ToString()), r["URL"].ToString());
             }
             return gallery;
         }

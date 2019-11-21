@@ -27,14 +27,10 @@ namespace PRProject
                     string id = Request["id"];
                     if (Request["action"] == "edit" && ldata.isAdmin)
                     {
-                        Button btnEdit = new Button();
-                        Button btnCPass = new Button();
-                        btnCPass.Text = "Cambiar password";
+                        Button btnEdit = new Button();                                                
                         btnEdit.Text = "Editar";
-                        btnEdit.Click += BtnEdit_Click;
-                        btnCPass.Click += BtnCPass_Click;
-                        editcontrols.Controls.Add(btnEdit);
-                        editcontrols.Controls.Add(btnCPass);
+                        btnEdit.Click += BtnEdit_Click;                        
+                        editcontrols.Controls.Add(btnEdit);                        
                         txtApellido.ReadOnly = false;
                         txtBirth.ReadOnly = false;
                         txtCorreo.ReadOnly = false;
@@ -83,11 +79,7 @@ namespace PRProject
                 output.Text = MSGNOGRANT;
             }
         }
-
-        private void BtnCPass_Click(object sender, EventArgs e)
-        {
-            pass.Controls.Add(LoadControl("changepass.ascx"));                 
-        }
+       
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {

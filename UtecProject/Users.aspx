@@ -63,9 +63,7 @@
                 <td>
                     <asp:Label ID="lcount" runat="server" Text="0"></asp:Label>
                  </td>
-            </tr>
-            <tr><td  id="pass" runat="server" colspan="2">                
-                </td></tr>
+            </tr>            
         </table>
          <div id="editcontrols" style="text-align:center;" runat="server">
 

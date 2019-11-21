@@ -166,15 +166,6 @@ namespace PRProject {
         protected global::System.Web.UI.WebControls.Label lcount;
         
         /// <summary>
-        /// Control pass.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell pass;
-        
-        /// <summary>
         /// Control editcontrols.
         /// </summary>
         /// <remarks>
