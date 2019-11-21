@@ -97,16 +97,8 @@ namespace PRProject
                     img = client.sp_AgregarImagen(ldata, url);
                     upload.SaveAs(Server.MapPath(Path.Combine("~/images/", name)));
                 }
-                string id = Request["id"].ToString();
-                TextBox c = (TextBox)FindControl("txtnewpass");
-                TextBox old = (TextBox)FindControl("txtoldpass");
-                if(old != null)
-                    if(old.Text != ldata.PASS)
-                    {
-                        output.Text = "Ingrese su password actual correctamente!";
-                        return;
-                    }
-                client.sp_AlterUsuario(ldata, img, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtBirth.Text, chkAdmin.Checked, c != null ? c.Text : ldata.PASS);
+                string id = Request["id"].ToString();                
+                client.sp_AlterUsuario(ldata, img, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtBirth.Text, chkAdmin.Checked, ldata.PASS);
                 output.Text = "Transaccion realizada!";
             }
             catch (Exception ex)

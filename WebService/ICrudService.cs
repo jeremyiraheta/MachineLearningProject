@@ -79,6 +79,8 @@ namespace WebService
         Dictionary<int, string> getGallery();
         [OperationContract]
         List<Platillos> buscarPlatillo(string buscar);
+        [OperationContract]
+        void sp_AlterLocation(LoginData login, int id, int x, int y);
 
     }
     [DataContract]

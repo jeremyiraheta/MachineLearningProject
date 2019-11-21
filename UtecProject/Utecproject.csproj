@@ -142,6 +142,7 @@
     <Content Include="js\p5.js" />
     <Content Include="js\p5.sound.js" />
     <Content Include="js\sketch.js" />
+    <Content Include="Locaciones.asmx" />
     <Content Include="Locales.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Mapa.aspx" />
@@ -264,6 +265,10 @@
     </Compile>
     <Compile Include="History.aspx.designer.cs">
       <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Locaciones.asmx.cs">
+      <DependentUpon>Locaciones.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Locales.aspx.cs">
       <DependentUpon>Locales.aspx</DependentUpon>

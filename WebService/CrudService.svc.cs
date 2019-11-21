@@ -695,5 +695,17 @@ namespace WebService
             }
             return platillos;
         }
+        public void sp_AlterLocation(LoginData login, int id, int x, int y)        
+        {
+            if (!isValidUser(login.USER, login.PASS))
+                throw new Exception(NOLOGIN);
+            adapter = new SqlDataAdapter("sp_AlterLocation", conexion);
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;            
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@id", id));
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@x", x));
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@y", y));
+            adapter.Fill(new DataSet());
+            adapter.Dispose();
+        }
     }
 }
