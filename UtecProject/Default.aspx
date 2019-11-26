@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">
     <div id="slider_wrap">
-                <div id="slider">
+                <div id="slider" style="padding-left:15%;">
                     <ul class="slides" runat="server" id="dishslider">
                      
                     </ul>

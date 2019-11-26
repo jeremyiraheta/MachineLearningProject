@@ -27,11 +27,11 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService" />
-      <xsd:import schemaLocation="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd4" />
+      <xsd:import schemaLocation="https://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebService" />
+      <xsd:import schemaLocation="https://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://utecprojectp2.azurewebsites.net/CrudService.svc?xsd=xsd4" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ICrudService_isAdmin_InputMessage">
@@ -232,6 +232,12 @@
   <wsdl:message name="ICrudService_buscarPlatillo_OutputMessage">
     <wsdl:part name="parameters" element="tns:buscarPlatilloResponse" />
   </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterLocation" />
+  </wsdl:message>
+  <wsdl:message name="ICrudService_sp_AlterLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sp_AlterLocationResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICrudService">
     <wsdl:operation name="isAdmin">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/isAdmin" message="tns:ICrudService_isAdmin_InputMessage" />
@@ -364,6 +370,10 @@
     <wsdl:operation name="buscarPlatillo">
       <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/buscarPlatillo" message="tns:ICrudService_buscarPlatillo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/buscarPlatilloResponse" message="tns:ICrudService_buscarPlatillo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICrudService/sp_AlterLocation" message="tns:ICrudService_sp_AlterLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICrudService/sp_AlterLocationResponse" message="tns:ICrudService_sp_AlterLocation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICrudService" type="tns:ICrudService">
@@ -665,6 +675,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="sp_AlterLocation">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AlterLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpsBinding_ICrudService" type="tns:ICrudService">
     <wsp:PolicyReference URI="#BasicHttpsBinding_ICrudService_policy" />
@@ -959,6 +978,15 @@
     </wsdl:operation>
     <wsdl:operation name="buscarPlatillo">
       <soap:operation soapAction="http://tempuri.org/ICrudService/buscarPlatillo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sp_AlterLocation">
+      <soap:operation soapAction="http://tempuri.org/ICrudService/sp_AlterLocation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

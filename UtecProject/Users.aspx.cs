@@ -36,7 +36,18 @@ namespace PRProject
                         txtCorreo.ReadOnly = false;
                         txtNombre.ReadOnly = false;
                         chkAdmin.Enabled = true;
-                    }                    
+                    }
+                    else if(Request["edit"] == "true" && ldata.USER == Request["id"])
+                    {
+                        Button btnEdit = new Button();
+                        btnEdit.Text = "Editar";
+                        btnEdit.Click += BtnEdit_Click;
+                        editcontrols.Controls.Add(btnEdit);
+                        txtApellido.ReadOnly = false;
+                        txtBirth.ReadOnly = false;
+                        txtCorreo.ReadOnly = false;
+                        txtNombre.ReadOnly = false;
+                    }                
                     SQLTrans.Usuarios user;
                     try
                     {
@@ -53,7 +64,7 @@ namespace PRProject
                         if (user.URL == null || user.URL == "")
                             img.ImageUrl = "/images/sin-imagen.gif";
                         else
-                            img.ImageUrl = "/images/" + user.URL;
+                            img.ImageUrl = user.URL;
                         chkAdmin.Checked = client.isAdmin(id);
                         txtNombre.Text = user.NOMBRE;
                         txtApellido.Text = user.APELLIDO;
@@ -98,7 +109,10 @@ namespace PRProject
                     upload.SaveAs(Server.MapPath(Path.Combine("~/images/", name)));
                 }
                 string id = Request["id"].ToString();                
-                client.sp_AlterUsuario(ldata, img, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtBirth.Text, chkAdmin.Checked, ldata.PASS);
+                if(ldata.isAdmin)
+                    client.sp_AlterUsuario(ldata, id, img, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtBirth.Text, chkAdmin.Checked, null);
+                else
+                    client.sp_AlterUsuario(ldata, id, img, txtNombre.Text, txtApellido.Text, txtCorreo.Text, txtBirth.Text, ldata.isAdmin, null);
                 output.Text = "Transaccion realizada!";
             }
             catch (Exception ex)

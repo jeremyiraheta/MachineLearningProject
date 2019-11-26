@@ -1024,10 +1024,10 @@ namespace PRProject.SQLTrans {
         System.Threading.Tasks.Task sp_AlterComentarioAsync(PRProject.SQLTrans.LoginData login, int id, string comentario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AlterUsuario", ReplyAction="http://tempuri.org/ICrudService/sp_AlterUsuarioResponse")]
-        void sp_AlterUsuario(PRProject.SQLTrans.LoginData login, int image, string nombre, string apellido, string correo, string birth, bool admin, string password);
+        void sp_AlterUsuario(PRProject.SQLTrans.LoginData login, string username, int image, string nombre, string apellido, string correo, string birth, bool admin, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AlterUsuario", ReplyAction="http://tempuri.org/ICrudService/sp_AlterUsuarioResponse")]
-        System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, int image, string nombre, string apellido, string correo, string birth, bool admin, string password);
+        System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, string username, int image, string nombre, string apellido, string correo, string birth, bool admin, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_RecomendarProductos", ReplyAction="http://tempuri.org/ICrudService/sp_RecomendarProductosResponse")]
         PRProject.SQLTrans.Platillos[] sp_RecomendarProductos();
@@ -1058,6 +1058,12 @@ namespace PRProject.SQLTrans {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/buscarPlatillo", ReplyAction="http://tempuri.org/ICrudService/buscarPlatilloResponse")]
         System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> buscarPlatilloAsync(string buscar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AlterLocation", ReplyAction="http://tempuri.org/ICrudService/sp_AlterLocationResponse")]
+        void sp_AlterLocation(PRProject.SQLTrans.LoginData login, int id, int x, int y);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrudService/sp_AlterLocation", ReplyAction="http://tempuri.org/ICrudService/sp_AlterLocationResponse")]
+        System.Threading.Tasks.Task sp_AlterLocationAsync(PRProject.SQLTrans.LoginData login, int id, int x, int y);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1303,12 +1309,12 @@ namespace PRProject.SQLTrans {
             return base.Channel.sp_AlterComentarioAsync(login, id, comentario);
         }
         
-        public void sp_AlterUsuario(PRProject.SQLTrans.LoginData login, int image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
-            base.Channel.sp_AlterUsuario(login, image, nombre, apellido, correo, birth, admin, password);
+        public void sp_AlterUsuario(PRProject.SQLTrans.LoginData login, string username, int image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
+            base.Channel.sp_AlterUsuario(login, username, image, nombre, apellido, correo, birth, admin, password);
         }
         
-        public System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, int image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
-            return base.Channel.sp_AlterUsuarioAsync(login, image, nombre, apellido, correo, birth, admin, password);
+        public System.Threading.Tasks.Task sp_AlterUsuarioAsync(PRProject.SQLTrans.LoginData login, string username, int image, string nombre, string apellido, string correo, string birth, bool admin, string password) {
+            return base.Channel.sp_AlterUsuarioAsync(login, username, image, nombre, apellido, correo, birth, admin, password);
         }
         
         public PRProject.SQLTrans.Platillos[] sp_RecomendarProductos() {
@@ -1349,6 +1355,14 @@ namespace PRProject.SQLTrans {
         
         public System.Threading.Tasks.Task<PRProject.SQLTrans.Platillos[]> buscarPlatilloAsync(string buscar) {
             return base.Channel.buscarPlatilloAsync(buscar);
+        }
+        
+        public void sp_AlterLocation(PRProject.SQLTrans.LoginData login, int id, int x, int y) {
+            base.Channel.sp_AlterLocation(login, id, x, y);
+        }
+        
+        public System.Threading.Tasks.Task sp_AlterLocationAsync(PRProject.SQLTrans.LoginData login, int id, int x, int y) {
+            return base.Channel.sp_AlterLocationAsync(login, id, x, y);
         }
     }
 }

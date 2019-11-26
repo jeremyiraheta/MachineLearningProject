@@ -81,7 +81,7 @@ namespace PRProject
                 string locales = "";
                 foreach (SQLTrans.Restaurantes r in client.GetRestaurantes())
                 {
-                    locales += string.Concat("<tr><td><img src='", (r.URL == null || r.URL == string.Empty) ? "/images/sin-imagen.gif" : r.URL, "' height='200px' width='200px' /></td><td>", r.NOMBRE, "</td><td>", r.REFERENCIA, "</td><td>", Math.Round(double.Parse(r.RATE),2), "</td><td><a href=Locales.aspx?id=", r.ID, ">Ver</a>&emsp;");
+                    locales += string.Concat("<tr><td><img src='", (r.URL == null || r.URL == string.Empty) ? "/images/sin-imagen.gif" : r.URL, "' height='200px' width='200px' /></td><td>", r.NOMBRE, "</td><td>", r.REFERENCIA, "</td><td>", r.RATE=="" ?"Sin Datos" : Math.Round(double.Parse(r.RATE), 2).ToString(), "</td><td><a href=Locales.aspx?id=", r.ID, ">Ver</a>&emsp;");
                     if(ldata!=null)
                         if(ldata.isAdmin)
                             locales+=string.Concat("<a href=Locales.aspx?id=",r.ID, "&action=edit>Editar</a>&emsp;<a href=Locales.aspx?id=", r.ID, "&action=delete onclick=\"if ( ! UserDeleteConfirmation()) return false;\">Eliminar</a></td></tr>\n");

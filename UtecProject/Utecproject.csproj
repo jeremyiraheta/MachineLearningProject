@@ -69,7 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
-    <Content Include="AMapa.aspx" />
+    <Content Include="AlterPass.aspx" />
     <Content Include="APlatos.aspx" />
     <Content Include="ARestaurantes.aspx" />
     <Content Include="cache\3cca1e4df4d601664e8ee5f5f104600a-105x75.jpg" />
@@ -114,7 +114,6 @@
     <Content Include="css\style.min.css" />
     <Content Include="css\theme-utils.css" />
     <Content Include="css\wzslider.css" />
-    <Content Include="FastFood.aspx" />
     <Content Include="Fotos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="History.aspx" />
@@ -142,7 +141,6 @@
     <Content Include="js\p5.js" />
     <Content Include="js\p5.sound.js" />
     <Content Include="js\sketch.js" />
-    <Content Include="Locaciones.asmx" />
     <Content Include="Locales.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="Mapa.aspx" />
@@ -153,7 +151,9 @@
     <Content Include="rating.ascx" />
     <Content Include="Search.aspx" />
     <None Include="Service References\SQLTrans\CrudService1.disco" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\utecprojectp2.pubxml" />
     <Content Include="Service References\SQLTrans\PRProject.SQLTrans.Comentarios.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -213,12 +213,12 @@
     <Compile Include="AboutUs.aspx.designer.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AMapa.aspx.cs">
-      <DependentUpon>AMapa.aspx</DependentUpon>
+    <Compile Include="AlterPass.aspx.cs">
+      <DependentUpon>AlterPass.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AMapa.aspx.designer.cs">
-      <DependentUpon>AMapa.aspx</DependentUpon>
+    <Compile Include="AlterPass.aspx.designer.cs">
+      <DependentUpon>AlterPass.aspx</DependentUpon>
     </Compile>
     <Compile Include="APlatos.aspx.cs">
       <DependentUpon>APlatos.aspx</DependentUpon>
@@ -242,13 +242,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FastFood.aspx.cs">
-      <DependentUpon>FastFood.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FastFood.aspx.designer.cs">
-      <DependentUpon>FastFood.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Fotos.aspx.cs">
       <DependentUpon>Fotos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,10 +258,6 @@
     </Compile>
     <Compile Include="History.aspx.designer.cs">
       <DependentUpon>History.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Locaciones.asmx.cs">
-      <DependentUpon>Locaciones.asmx</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Locales.aspx.cs">
       <DependentUpon>Locales.aspx</DependentUpon>

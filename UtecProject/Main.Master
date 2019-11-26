@@ -69,7 +69,7 @@
                             </ul>
                         </li>
                         <li id="menu-item-27" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="Locales.aspx">Locales</a></li>
-                        <li id="menu-item-28" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="FastFood.aspx">Fast Food</a></li>
+                        <li id="menu-item-28" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="https://github.com/jeremyiraheta/MachineLearningProject">GitHub</a></li>
                         <li id="menu-item-29" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="Fotos.aspx">Fotos</a></li>
                         <li id="menu-item-30" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="Mapa.aspx">Mapa</a></li>
                         <li id="menu-item-98" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="AboutUs.aspx">Sobre Nosotros</a></li>

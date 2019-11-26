@@ -7,17 +7,9 @@
    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="c1" runat="server">
-    <h4 style="text-align:center;"><asp:Literal ID="output" runat="server"></asp:Literal></h4>
-    <div style="text-align:center; padding-top:30px;" id="sketh"></div>
-    <div id="edit" runat="server"></div>
-    <div class="rounded" style="margin-left:30%;margin-right;margin-top:50px;display:table;">
-        <table>
-            <thead><tr>
-                <td style="width:200px"><b>Nombre</b></td><td><b>X</b></td><td><b>Y</b></td><td style="width:100px"><b>Edicion</b></td>
-                   </tr></thead>
-            <tbody>
-                <asp:Literal ID="table" runat="server"></asp:Literal>
-            </tbody>
-        </table>        
+    
+    <div style="text-align:center; padding-top:30px;" id="skt">
+
     </div>
+    
 </asp:Content>

@@ -68,7 +68,7 @@ namespace WebService
         [OperationContract]
         void sp_AlterComentario(LoginData login, int id, string comentario);
         [OperationContract]
-        void sp_AlterUsuario(LoginData login,int image, string nombre, string apellido, string correo, string birth, bool admin, string password = null);
+        void sp_AlterUsuario(LoginData login,string username,int image, string nombre, string apellido, string correo, string birth, bool admin, string password = null);
         [OperationContract]
         List<Platillos> sp_RecomendarProductos();
         [OperationContract]

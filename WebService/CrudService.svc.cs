@@ -16,7 +16,7 @@ namespace WebService
         const string NOLOGIN = "Transaccion no valida no es usuario valido!";
         const string NOGRANT = "Transaccion no valida no tiene los privilegios correctos!";
 #if DEBUG
-        const bool PRODUCCION = true;
+        const bool PRODUCCION = false;
 #else
         const bool PRODUCCION = true;
 #endif
@@ -290,10 +290,11 @@ namespace WebService
         }
         public int GetValoracion(string user, int platillo)
         {
-            DataSet ds = Select("VALORACIONES", $"ID_USUARIO='{user}' and ID_PLATILLO={platillo}");
+            DataSet ds = Select("VALORACIONES", $"ID_USUARIO='{user}' and ID_PLATILLOS={platillo}");
             int val = -1;
             if (ds.Tables.Count > 0)
-                int.TryParse(ds.Tables[0].Rows[0][0].ToString(), out val);
+                if(ds.Tables[0].Rows.Count > 0)
+                    int.TryParse(ds.Tables[0].Rows[0]["RATE"].ToString(), out val);
             return val;
         }
         public Dictionary<int,int> GetValoraciones(string user)
@@ -642,17 +643,15 @@ namespace WebService
             adapter.Fill(new DataSet());
             adapter.Dispose();
         }
-        public void sp_AlterUsuario(LoginData login,int image, string nombre, string apellido, string correo, string birth, bool admin, string password=null)
+        public void sp_AlterUsuario(LoginData login, string username,int image, string nombre, string apellido, string correo, string birth, bool admin, string password=null)
         {
             if (!isValidUser(login.USER, login.PASS))
                 throw new Exception(NOLOGIN);
             adapter = new SqlDataAdapter("sp_AlterUsuario", conexion);
             adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            adapter.SelectCommand.Parameters.Add(new SqlParameter("@iduser", login.USER));
+            adapter.SelectCommand.Parameters.Add(new SqlParameter("@iduser", username));
             if(password != null)
                 adapter.SelectCommand.Parameters.Add(new SqlParameter("@password", password));
-            else
-                adapter.SelectCommand.Parameters.Add(new SqlParameter("@password", login.PASS));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@image", image));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@nombre", nombre));
             adapter.SelectCommand.Parameters.Add(new SqlParameter("@apellido", apellido));

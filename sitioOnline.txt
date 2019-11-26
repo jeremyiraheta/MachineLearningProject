@@ -1,0 +1,5 @@
+http://utecprojectp2.azurewebsites.net
+usuario>
+	jeremy.iraheta : user
+administrador>
+		admin : admin

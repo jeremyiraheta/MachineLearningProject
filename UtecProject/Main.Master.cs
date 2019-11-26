@@ -17,9 +17,9 @@ namespace PRProject
             string lc = "";
             foreach (SQLTrans.Comentarios i in c)
             {   
-                string url = i.URL;
+                string url = i.URL;                
                 if (url == "" || url == null) url = "/images/sin-imagen.gif";
-                lc += $"<li><a href=#><img src={url} class='avatar avatar-40 photo' height='40' width='40'></a> <a href=#>{i.ID_USUARIO}: </a>{i.COMENTARIOS}<div class=clear></div></li>";
+                lc += $"<li><a href=#><img src={url} class='avatar avatar-40 photo' height='40' width='40'></a> <a href='Platos.aspx?id={i.ID_PLATILLOS}'>{i.ID_USUARIO}: </a>{i.COMENTARIOS}<div class=clear></div></li>";
             }
             lastcomments.InnerHtml = lc;
             foreach (string t in stipos)
@@ -48,8 +48,9 @@ namespace PRProject
                 submenu.Text = string.Concat("<ul class='sub-menu' style='display: none; visibility: hidden;'>",
                                  "<li id = 'menu-item-47' class='menu-item menu-item-type-post_type menu-item-object-page'><a href = 'ARestaurantes.aspx' >Agregar Restaurante</a></li>",
                                 "<li id = 'menu-item-43' class='menu-item menu-item-type-post_type menu-item-object-page'><a href = 'APlatos.aspx' >Agregar Platillo</a></li>",
-                                (ldata.isAdmin) ? "<li id = 'menu-item-142' class='menu-item menu-item-type-custom menu-item-object-custom'><a href = 'AMapa.aspx' >Modificar mapa</a></li>" : ""
-                                ,(ldata.isAdmin) ? "<li id = 'menu-item-144' class='menu-item menu-item-type-custom menu-item-object-custom'><a href = 'Users.aspx' >Ver usuarios</a></li>" : ""
+                                "<li id = 'menu-item-142' class='menu-item menu-item-type-custom menu-item-object-custom'><a href = 'AlterPass.aspx' >Cambiar Password</a></li>"
+                                ,(!ldata.isAdmin) ? $"<li id = 'menu-item-143' class='menu-item menu-item-type-custom menu-item-object-custom'><a href = 'Users.aspx?id={ldata.USER}&edit=true' >Cambiar perfil</a></li>" : ""
+                                , (ldata.isAdmin) ? "<li id = 'menu-item-144' class='menu-item menu-item-type-custom menu-item-object-custom'><a href = 'Users.aspx' >Ver usuarios</a></li>" : ""
                                 , (ldata.isAdmin) ? "<li id = 'menu-item-145' class='menu-item menu-item-type-custom menu-item-object-custom'><a href = 'History.aspx' >Ver historial</a></li>" : ""
                                 , "<li id = 'menu-item-143' class='menu-item menu-item-type-custom menu-item-object-custom'><a href = 'Default.aspx?Logout=true' >Cerrar sesion</a></li></ul>");
 

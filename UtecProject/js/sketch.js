@@ -2,32 +2,18 @@ let mapimg
 let ar = []
 let i = 0
 let ttp
-let canvas
-let eid = -1
-let data
-let R = []
+
 function preload() {
-    mapimg = loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/-89.2009002,13.6998038,16,0,0/600x600?access_token=pk.eyJ1IjoiamVyZW15aXJhaGV0YSIsImEiOiJjazB4NmM0MXkwMjBzM2NvNXh3Ym82czVoIn0.UI7PImp4SkagrH_gpS5M0w')
-    data = loadJSON('Locaciones.asmx/getLocations');
+  mapimg = loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/-89.2009002,13.6998038,16,0,0/600x600?access_token=pk.eyJ1IjoiamVyZW15aXJhaGV0YSIsImEiOiJjazB4NmM0MXkwMjBzM2NvNXh3Ym82czVoIn0.UI7PImp4SkagrH_gpS5M0w')
 }
 
 function setup() {
-  canvas = createCanvas(600, 600)
+  let canvas = createCanvas(600, 600)
+  canvas.parent('skt')
   image(mapimg, 0, 0)
 }
-function LoadData()
-{    
-    for (let i = 0; i < data.length; i++) {        
-        let r = data[i];        
-        let x = r['X']
-        let y = r['Y']
-        let nombre = r['NOMBRE']
-        let id = r['ID']
-        let referencia = r['REFERENCIA']
-        let url = r['URL']
-        let rate = r['RATE']
-    }
-}
+
+
 function draw() {
   ar.forEach(e => {
     e.show()
@@ -52,22 +38,18 @@ function mouseMoved() {
 }
 
 function mouseClicked(fxn) {
-  let isclick = false
-  ar.some(e => {
-    if (e.hover(mouseX, mouseY)) {
-      isclick = true
-      return true
-    }
-  });
-  if (!isclick && (mouseX > 0 && mouseX < 600 && mouseY > 0 && mouseY < 600) && eid >= 0) {
-    append(ar, new Rest(mouseX, mouseY, 10, str(++i)))
-    eid = -1
-  }
+  //let isclick = false
+  //ar.some(e => {
+  //  if (e.hover(mouseX, mouseY)) {
+  //    isclick = true
+
+  //    return true
+  //  }
+  //});
+  //if (!isclick)
+  //  append(ar, new Rest(mouseX, mouseY, 20, str(++i)))
 }
 
-function editid(id) {
-  eid = id
-}
 class Rest {
   constructor(x, y, size, [name] = "") {
     this.x = x
@@ -80,7 +62,7 @@ class Rest {
     fill('red')
     ellipse(this.x, this.y, this.size, this.size)
     fill('black')
-    //text(this.name, this.x, this.y)
+    text(this.name, this.x, this.y)
   }
   hover(x, y) {
     let d = dist(x, y, this.x, this.y)
